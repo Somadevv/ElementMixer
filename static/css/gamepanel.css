@@ -1,33 +1,97 @@
+/* GAME PANEL */
 .game-panel {
-    position: relative;
-    margin: 0 auto;
-    margin-top: 25px;
-    padding-right: 10px;    
-    height: 500px;
-    width: 445px;
-    background: url('/static/images/back_generator.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
 }
-.navigation-container {
-    width: 33%;
-    padding-top: 30px;
-    background-size: 100% 100%;
-    min-height: 75px;
-    z-index: 2;
-    display: flex;
-    /* flex-wrap: wrap; */
-}
-.navigation-button {
-    margin: 0 auto;
-    width: 140px;
-    height: 42px;
-    font-size: 14px;
-    line-height: 14px;
+.back-generator-view {
+  margin: 0 auto;
+  background: url("/static/images/back_generator.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  height: 500px;
+  width: 100%;
 }
 
-@media only screen and (min-width: 768px){
-    .navigation-container {
-        width: 33%;
-    }
+.navigation-container {
+    position: relative;
+  width: 33%;
+  padding-top: 30px;
+  background-size: 100% 100%;
+  min-height: 75px;
+  z-index: 2;
+  display: flex;
 }
+
+.navigation-button {
+  margin: 0 auto;
+  width: 140px;
+  height: 42px;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+/* Media queries to support the back generator image */
+@media only screen and (max-width: 520px) {
+  .back-generator-view {
+    margin-top: 55px;
+    width: 90%;
+    height: 355px;
+    
+  }
+}
+
+@media only screen and (min-width: 320px) {
+    .back-generator-view {
+      margin-top: 145px;
+      width: 85%;
+      height: 355px;
+      
+    }
+  }
+
+@media only screen and (min-width: 375px) {
+    .back-generator-view {
+      margin-top: 185px;
+      width: 85%;
+      height: 355px;
+      
+    }
+  }
+
+
+  @media only screen and (min-width: 410px) {
+    .back-generator-view {
+      margin-top: 165px;
+      width: 100%;
+      height: 375px;
+      
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .back-generator-view {
+
+      width: 100%;
+      height: 500px;
+      
+    }
+  }
+  @media only screen and (min-height: 1300px) {
+    .back-generator-view {
+        margin-top: 465px;
+   
+      
+    }
+  }
+
+  @media only screen and (min-width: 1250px) {
+    .back-generator-view {
+    margin-top: 150px;
+
+      
+    }
+  }

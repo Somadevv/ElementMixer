@@ -9,23 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {% endblock %}
 
-    {% block extra_meta %}
-    {% endblock %}
-
     {% block corecss %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        <link rel="stylesheet" href="{% static 'css/home.css' %}">
-        <link rel="stylesheet" href="{% static 'css/mainbar.css' %}">
-        <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
-        <link rel="stylesheet" href="{% static 'css/gamepanel.css' %}">
-        
-        
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mainbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gamepanel.css' %}">
+
     {% endblock %}
 
-    {% block extra_css %}
-    {% endblock %}
 
     {% block corejs %}
     <script src="https://kit.fontawesome.com/1233ff78d9.js" crossorigin="anonymous"></script>
@@ -38,37 +32,27 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    
+
     {% endblock %}
 
-    {% block extra_js %}
-    {% endblock %}
 
-    <title>ElementMixer {% block extra_title %}{% endblock %}</title>
+
+    <title>ElementMixer</title>
 </head>
 
 <body>
-    <header class="container-fluid fixed-top" id='mainbar'>
-       
-    </header>
-
-
-    {% if messages %}
-    <div class="message-container"></div>
-    {% endif %}
-
-    {% block page_header %}
-    {% endblock %}
-
     {% block content %}
+
     {% endblock %}
 
     {% block postloadjs %}
-    {% endblock %}
-
+    <script src="{% static 'scripts/main.js' %}"></script>
     <script src="{% static 'scripts/api.js' %}"></script>
     <script src="{% static 'scripts/buttons.js' %}"></script>
-    <script src="{% static 'scripts/main.js' %}"></script>
+    <script src="{% static 'scripts/inventory.js' %}"></script>
+    <script src="{% static 'scripts/generator.js' %}"></script>
+    {% endblock %}
+
 </body>
 
 </html>
