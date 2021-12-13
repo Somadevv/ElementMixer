@@ -1,0 +1,33 @@
+.game-panel {
+    position: relative;
+    margin: 0 auto;
+    margin-top: 25px;
+    padding-right: 10px;    
+    height: 500px;
+    width: 445px;
+    background: url('/static/images/back_generator.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.navigation-container {
+    width: 33%;
+    padding-top: 30px;
+    background-size: 100% 100%;
+    min-height: 75px;
+    z-index: 2;
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+.navigation-button {
+    margin: 0 auto;
+    width: 140px;
+    height: 42px;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+@media only screen and (min-width: 768px){
+    .navigation-container {
+        width: 33%;
+    }
+}
