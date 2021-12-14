@@ -1,13 +1,20 @@
 export class Inventory {
-  inventory = ['yo', 'asd']
+  constructor() {
+      this._data = [];
+  }
   listItems() {
-    return console.log('inventory: ', this.inventory)
+    console.log('inventory: ', this._data)
+    return this._data
   }
   addItem = (item) => {
-    this.inventory.push(item)
+    this._data.push(item)
   }
   deleteItem(item) {
-   this.inventory.pop(item)
+   this._data.pop(item)
   }
 }
+
+
+
+
 

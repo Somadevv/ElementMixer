@@ -1,23 +1,30 @@
-const buttons = (() => {
-  const modal = document.getElementById("myModal");
-  const openModal = document.getElementById("myBtn");
-  const close = document.querySelector(".closeButton");
+import { Inventory } from "./inventory.js";
+const inventory = new Inventory();
 
-  openModal.onclick = () => {
-    modal.style.display = "block";
-  };
-
-  close.onclick = () => {
-    modal.style.display = "none";
-    console.log("asd");
+export class Buttons {
+  constructor() {
+    this.cachedDOM = {
+      modal: document.getElementById("myModal"),
+      openModal: document.querySelectorAll(".inventory-item"),
+      close: document.querySelector(".closeButton"),
+    };
+  }
+  buttons = () => {
+    this.cachedDOM.openModal.forEach((element) => {
+      element.addEventListener("click", () => {
+        this.cachedDOM.modal.style.display = "block";
+        // Render player inventory
+      });
+    });
+  this.cachedDOM.close.onclick = () => {
+    this.cachedDOM.modal.style.display = "none";
+    
   };
 
   // When the user clicks anywhere outside of the openModal, close it
   window.onclick = (event) => {
-    if (event.target == modal) {
-      modal.style.display = "none";
+    if (event.target == this.cachedDOM.modal) {
+      this.cachedDOM.modal.style.display = "none";
     } 
   };
-})();
-
-
+}}

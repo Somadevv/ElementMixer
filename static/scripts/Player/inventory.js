@@ -1,12 +1,22 @@
 import { Inventory } from "../Components/inventory.js";
-let inventory = new Inventory();
-let inventoryItem = document.getElementById("item");
+
+class PlayerInventory extends Inventory {
+  constructor() {
+    super();
+    if (!PlayerInventory.instance) {
+      this._data = ['slap'];
+      PlayerInventory.instance = this;
+    } else {
+      throw () => {
+        console.log("Cannot create new instance");
+      };
+    }
+  } // End of constructor()
 
 
-export class PlayerInventory extends Inventory {
-  render() {
-    inventoryItem.innerHTML = inventory.inventory
-    
-  }
 }
-PlayerInventory.prototype.render();
+
+const instance = new PlayerInventory();
+Object.freeze(instance);
+
+export default instance;
