@@ -1,57 +1,90 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block content %}
-
+{% extends "base.html" %} {% load static %} {% block content %}
 
 <!-- MAINBAR -->
 <div class="home-container">
     <div class="mainbar">
         <div class="playerinfo">
-            <img src="/static/images/useravatar.png" id="useravatar" alt="user avatar">
-            <div id="username" style="color: white;">Jubbly</div>
+            <img src="/static/images/useravatar.png" id="useravatar" alt="user avatar" />
+            <div id="username" style="color: white">Jubbly</div>
 
             <div class="toggle-mobile disabled">
-                <img src="/static/images/left_mobile_pane.png" id="left-pane" alt="" srcset="">
-                <img src="/static/images/right_mobile_pane.png" id="right-pane" alt="" srcset="">
+                <img src="/static/images/left_mobile_pane.png" id="left-pane" alt="" srcset="" />
+                <img src="/static/images/right_mobile_pane.png" id="right-pane" alt="" srcset="" />
             </div>
         </div>
     </div>
 
-
     <!-- NAVIGATION BUTTONS -->
     <div class="container navigation-container">
-        <button class="navigation-button" type="submit">slap</button>
-        <button class="navigation-button" type="submit">slap</button>
-        <button class="navigation-button" type="submit">slap</button>
+        <button class="navigation-button">Cauldron</button>
+        <button class="navigation-button" type="submit">Inventory</button>
+        <button class="navigation-button" type="submit">Shop</button>
     </div>
-    
+
     <div class="game-panel">
-        <div class="back-generator-view"></div>
-        <div class="user-inventory">
-            
+        <div class="back-cauldron-view">
+            <div class="cauldron-middle-image"></div>
+            <div class="inventory-view">
+                <div class="inventory-item" id="item"></div>
+                <div class="inventory-item"></div>
+                <div class="inventory-item"></div>
+
+
+
+                <div class="inventory-item"></div>
+            </div>
+            <img src="/static/images/cauldron_button.png" class="cauldron-fee-image" alt="cauldron fee icon" width="175"
+                height="100" />
         </div>
 
+        <button id="myBtn">Open Modal</button>
 
-    </div>
-
-
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <div class="inventoryModalDecoratorContainer">
+                <div class="inventoryModalDeco activeDeco"></div>
+                <div class="inventoryModalDeco"></div>
+                <div class="inventoryModalDeco"></div>
+                <div class="inventoryModalDeco"></div>
+            </div>
+          <!-- Modal content -->
+          <div class="modal-content">
+              <div class="modalInventoryListContainer">
+                  <ul>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                  </ul>
+              </div>
+            <span class="closeButton">&times;</span>
+            <p>Invnetory</p>
+          </div>
+        
+        </div>
     <!-- GAME PANEL -->
-
-
 </div>
-
-
 
 <!-- GAME PANEL / [MOBILE]  -->
 
-
-
 <!--  -->
 
-
-
 <!--  -->
-
 
 {% endblock %}

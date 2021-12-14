@@ -14,9 +14,12 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="{% static 'css/mainbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
-    <link rel="stylesheet" href="{% static 'css/gamepanel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cauldron.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Components/mainbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Components/buttons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Components/gamepanel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Components/inventoryModal.css' %}">
+
 
     {% endblock %}
 
@@ -46,11 +49,13 @@
     {% endblock %}
 
     {% block postloadjs %}
-    <script src="{% static 'scripts/main.js' %}"></script>
-    <script src="{% static 'scripts/api.js' %}"></script>
-    <script src="{% static 'scripts/buttons.js' %}"></script>
-    <script src="{% static 'scripts/inventory.js' %}"></script>
-    <script src="{% static 'scripts/generator.js' %}"></script>
+    <script type="module" src="{% static 'scripts/main.js' %}"></script>
+    <script type="module" src="{% static 'scripts/API/api.js' %}"></script>
+    <script type="module" src="{% static 'scripts/Components/buttons.js' %}"></script>
+    <script type="module" src="{% static 'scripts/Components/inventory.js' %}"></script>
+    <script type="module" src="{% static 'scripts/Player/inventory.js' %}"></script>
+    <script type="module" src="{% static 'scripts/generator.js' %}"></script>
+    
     {% endblock %}
 
 </body>

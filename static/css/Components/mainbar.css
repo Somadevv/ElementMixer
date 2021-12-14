@@ -1,0 +1,64 @@
+/* MAINBAR */
+.mainbar {
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url("/static/images/navbar_background.png") 50% no-repeat;
+  background-size: 100% 100%;
+  min-height: 46px;
+  width: 75%;
+}
+
+/* PLAYER INFO */
+
+.playerinfo {
+  display: flex;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url("/static/images/username_placeholder.png") 50% no-repeat;
+  background-size: 100% 100%;
+  height: 46px;
+  width: 150px;
+}
+#useravatar {
+  border-radius: 228px;
+  height: 30px;
+  margin: 6px 12px 0;
+}
+#username {
+  font-size: 12px;
+  margin: 12px 0 0 0;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 300px) {
+}
+
+@media only screen and (max-width: 768px) {
+}
+#left-pane,
+#right-pane {
+  margin-top: 15px;
+  width: 40px;
+  height: 94vh;
+}
+#left-pane {
+  position: absolute;
+  left: 0;
+}
+#right-pane {
+  position: absolute;
+  right: 0;
+}
+
+/* Tablets  */
+@media only screen and (min-width: 768px) {
+  .mainbar {
+    margin: 0 auto;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}
