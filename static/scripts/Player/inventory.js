@@ -4,14 +4,14 @@ class PlayerInventory extends Inventory {
   constructor() {
     super();
     if (!PlayerInventory.instance) {
-      this._data = ['slap'];
+      this._data = ['fire', 'water'];
       PlayerInventory.instance = this;
     } else {
       throw () => {
         console.log("Cannot create new instance");
       };
     }
-  } // End of constructor()
+  } 
 
 
 }

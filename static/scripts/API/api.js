@@ -1,22 +1,19 @@
-// const fetchData = () => {
-//     let coins = document.getElementById("coins");
-//     let username = document.getElementById("username");
-//     let btn = document.getElementById("btn");
-  
-  
-//     const getPlayerInfo = async () => {
-//       fetch("http://127.0.0.1:8000/players/")
-//         .then((response) => response.json())
-//         .then((data) => {
-//           coins.innerHTML = data[0].coins;
-//           username.innerHTML = data[0].username;
-//         });
-//     };
-  
-//     return getPlayerInfo();
-//   };
-  
+let btn = document.getElementById("btn");
+// getInventory()
+const fetchData = () => {
+  const getPlayerInfo = async () => {
+    fetch("http://127.0.0.1:8000/api/getInventory/1")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  };
 
-  
-  
-  
+  return getPlayerInfo();
+};
+
+btn.addEventListener("click", fetchData());
+
+(function() {
+fetchData()
+}())
+
+

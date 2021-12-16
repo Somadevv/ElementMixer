@@ -17,9 +17,9 @@ DEBUG = True
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    # ]
 }
 
 # Application definition
@@ -35,8 +35,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'home',
-    'rest_framework'
+    'rest_framework',
+    
+    'app.apps.AppConfig',
 ]
 
 MIDDLEWARE = [
