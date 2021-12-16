@@ -1,23 +1,28 @@
 from django.urls import include, path
 from django.conf.urls import url
 from rest_framework import routers
-from . import views
+from app.models import Inventory
+from app.views import UserViewSet, ElementsViewSet, InventoryViewSet, add_to_inventory, delete_from_inventory, index, register_request
+
 
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet, basename='users')
-router.register(r'inventory', views.InventoryViewSet, basename='inventory')
-router.register(r'userIventory', views.UserInventoryViewSet,
-                basename='user inventory')
-
+router.register(r'api/users', UserViewSet, basename='users')
+router.register(r'api/elements', ElementsViewSet, basename='elements')
+router.register(r'api/getinventory', InventoryViewSet,
+                basename='inventory')
 
 
 urlpatterns = [
-    url(r'^api/getInventory/(?P<pk>[0-9]+)$',
-        views.get_delete_update_userinventory, name='get_delete_update_userinventory'),
-    url(r'^api/v1/userinventory/$', views.get_post_userinventory, name='get_post_userinventory'),
-    path('', views.index, name='app'),
+    # Getinventory(), AddToInventory(), RemoveFromInventory
+    # url(r'^api/getinventory', InventoryViewSet, name='getInventory'),
+    # url(r'^api/addtoinventory', add_to_inventory, name='addToInventory'),
+    
+    url(r'^api/removefrominventory',
+        delete_from_inventory, name='removeFromInventory'),
+
+    path('', index, name='app'),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path("register/", views.register_request, name="register")
+    path("register/", register_request, name="register")
 ]

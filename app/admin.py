@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Inventory, UserInventory, User
+from .models import Inventory, Elements, User
 
 
 admin.site.register(User)
-admin.site.register(UserInventory)
+admin.site.register(Elements)
 admin.site.register(Inventory)
 
 
