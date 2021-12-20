@@ -1,19 +1,14 @@
-let btn = document.getElementById("btn");
-// getInventory()
+let slap = document.getElementById('slap')
 const fetchData = () => {
   const getPlayerInfo = async () => {
-    fetch("http://127.0.0.1:8000/users/2/")
+    fetch("http://127.0.0.1:8000/api")
       .then((response) => response.json())
       .then((data) => console.log(data));
   };
-
   return getPlayerInfo();
 };
 
-btn.addEventListener("click", fetchData());
-
-(function() {
+// slap.addEventListener("click", console.log('clicked'));
 fetchData()
-}())
 
 

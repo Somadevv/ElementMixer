@@ -4,12 +4,12 @@ from django.conf.urls import include, url
 from rest_framework.routers import DefaultRouter
 from django.conf import settings    
 from django.conf.urls.static import static
-from app.views import InventoryViewSet, ElementsViewSet, UserViewSet
+# from app.views import InventoryViewSet, ElementsViewSet, UserViewSet
 
-router = DefaultRouter()
-router.register(r'users', ElementsViewSet)
-router.register(r'users', InventoryViewSet)
-router.register(r'users', UserViewSet)
+# router = DefaultRouter()
+# router.register(r'users', ElementsViewSet)
+# router.register(r'users', InventoryViewSet)
+# router.register(r'users', UserViewSet)
 
 
 urlpatterns = [
@@ -19,5 +19,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('app.urls')),
     path('register/', include('allauth.urls')),
-    re_path('^', include(router.urls)),
+    path('app/', include('app.urls')),
+    # re_path('^', include(router.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

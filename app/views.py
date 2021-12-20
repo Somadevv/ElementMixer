@@ -7,12 +7,16 @@ from rest_framework.mixins import (
     CreateModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin
 )
 from rest_framework.viewsets import GenericViewSet
-from .models import User, Elements, Inventory
+# from .models import User, Elements, Inventory
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from app.serializers import InventorySerializer, UserSerializer, ElementsSerializer
 
+
+
+def get_inventory():
+    return Response('yoooo')
 
 @api_view(['POST'])
 def add_to_inventory(request):
@@ -43,37 +47,37 @@ def index(request):
     return render(request, 'home/index.html')
 
 
-class UserViewSet(GenericViewSet,  # generic view functionality
-                  CreateModelMixin,  # handles POSTs
-                  RetrieveModelMixin,  # handles GETs for 1 Company
-                  UpdateModelMixin,  # handles PUTs and PATCHes
-                  ListModelMixin):  # handles GETs for many Companies
+# class UserViewSet(GenericViewSet,  # generic view functionality
+#                   CreateModelMixin,  # handles POSTs
+#                   RetrieveModelMixin,  # handles GETs for 1 Company
+#                   UpdateModelMixin,  # handles PUTs and PATCHes
+#                   ListModelMixin):  # handles GETs for many Companies
 
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    serializer_class = UserSerializer
-    queryset = User.objects.all()
-
-
-class InventoryViewSet(GenericViewSet,  # generic view functionality
-                       CreateModelMixin,  # handles POSTs
-                       RetrieveModelMixin,  # handles GETs for 1 Company
-                       UpdateModelMixin,  # handles PUTs and PATCHes
-                       ListModelMixin):
-
-    serializer_class = InventorySerializer
-    queryset = Inventory.objects.all()
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+#     permission_classes = [permissions.IsAuthenticated]
+#     serializer_class = UserSerializer
+#     queryset = User.objects.all()
 
 
-class ElementsViewSet(GenericViewSet,  # generic view functionality
-                      CreateModelMixin,  # handles POSTs
-                      RetrieveModelMixin,  # handles GETs for 1 Company
-                      UpdateModelMixin,  # handles PUTs and PATCHes
-                      ListModelMixin):  # handles GETs for many Companies
+# class InventoryViewSet(GenericViewSet,  # generic view functionality
+#                        CreateModelMixin,  # handles POSTs
+#                        RetrieveModelMixin,  # handles GETs for 1 Company
+#                        UpdateModelMixin,  # handles PUTs and PATCHes
+#                        ListModelMixin):
 
-    serializer_class = ElementsSerializer
-    queryset = Elements.objects.all()
+#     serializer_class = InventorySerializer
+#     queryset = Inventory.objects.all()
+
+
+# class ElementsViewSet(GenericViewSet,  # generic view functionality
+#                       CreateModelMixin,  # handles POSTs
+#                       RetrieveModelMixin,  # handles GETs for 1 Company
+#                       UpdateModelMixin,  # handles PUTs and PATCHes
+#                       ListModelMixin):  # handles GETs for many Companies
+
+#     serializer_class = ElementsSerializer
+#     queryset = Elements.objects.all()
 
 
 def register_request(request):
