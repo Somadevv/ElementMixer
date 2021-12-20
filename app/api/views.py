@@ -1,8 +1,9 @@
+import enum
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
-from app.models import Inventory, User
+from app.models import Elements, Inventory, User
 from .serializers import InventorySerializer
 from rest_framework.decorators import api_view
 
@@ -18,6 +19,10 @@ permission_classes = [permissions.IsAuthenticated]
     deleteElements(elementId, amount):
         find all elements with matching elementId
         delete [x] elements with matching elementId
+
+
+    do we need to update an inventory?
+
 """
 
    # add permission to check if user is authenticated
@@ -37,8 +42,13 @@ def get_inventory(request, pk):
 
 
 @api_view(['POST'])
-def add_to_inventory(request, pk):
+def add_to_inventory(request, pk, elementId, amount):
+    #localhost:8000/api/update-inventory/playerId/elementId/amount
     inventory = Inventory.objects.filter(playerId=pk)
+    # data = {
+    #     "playerId": pk,
+    #     "elementId": [request.data.elementId]
+    # }
     serializer = InventorySerializer(instance=inventory, data=request.data, many=True)
     if serializer.is_valid():
         serializer.save()
@@ -61,13 +71,14 @@ def add_to_inventory(request, pk):
 
 @api_view(['POST'])
 def update_inventory(request, pk):
-	task = Inventory.objects.get(id=pk)
-	serializer = InventorySerializer(instance=task, data=request.data)
+    task = Inventory.objects.get(id=pk)
+    for playerid, element in enumerate(request.data):
+        serializer = InventorySerializer(instance=task, data={"playerId":playerid, "elementId":element})
 
-	if serializer.is_valid():
-		serializer.save()
+    if serializer.is_valid():
+        serializer.save()
 
-	return Response(serializer.data) 
+    return Response(task) 
 
 
 @api_view(['DELETE'])
@@ -75,4 +86,4 @@ def inventory_delete(request, pk):
 	item = Inventory.objects.get(id=pk)
 	item.delete()
 
-	return Response('Item succsesfully delete!')
+	return Response('Item succsesfully deleted!')
