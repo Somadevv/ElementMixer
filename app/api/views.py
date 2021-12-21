@@ -1,32 +1,16 @@
-import enum
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
 from app.models import Elements, Inventory, User
-from .serializers import InventorySerializer
+from .serializers import InventorySerializer, UserSerializer, ElementsSerializer
 from rest_framework.decorators import api_view
+from django.views.decorators.csrf import csrf_exempt
 
 permission_classes = [permissions.IsAuthenticated]
-
 """
-    getInventory():
-        retrieve list of userInventory
-
-    addToInventory(elementId, amount):
-        add [x] amount of elements to userInventory
-
-    deleteElements(elementId, amount):
-        find all elements with matching elementId
-        delete [x] elements with matching elementId
-
-
-    do we need to update an inventory?
-
+INVENTORY API ENDPOINTS
 """
-
-   # add permission to check if user is authenticated
-
 @api_view(['GET'])
 def list_all_inventories(request):
     inventory = Inventory.objects.all()
@@ -43,47 +27,41 @@ def get_inventory(request, pk):
 
 @api_view(['POST'])
 def add_to_inventory(request, pk, elementId, amount):
-    #localhost:8000/api/update-inventory/playerId/elementId/amount
     inventory = Inventory.objects.filter(playerId=pk)
-    # data = {
-    #     "playerId": pk,
-    #     "elementId": [request.data.elementId]
-    # }
     serializer = InventorySerializer(instance=inventory, data=request.data, many=True)
     if serializer.is_valid():
         serializer.save()
     else:
-        return Response('Nope')
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
     return Response(serializer.data)
-    
-
-# @api_view(['POST'])
-# def add_to_inventory(request, pk):
-#     itemToAdd = Inventory.objects.bulk_create({"playerId": pk, "elementId": request.data.elementId})
-#     serializer = InventorySerializer(data=request.data)
-#     if serializer.is_valid():
-#         serializer.save()
-#         return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
 def update_inventory(request, pk):
     task = Inventory.objects.get(id=pk)
-    for playerid, element in enumerate(request.data):
-        serializer = InventorySerializer(instance=task, data={"playerId":playerid, "elementId":element})
-
+    serializer = InventorySerializer(instance=task, data=request.data)
     if serializer.is_valid():
         serializer.save()
+        return Response('Succesfully updated inventory: ')
 
     return Response(task) 
 
 
-@api_view(['DELETE'])
+@api_view(['DELETE', 'POST'])
 def inventory_delete(request, pk):
 	item = Inventory.objects.get(id=pk)
 	item.delete()
 
 	return Response('Item succsesfully deleted!')
+
+
+"""
+USER API ENDPOINTS
+"""
+
+@api_view(['GET'])
+def get_user(request, pk):
+    user = User.objects.filter(userId=pk)
+    serializer = UserSerializer(user, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)

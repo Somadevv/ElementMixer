@@ -13,5 +13,7 @@ urlpatterns = [
 
     path('delete-inventory/<str:pk>/', views.inventory_delete,
          name="delete-from-inventory"),
+    path('get-user/<str:pk>/', views.get_user,
+         name="get-user"),
 
 ]

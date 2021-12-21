@@ -7,16 +7,15 @@ from rest_framework.mixins import (
     CreateModelMixin, ListModelMixin, RetrieveModelMixin, UpdateModelMixin
 )
 from rest_framework.viewsets import GenericViewSet
-# from .models import User, Elements, Inventory
+from .models import User, Elements, Inventory
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from app.serializers import InventorySerializer, UserSerializer, ElementsSerializer
 
-
-
-def get_inventory():
-    return Response('yoooo')
+import sqlite3
+conn = sqlite3.connect('elementMixer.db')
+c = conn.cursor()
 
 @api_view(['POST'])
 def add_to_inventory(request):

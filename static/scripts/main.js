@@ -1,6 +1,17 @@
 import * as inventory from "./Components/inventory.js";
 
 
+const makeUL = (array) => {
+  let ul = document.createElement("ul");
+  for (let i = 0; i < array.length; i++) {
+    let listItem = document.createElement("li");
+    listItem.appendChild(document.createTextNode(array[i]));
+    ul.appendChild(listItem);
+  }
+
+  return ul;
+};
+
 const cachedElements = {
   desktopBackground: document.querySelector(".home-container"),
   mobileBackground: document.querySelector(".toggle-mobile"),
@@ -20,31 +31,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
   cachedElements.mobileQuery.addListener(checkQuery);
 });
 
-
 const render = (inventory) => {
-  const list = inventory.getItems().map(x => {
+  const list = inventory.getItems().map((x) => {
     let listItem = document.createElement("li");
     listItem.appendChild(document.createTextNode(x));
-    return listItem
-    
-  })
-  
+    return listItem;
+  });
+
   const ul = document.createElement("ul");
   ul.append(list);
   return ul;
 };
-
-
-
-
-
-// makeUL(array) {
-//   let ul = document.createElement("ul");
-//   for (let i = 0; i < array.length; i++) {
-//     let listItem = document.createElement("li");
-//     listItem.appendChild(document.createTextNode(array[i]));
-//     ul.appendChild(listItem);
-//   }
-
-//   return ul;
-// }
