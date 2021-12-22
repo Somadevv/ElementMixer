@@ -1,28 +1,35 @@
 {% extends "base.html" %} {% load static %} {% block content %}
+{{ request.user.id|json_script:"user_id" }}
 
 <!-- MAINBAR -->
 <div class="home-container">
     <div class="mainbar">
         <div class="playerinfo">
             <img src="/static/images/useravatar.png" id="useravatar" alt="user avatar" />
-            <div id="username" style="color: white">Jubbly</div>
+            <div id="username" style="color: white">{{ player.playerId }}</div>
 
             <div class="toggle-mobile disabled">
                 <img src="/static/images/left_mobile_pane.png" id="left-pane" alt="" srcset="" />
                 <img src="/static/images/right_mobile_pane.png" id="right-pane" alt="" srcset="" />
             </div>
-            
+
         </div>
     </div>
 
+
+
+
+    {% if request.user.is_authenticated %}
+
     <!-- NAVIGATION BUTTONS -->
     <div class="container navigation-container">
-        <button class="navigation-button">Cauldron</button>
+        <button class="navigation-button" id="yoo">Cauldron</button>
         <button class="navigation-button" type="submit">Inventory</button>
         <button class="navigation-button" type="submit" id="btn">Shop</button>
-        <button class="navigation-button" id="slap">Fetch inventory</button>
+        <button class="navigation-button" id="slap"></button>
         <!-- <div id="btn">click</div> -->
     </div>
+    {% endif %}
 
     <div class="game-panel">
         <div class="back-cauldron-view">
@@ -37,7 +44,10 @@
                 height="100" />
         </div>
 
-    
+        <a href="" class="dropdown-item">My Profile</a>
+        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
@@ -51,11 +61,11 @@
             <div class="modal-content">
                 <p style="color: wheat;">INVENTORY</p>
                 <div class="modalInventoryListContainer">
-                <div id="inventoryList"></div>
+                    <div id="inventoryList"></div>
 
                 </div>
                 <span class="closeButton">&times;</span>
-                
+
             </div>
 
         </div>

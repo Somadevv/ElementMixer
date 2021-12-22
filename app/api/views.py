@@ -7,7 +7,7 @@ from .serializers import InventorySerializer, UserSerializer, ElementsSerializer
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
 
-permission_classes = [permissions.IsAuthenticated]
+# permission_classes = [permissions.IsAuthenticated]
 """
 INVENTORY API ENDPOINTS
 """
@@ -43,7 +43,7 @@ def update_inventory(request, pk):
     serializer = InventorySerializer(instance=task, data=request.data)
     if serializer.is_valid():
         serializer.save()
-        return Response('Succesfully updated inventory: ')
+        return Response(f'Succsesfully Updated: {request.data}')
 
     return Response(task) 
 
@@ -65,3 +65,8 @@ def get_user(request, pk):
     user = User.objects.filter(userId=pk)
     serializer = UserSerializer(user, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
+
+
