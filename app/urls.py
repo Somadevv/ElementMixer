@@ -10,6 +10,7 @@ from app.views import *
 urlpatterns = [
     path('api/', include('app.api.urls')),
     path('', index, name='app'),
+    path('register/index/', index, name='app'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path("register/", register_request, name="register"),
     path('accounts/', include('allauth.urls')),

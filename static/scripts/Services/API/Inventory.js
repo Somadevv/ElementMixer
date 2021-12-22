@@ -15,5 +15,5 @@ const data = {
   elements: [1, 1],
 };
 // let updateInventory = await Inventory.updateInventory("update-inventory", data);
-// let getInventory = await Inventory.fetchInventory("get-inventory", data);
-// console.log(updateInventory);
+let getInventory = await Inventory.fetchInventory("get-inventory", data);
+console.log(getInventory);

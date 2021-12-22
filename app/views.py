@@ -4,7 +4,7 @@ from .forms import RegisterForm
 from django.contrib.auth import login
 from django.contrib import messages
 from rest_framework.response import Response
-from .models import Inventory
+from .models import Inventory, Player, User
 
 
 def register_request(request, backend='django.contrib.auth.backends.ModelBackend'):
@@ -14,14 +14,14 @@ def register_request(request, backend='django.contrib.auth.backends.ModelBackend
 			user = form.save()
 			login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 			messages.success(request, "Registration successful." )
-			return redirect('index.html')
+			return redirect('index/')
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	form = RegisterForm()
 	return render(request=request, template_name="home/register.html", context={"register_form":form})
 
 
 def index(request):
-    userId = request.user.id
+    # User.objects.all().delete()
     return render(request, 'home/index.html')
 
 

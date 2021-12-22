@@ -9,7 +9,7 @@ from django.http import request
 
 
 class Player(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    playerId = models.OneToOneField(User, on_delete=models.CASCADE)
     isMember = models.BooleanField(default=False)
     credits = models.IntegerField(default=500)
     AP = models.IntegerField(default=100)
@@ -23,16 +23,13 @@ class Player(models.Model):
     def __str__(self):
         return str(self.playerId)
 
-    def __str__(self):
-        return str(self.user)
-
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        Player.objects.create(user=instance)
-        player = Player.objects.create(user=instance)
-        p = Inventory.objects.create(playerId=player.playerId, elements=[1, 2, 3, 4])
+        player = Player.objects.create(playerId=instance)
+        p = Inventory.objects.create(playerId=player, elements=[1, 2, 3, 4])
+        p.save()
 
 
 @receiver(post_save, sender=User)

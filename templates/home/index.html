@@ -32,6 +32,10 @@
     {% endif %}
 
     <div class="game-panel">
+        <a href="" class="dropdown-item">My Profile</a>
+        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
         <div class="back-cauldron-view">
             <div class="cauldron-middle-image"></div>
             <div class="inventory-view">
@@ -44,10 +48,7 @@
                 height="100" />
         </div>
 
-        <a href="" class="dropdown-item">My Profile</a>
-        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
