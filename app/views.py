@@ -8,22 +8,19 @@ from .models import Inventory, Player, User
 
 
 def register_request(request, backend='django.contrib.auth.backends.ModelBackend'):
-	if request.method == "POST":
-		form = RegisterForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-			messages.success(request, "Registration successful." )
-			return redirect('index/')
-		messages.error(request, "Unsuccessful registration. Invalid information.")
-	form = RegisterForm()
-	return render(request=request, template_name="home/register.html", context={"register_form":form})
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            messages.success(request, "Registration successful.")
+            return redirect('index/')
+        messages.error(
+            request, "Unsuccessful registration. Invalid information.")
+    form = RegisterForm()
+    return render(request=request, template_name="home/register.html", context={"register_form": form})
 
 
 def index(request):
-    # User.objects.all().delete()
-    return render(request, 'home/index.html')
-
-
-
-
+    data = Inventory.objects.filter(playerId=2)
+    return render(request, 'home/index.html', {'player': data})

@@ -19,8 +19,12 @@
   background-size: contain;
   margin: auto;
   padding: 20px;
-  width: 35%;
-  height: 90%;
+  width: 555px;
+  height: 100%;
+  color: wheat;
+}
+.modal-content li {
+  color: wheat;
 }
 
 /* The Close Button */
@@ -78,10 +82,8 @@
 .inventoryListItem {
   position: relative;
   text-align: center;
-  
   width: 100%;
   height: 100%;
-  
   color: wheat;
 }
 

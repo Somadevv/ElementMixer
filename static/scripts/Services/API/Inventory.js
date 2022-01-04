@@ -9,11 +9,12 @@ export const Inventory = {
   },
 };
 
-
 const data = {
   playerId: Request.settings.userId,
-  elements: [1, 1],
+  elements: [4, 4, 4, 1, 1, 1, 1, 1],
 };
 // let updateInventory = await Inventory.updateInventory("update-inventory", data);
-let getInventory = await Inventory.fetchInventory("get-inventory", data);
-console.log(getInventory);
+// let getInventory = await Inventory.fetchInventory("get-inventory", data);
+// console.log(getInventory[0].elements);
+
+// const result = await inventory.reduce((acc, curr) => (acc[curr] = (acc[curr] || 0) + 1, acc), {})

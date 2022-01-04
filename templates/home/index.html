@@ -6,7 +6,7 @@
     <div class="mainbar">
         <div class="playerinfo">
             <img src="/static/images/useravatar.png" id="useravatar" alt="user avatar" />
-            <div id="username" style="color: white">{{ player.playerId }}</div>
+            <div id="username" style="color: white">{{ user.username }}</div>
 
             <div class="toggle-mobile disabled">
                 <img src="/static/images/left_mobile_pane.png" id="left-pane" alt="" srcset="" />
@@ -32,23 +32,25 @@
     {% endif %}
 
     <div class="game-panel">
-        <a href="" class="dropdown-item">My Profile</a>
+        <!-- <a href="" class="dropdown-item">My Profile</a>
         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
         <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a> -->
         <div class="back-cauldron-view">
             <div class="cauldron-middle-image"></div>
             <div class="inventory-view">
-                <div class="inventory-item" id="item"></div>
-                <div class="inventory-item"></div>
-                <div class="inventory-item"></div>
-                <div class="inventory-item"></div>
+                <div id="box1" class="inventory-item item">
+                </div>
+                <div id="box2" class="inventory-item item">
+                </div>
+                <div id="box3" class="inventory-item item">
+                </div>
+                <div id="box4" class="inventory-item item">
+                </div>
             </div>
             <img src="/static/images/cauldron_button.png" class="cauldron-fee-image" alt="cauldron fee icon" width="175"
                 height="100" />
         </div>
-
-
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
@@ -62,21 +64,51 @@
             <div class="modal-content">
                 <p style="color: wheat;">INVENTORY</p>
                 <div class="modalInventoryListContainer">
-                    <div id="inventoryList"></div>
+                    <div id="inventoryList">
+                        <div>
+                            <h4> 
+                                {% if player%}
+                                {% for p in player %} {{ p.elements }} {% endfor %}
+                                {% endif %}
+                            </h4>
+                        </div>
+                  
+                    </div>
 
                 </div>
                 <span class="closeButton">&times;</span>
-
             </div>
 
         </div>
+
         <!-- GAME PANEL -->
     </div>
 
     <!-- GAME PANEL / [MOBILE]  -->
 
-    <!--  -->
-
-    <!--  -->
 
     {% endblock %}
+
+
+            <!-- <section class="tier-container">
+            <div class="element-item">
+                <h3 class="element-title"></h3>
+
+            </div>
+            <div class="element-item">
+                <h3 class="element-title"></h3>
+            </div>
+            <div class="element-item">
+                <h3 class="element-title"></h3>
+            </div>
+            <div class="element-item">
+                <h3 class="element-title"></h3>
+            </div>
+            <div class="element-item">
+                <h3 class="element-title"></h3>
+            </div>
+            <div class="element-item">
+                <h3 class="element-title"></h3>
+            </div>
+
+        </section> -->

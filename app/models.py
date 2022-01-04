@@ -55,7 +55,6 @@ class Elements(models.Model):
 
 class Inventory(models.Model):
     playerId = models.ForeignKey(Player, on_delete=models.CASCADE)
-    # elementId = models.ForeignKey(Elements, on_delete=models.CASCADE)
     elements = ArrayField(models.IntegerField())
 
     class meta:

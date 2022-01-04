@@ -11,6 +11,14 @@ from django.views.decorators.csrf import csrf_exempt
 """
 INVENTORY API ENDPOINTS
 """
+
+@api_view(['GET'])
+def get_elements(request):
+    elements = Elements.objects.all()
+    serializer = ElementsSerializer(elements, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
 @api_view(['GET'])
 def list_all_inventories(request):
     inventory = Inventory.objects.all()

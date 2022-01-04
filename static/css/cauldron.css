@@ -1,147 +1,176 @@
 @import url("base.css");
+
 .cauldron-middle-image {
-    position: relative;
-    margin: 0 auto;
-    top: 202px;
-    background: url("/static/images/cauldron_middle.png") no-repeat;
-    width: 100px;
-    height: 100px;
-    content: "";
-    background-size: 100% 100%;
-    left: 2px;
-    z-index: 2;
-  }
-  .back-cauldron-view {
-    margin: 0 auto;
-    margin-top: 135px;
-    background: url("/static/images/cauldron_backdrop.png") no-repeat;
-    background-position: center center;
-    background-size: contain;
-    height: 500px;
-    width: 100%;
-  }
-  .cauldron-fee-image {
-      width: 250px;
-      height: 75px;
-      margin-top: 325px;
-    }
+  position: relative;
+  margin: 0 auto;
+  top: 202px;
+  background: url("/static/images/cauldron_middle.png") no-repeat;
+  width: 100px;
+  height: 100px;
+  content: "";
+  background-size: 100% 100%;
+  left: 2px;
+  z-index: 2;
+}
+.back-cauldron-view {
+  margin: 0 auto;
+  margin-top: 135px;
+  background: url("/static/images/cauldron_backdrop.png") no-repeat;
+  background-position: center center;
+  background-size: contain;
+  height: 500px;
+  width: 100%;
+}
+.cauldron-fee-image {
+  position: relative;
+  margin-top: 100px;
+  width: 250px;
+  height: 75px;
+
+}
 
 .inventory-view {
-    position: relative;
-    top: -28px;
-    margin: 0 auto;
-    gap: 55px;
-    list-style-type: none;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    z-index: 2;
-    height: 230px;
-    width: 450px;
+  position: relative;
+  top: -28px;
+  margin: 0 auto;
+  gap: 55px;
+  list-style-type: none;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  z-index: 2;
+  height: 230px;
+  width: 450px;
 }
 .inventory-item {
-    position: relative;
-    top: 0%;
-    left: 8%;
-    background: url("/static/images/inventory_slot.png") no-repeat;
-    background-size: contain;
-    width: 185px;
-    height: 140px;
+  position: relative;
+  top: 0%;
+  left: 8%;
+  background: url("/static/images/inventory_slot.png") no-repeat;
+  background-size: contain;
+  width: 185px;
+  height: 140px;
 }
 .inventory-item:hover {
-    background: url("/static/images/hover_inventory_item.png") no-repeat;
-    position: relative;
-    top: 0%;
-    left: 8%;
-
-    background-size: contain;
-    width: 185px;
-    height: 140px;
+  background: url("/static/images/hover_inventory_item.png") no-repeat;
+  position: relative;
+  top: 0%;
+  left: 8%;
+  background-size: contain;
+  width: 185px;
+  height: 140px;
 }
 
-    /* Media queries to support the back generator image */
-@media only screen and (max-width: 520px) {
-    .inventory-view {
-        height: 230px;
-        width: 100%;
-        gap: 50px;
-        top: 17.5px;
-    }
-    .inventory-item {
-        height: 83px;
-        width: 35.5%;
-        
-    }
-    .back-cauldron-view {
-      margin-top: 55px;
-      width: 90%;
-      height: 355px;
-    }
-  }
-  
-  @media only screen and (min-width: 320px) {
+/*
+TIER WIDGET
+ */
 
-    .cauldron-middle-image {
-        top: 148px;
-        width: 60px;
-        height: 60px;
-        left: 1px;
-    }
-    .back-cauldron-view {
-      margin-top: 145px;
-      width: 85%;
-      height: 355px;
-    }
+.tier-container {
+  flex-wrap: wrap;
+  height: fit-content;
+  width: 55%;
+  display: flex;
+  /* height: 275px; */
+  background: url("../images/navbar_background.png") no-repeat;
+  background-size: contain;
+}
+.element-item {
+  width: 92px;
+  height: 106px;
+  background: url("../images/inventory_slot.png") no-repeat;
+  background-size: contain;
+}
+.element-item:hover {
+  width: 92px;
+  height: 106px;
+  background: url("../images/hover_inventory_item.png") no-repeat;
+  background-size: contain;
+}
+.slap {
+  background-color: red;
+}
+
+/* Media queries to support the back generator image */
+@media only screen and (max-width: 520px) {
+  .inventory-view {
+    height: 230px;
+    width: 100%;
+    gap: 50px;
+    top: 17.5px;
   }
-  
-  @media only screen and (min-width: 375px) {
-      .cauldron-middle-image {
-          top: 145px;
-          width: 70px;
-          height: 70px;
-          left: 1px;
-      }
-    .back-cauldron-view {
-      margin-top: 185px;
-      width: 85%;
-      height: 355px;
-    }
+  .inventory-item {
+    height: 83px;
+    width: 35.5%;
   }
-  
-  @media only screen and (min-width: 410px) {
-      .cauldron-middle-image {
-          top: 148px;
-          width: 80px;
-          height: 80px;
-          left: 1px;
-      }
-    .back-cauldron-view {
-      margin-top: 165px;
-      width: 100%;
-      height: 375px;
-    }
+  .back-cauldron-view {
+    margin-top: 55px;
+    width: 90%;
+    height: 355px;
   }
-  
-  @media only screen and (min-width: 768px) {
-      .cauldron-middle-image {
-          top: 202px;
-          width: 100px;
-          height: 100px;
-          left: 1px;
-      }
-    .back-cauldron-view {
-      width: 100%;
-      height: 500px;
-    }
+}
+
+@media only screen and (min-width: 320px) {
+  .cauldron-middle-image {
+    top: 148px;
+    width: 60px;
+    height: 60px;
+    left: 1px;
   }
-  @media only screen and (min-height: 1300px) {
-    .back-cauldron-view {
-      margin-top: 465px;
-    }
+  .back-cauldron-view {
+    margin-top: 145px;
+    width: 85%;
+    height: 355px;
   }
-  
-  @media only screen and (min-width: 1250px) {
-    .back-cauldron-view {
-      margin-top: 150px;
-    }
+}
+
+@media only screen and (min-width: 375px) {
+  .cauldron-middle-image {
+    top: 145px;
+    width: 70px;
+    height: 70px;
+    left: 1px;
   }
+  .back-cauldron-view {
+    margin-top: 185px;
+    width: 85%;
+    height: 355px;
+  }
+}
+
+@media only screen and (min-width: 410px) {
+  .cauldron-middle-image {
+    top: 148px;
+    width: 80px;
+    height: 80px;
+    left: 1px;
+  }
+  .back-cauldron-view {
+    margin-top: 165px;
+    width: 100%;
+    height: 375px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .cauldron-middle-image {
+    top: 202px;
+    width: 100px;
+    height: 100px;
+    left: 1px;
+  }
+  .back-cauldron-view {
+    width: 100%;
+    height: 500px;
+  }
+}
+@media only screen and (min-height: 1300px) {
+  .back-cauldron-view {
+    margin-top: 465px;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  .back-cauldron-view {
+    margin-top: 150px;
+  }
+}
