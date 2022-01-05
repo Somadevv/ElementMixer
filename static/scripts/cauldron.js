@@ -79,7 +79,7 @@ const getElements = async () => {
 let something = await getElements()
 let somethingElse = await getInventory()
 
-console.log(something, somethingElse)
+console.log("Elements: ",something)
 cauldronSlots.forEach((item) => {
   item.addEventListener("click", () => (modal.style.display = "block"));
 });
@@ -122,4 +122,4 @@ convertToElement();
 
 let jasmin = await getInventory()
 
-console.log('yooooo!', jasmin)
+console.log("Inventory: ", jasmin)

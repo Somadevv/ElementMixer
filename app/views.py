@@ -1,3 +1,4 @@
+from typing import Counter
 from django.shortcuts import render, redirect
 from app.api.views import get_user
 from .forms import RegisterForm
@@ -22,5 +23,8 @@ def register_request(request, backend='django.contrib.auth.backends.ModelBackend
 
 
 def index(request):
-    data = Inventory.objects.filter(playerId=2)
-    return render(request, 'home/index.html', {'player': data})
+	current_user = request.user
+	data = Inventory.objects.get(pk=current_user.id)
+	inventory = {x: data.elements.count(x) for x in data.elements}
+	print(inventory)
+	return render(request, 'home/index.html', {'user': current_user, "inventory": inventory})
