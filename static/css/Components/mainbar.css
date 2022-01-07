@@ -31,6 +31,22 @@
   margin: 12px 0 0 0;
 }
 
+.credits-icon, .cauldron-icon {
+  width: 40px;
+  height: 35px;
+}
+.credits-icon-container, .cauldron-icon-container{
+  margin-left: 100px;
+  
+}
+.floated{
+  float: right;
+  margin-top: 5px;
+  width: 75px;
+  color: wheat;
+  
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (min-width: 300px) {
 }

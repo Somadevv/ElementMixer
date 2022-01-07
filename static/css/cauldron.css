@@ -26,7 +26,6 @@
   margin-top: 100px;
   width: 250px;
   height: 75px;
-
 }
 
 .inventory-view {
@@ -86,9 +85,49 @@ TIER WIDGET
   background: url("../images/hover_inventory_item.png") no-repeat;
   background-size: contain;
 }
-.slap {
-  background-color: red;
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
+.elementName {
+  padding: 0;
+  margin: 0;
+}
+.inventory-slot-bg:hover {
+  background: url('../images/hover_inventory_item.png') no-repeat;
+  background-size: contain;
+  width: 150px;
+}
+.inventory-slot-bg {
+  position: relative;
+  left: 183px;
+  background: url('../images/inventory_slot.png') no-repeat;
+  background-size: contain;
+  width: 150px;
+ height: auto;
+ padding: 0;
+ margin: 0;
+}
+.amount {
+  position: relative;
+  background: url("../images/element_count.png") no-repeat;
+  background-size: contain;
+  bottom: 15px;
+  width: 45%;
+  margin: 0 auto;
+  
+}
+
+.invImg {
+  position: relative;
+  padding: 10px;
+  width: 125px;
+  
+}
+
+
 
 /* Media queries to support the back generator image */
 @media only screen and (max-width: 520px) {

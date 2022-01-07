@@ -2,15 +2,19 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
-from app.models import Elements, Inventory, User
+from app.models import Elements, Inventory, User, Player
 from .serializers import InventorySerializer, UserSerializer, ElementsSerializer
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render
+
+from app.api import serializers
 
 # permission_classes = [permissions.IsAuthenticated]
 """
 INVENTORY API ENDPOINTS
 """
+
 
 @api_view(['GET'])
 def get_elements(request):
@@ -30,6 +34,18 @@ def list_all_inventories(request):
 def get_inventory(request, pk):
     inventory = Inventory.objects.filter(playerId=pk)
     serializer = InventorySerializer(inventory, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def get_inventory(request, pk):
+
+    inventory = Inventory.objects.filter(playerId=pk)
+    # slap = Elements.objects.filter()
+    # player = Player.objects.get(playerId=request.user)
+    serializer = InventorySerializer(inventory, many=True)
+    # Elserializer = ElementsSerializer(slap, many=True)
+    
+
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 

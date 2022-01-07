@@ -16,13 +16,13 @@ class PlayerSerializer(serializers.ModelSerializer):
 class ElementsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Elements
-        fields = ["elementId", "name", "elementTier", "value"]
+        fields = ["elementId", "name", "url", "elementTier"]
 
 
 class InventorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Inventory
-        fields = ["playerId", "elements"]
+        fields = ["playerId", "elementName", "elementUrl", "amount"]
 
 
 class ElementsSerializer(serializers.ModelSerializer):

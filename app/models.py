@@ -7,6 +7,21 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.http import request
 
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        player = Player.objects.create(playerId=instance)
+        fire = Inventory.objects.create(playerId=player, name="Fire", amount=1)
+        water = Inventory.objects.create(playerId=player, name="Water", amount=1)
+        earth = Inventory.objects.create(playerId=player, name="Air", amount=1)
+        air = Inventory.objects.create(playerId=player, name="Earth", amount=1)
+        (fire, water, earth, air).save()
+
+
+@receiver(post_save, sender=User)
+def save_user_player(sender, instance, **kwargs):
+    instance.player.save()
+
 
 class Player(models.Model):
     playerId = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -23,44 +38,20 @@ class Player(models.Model):
     def __str__(self):
         return str(self.playerId)
 
-
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        player = Player.objects.create(playerId=instance)
-        p = Inventory.objects.create(playerId=player, elements=[1, 2, 3, 4])
-        p.save()
-
-
-@receiver(post_save, sender=User)
-def save_user_player(sender, instance, **kwargs):
-    instance.player.save()
-
-
 class Elements(models.Model):
-    elementId = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=20)
-    elementTier = models.IntegerField(
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=20, unique=True)
+    tier = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(5)])
-    value = models.IntegerField()
-
-    class meta:
-        db_table = 'app_elements'
-        app_label = "app"
-        managed = True
 
     def __str__(self):
-        return str(self.elementId)
+        return str(self.name)
 
 
 class Inventory(models.Model):
     playerId = models.ForeignKey(Player, on_delete=models.CASCADE)
-    elements = ArrayField(models.IntegerField())
-
-    class meta:
-        db_table = 'app_inventory'
-        app_label = "app"
-        managed = True
+    name = models.ForeignKey(Elements, to_field='name', db_column="name", null=False, on_delete=models.CASCADE, related_name='elementName')
+    amount = models.IntegerField()
 
     def __str__(self):
         return str(self.playerId)
