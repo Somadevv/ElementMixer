@@ -7,13 +7,13 @@
 
   const checkQuery = (query) => {
     query.matches
-      ? cachedElements.mobileBackground.classList.remove("disabled")
+      ? (cachedElements.mobileBackground.classList.remove("disabled"))
       : cachedElements.mobileBackground.classList.add("disabled");
   };
 
+
   // On document load
   document.addEventListener("DOMContentLoaded", function (event) {
-    // MOBILE QUERY LISTENER
     checkQuery(cachedElements.mobileQuery);
     cachedElements.mobileQuery.addListener(checkQuery);
   });

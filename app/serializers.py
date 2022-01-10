@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['userId', 'username', 'email', 'password',
                   'credits', 'alchemyPoints', 'currentTier']
 
-class PlayerSerializer(serializers.ModelSerializer):
+class PlayerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = models.Inventory
         fields = ["playerId", "credits", "AP", "playerTier"]
@@ -21,12 +21,12 @@ class ElementsSerializer(serializers.ModelSerializer):
       model = models.Elements
       fields = ['elementId', 'name', 'elementTier']
       
-class InventorySerializer(serializers.ModelSerializer):
+class InventorySerializer(serializers.HyperlinkedModelSerializer):
   name = ElementsSerializer(many=True, read_only=True)
    
   class Meta:
     model = models.Inventory
-    fields = ['playerId', 'elementName', 'amount']
+    fields = ['playerId', 'name', 'amount']
 
 
 

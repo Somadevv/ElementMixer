@@ -7,15 +7,22 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.http import request
 
+    
+
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         player = Player.objects.create(playerId=instance)
-        fire = Inventory.objects.create(playerId=player, name="Fire", amount=1)
-        water = Inventory.objects.create(playerId=player, name="Water", amount=1)
-        earth = Inventory.objects.create(playerId=player, name="Air", amount=1)
-        air = Inventory.objects.create(playerId=player, name="Earth", amount=1)
-        (fire, water, earth, air).save()
+        player.save()
+        fire = Elements.objects.get(name="Fire")
+        water = Elements.objects.get(name="Water")
+        createFire = Inventory.objects.create(playerId=player, name=fire, amount=1)
+        createWater = Inventory.objects.create(playerId=player, name=water, amount=1)
+        createFire.save()
+        createWater.save()
+        
+
 
 
 @receiver(post_save, sender=User)

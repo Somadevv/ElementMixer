@@ -6,7 +6,7 @@
     <div class="mainbar">
         <div class="playerinfo">
             <img src="/static/images/useravatar.png" id="useravatar" alt="user avatar" />
-            <div id="username" style="color: wheat">{{ user.username }}</div>
+            <div id="username" style="color: wheat">{{ player.playerId }}</div>
             <div class="credits-icon-container">
                 <div class="floated"><img src="/static/images/aether.png" class="credits-icon" alt="credits-icon">
                     {{ player.credits }}</div>
@@ -15,107 +15,71 @@
                 <div class="floated"><img src="/static/images/cauldron-icon.png" class="cauldron-icon"
                         alt="cauldron-icon">{{ player.AP }}</div>
             </div>
-            <div class="toggle-mobile disabled">
-                <img src="/static/images/left_mobile_pane.png" id="left-pane" alt="" srcset="" />
-                <img src="/static/images/right_mobile_pane.png" id="right-pane" alt="" srcset="" />
+            <div class="toggle-mobile">
+                <img src="/static/images/left_mobile_pane.png" id="left-pane" alt="left-pane-sprite" />
+                <img src="/static/images/right_mobile_pane.png" id="right-pane" alt="right-pane-sprite" />
             </div>
         </div>
     </div>
-</div>
 
+    <div class="game-panel">
+        <!-- NAVIGATION BUTTONS -->
+        <div class="navigation-container">
+            <button class="navigation-button">Cauldron</button>
+            <button class="navigation-button">Inventory</button>
+            <button class="navigation-button">Shop</button>
 
-
-
-{% if request.user.is_authenticated %}
-
-<!-- NAVIGATION BUTTONS -->
-<div class="container navigation-container">
-    <button class="navigation-button" id="yoo">Cauldron</button>
-    <button class="navigation-button" type="submit">Inventory</button>
-    <button class="navigation-button" type="submit" id="btn">Shop</button>
-    <button class="navigation-button" id="slap"></button>
-    <!-- <div id="btn">click</div> -->
-</div>
-{% endif %}
-
-<div class="game-panel">
-    <!-- <a href="" class="dropdown-item">My Profile</a>
+        </div>
+        <!-- <a href="" class="dropdown-item">My Profile</a>
         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
         <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
         <a href="{% url 'account_login' %}" class="dropdown-item">Login</a> -->
-    <div class="back-cauldron-view">
-        <div class="cauldron-middle-image"></div>
-        <div class="inventory-view">
-            <div id="box1" class="inventory-item item">
-            </div>
-            <div id="box2" class="inventory-item item">
-            </div>
-            <div id="box3" class="inventory-item item">
-            </div>
-            <div id="box4" class="inventory-item item">
-            </div>
-        </div>
-        <img src="/static/images/cauldron_button.png" class="cauldron-fee-image" alt="cauldron fee icon" width="175"
-            height="100" />
-    </div>
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <div class="inventoryModalDecoratorContainer">
-            <div class="inventoryModalDeco activeDeco"></div>
-            <div class="inventoryModalDeco"></div>
-            <div class="inventoryModalDeco"></div>
-            <div class="inventoryModalDeco"></div>
-        </div>
-        <!-- Modal content -->
-        <div class="modal-content">
-            <p style="color: wheat;">INVENTORY</p>
-            <div class="modalInventoryListContainer">
-                <div id="inventoryList">
-                    <div class="wrapper">
-                        {% for i in inventory %}
-                        <p class="elementName">{{ i.elementName }}</p>
-                        <div class="inventory-slot-bg" id="inventory-element-slot">
-                            <img src="/static/images/{{ i.elementUrl }}.png" class="invImg" alt="inventory-slot">
-                            <p class="amount" style="font-size: .75rem;">{{ i.amount }}</p>
-                        </div>
+        <div class="container">
+            <div class="cauldron-container">
+                <div class="grid2x2">
+                    <div>
+                        <div class="cauldron-slot"></div>
                     </div>
-                    {% endfor %}
+                    <div>
+                        <div class="cauldron-slot"></div>
+                    </div>
+                    <div>
+                        <div class="cauldron-slot"></div>
+                    </div>
+                    <div>
+                        <div class="cauldron-slot"></div>
+                    </div>
                 </div>
+                <img src="/static/images/cauldron_button.png" class="cauldron-fee-image" alt="cauldron fee icon"
+                    width="175" height="100" />
             </div>
-            <span class="closeButton">&times;</span>
         </div>
 
-    </div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <div class="inventoryModalDecoratorContainer">
+                <div class="inventoryModalDeco"></div>
+                <div class="inventoryModalDeco"></div>
+                <div class="inventoryModalDeco"></div>
+                <div class="inventoryModalDeco"></div>
+            </div>
+            <!-- Modal content -->
+            <div class="modal-content">
+                <p style="color: wheat;">INVENTORY</p>
+                <div class="modalInventoryListContainer">
+                    <ul class="inventoryList grid">
+                        <div class="loader"></div>
+                    </ul>
+                </div>
+                <span class="closeButton">&times;</span>
+            </div>
 
-    <!-- GAME PANEL -->
+        </div>
+        <!-- GAME PANEL -->
+    </div>
 </div>
 
 <!-- GAME PANEL / [MOBILE]  -->
 
 
 {% endblock %}
-
-
-<!-- <section class="tier-container">
-            <div class="element-item">
-                <h3 class="element-title"></h3>
-
-            </div>
-            <div class="element-item">
-                <h3 class="element-title"></h3>
-            </div>
-            <div class="element-item">
-                <h3 class="element-title"></h3>
-            </div>
-            <div class="element-item">
-                <h3 class="element-title"></h3>
-            </div>
-            <div class="element-item">
-                <h3 class="element-title"></h3>
-            </div>
-            <div class="element-item">
-                <h3 class="element-title"></h3>
-            </div>
-
-        </section> -->
