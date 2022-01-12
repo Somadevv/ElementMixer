@@ -87,4 +87,19 @@
   width: 100%;
   height: 100%;
 }
-
+.selected-deco {
+  -webkit-filter: drop-shadow(-1px -1px 4px #30b5ff) drop-shadow(1px 1px 5px #30b5ff) drop-shadow(0 0 5px #30b5ff);
+  filter: drop-shadow(-1px -1px 4px #30b5ff) drop-shadow(1px 1px 5px #30b5ff) drop-shadow(0 0 5px #30b5ff);
+}
+.clear {
+  background: url("/static/images/clear_button.png") no-repeat;
+  background-size: contain;
+  width: 75px;
+  height: 75px;
+}
+.clear:hover {
+  background: url("/static/images/clear_button_hover.png") no-repeat;
+  width: 75px;
+  height: 75px;
+  background-size: contain;
+}

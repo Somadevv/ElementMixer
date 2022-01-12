@@ -1,10 +1,9 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.forms.widgets import EmailInput, PasswordInput
 
-from .models import Player
+from .models import Inventory
 
 # Create your forms here.
 
@@ -23,6 +22,11 @@ class RegisterForm(ModelForm):
 		if commit:
 			user.save()
 		return user
+
+class UpdateInventoryForm(ModelForm):
+	class Meta:
+		model = Inventory
+		fields = '__all__'
 
 	
 	

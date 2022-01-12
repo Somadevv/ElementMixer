@@ -7,6 +7,7 @@ from .serializers import InventorySerializer, UserSerializer, ElementsSerializer
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
+from ..forms import UpdateInventoryForm
 
 from app.api import serializers
 
@@ -36,21 +37,9 @@ def get_inventory(request, pk):
     serializer = InventorySerializer(inventory, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
-@api_view(['GET'])
-def get_inventory(request, pk):
-
-    inventory = Inventory.objects.filter(playerId=pk)
-    # slap = Elements.objects.filter()
-    # player = Player.objects.get(playerId=request.user)
-    serializer = InventorySerializer(inventory, many=True)
-    # Elserializer = ElementsSerializer(slap, many=True)
-    
-
-    return Response(serializer.data, status=status.HTTP_200_OK)
-
 
 @api_view(['POST'])
-def add_to_inventory(request, pk, elementId, amount):
+def add_to_inventory(request, pk):
     inventory = Inventory.objects.filter(playerId=pk)
     serializer = InventorySerializer(instance=inventory, data=request.data, many=True)
     if serializer.is_valid():

@@ -1,4 +1,4 @@
-@import url("base.css");
+@import url("/static//css/base.css");
 
 .grid2x2 {
   position: relative;
@@ -9,7 +9,7 @@
   flex-direction: row;
   gap: 10px;
   margin: 0 auto;
-  top: 80px;
+  
 }
 .grid2x2 > div {
   margin: 0 auto;
@@ -37,14 +37,16 @@
   position: relative;
   max-width: 550px;
   min-height: 475px;
-  margin: 2vh auto;
+  margin: 0 auto;
   background: url("/static/images/cauldron_backdrop.png") no-repeat;
   background-size: contain;
   background-position: center center;
-  top: 10%;
 }
-
-
+.cauldronTempImg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 @media only screen and (max-height: 570px) {
   .grid2x2 {
     top: 120px;
@@ -57,9 +59,7 @@
   }
 }
 @media only screen and (min-height: 700px) {
-  .grid2x2 {
-    top: 95px;
-  }
+
   .grid2x2 > div {
     min-height: 150px;
   }
@@ -71,11 +71,11 @@
 
 @media only screen and (min-width: 768px) {
   .cauldron-container {
-    top: 80px;
+    /* top: 80px; */
   }
   .grid2x2 {
     gap: 70px;
-    top: 60px;
+    /* top: 60px; */
   }
 
   .grid2x2 > div > div {
@@ -104,11 +104,12 @@
   background: url("../images/inventory_slot.png") no-repeat;
   background-size: contain;
   width: 110px;
+  height: 120px;
 }
 .inventory-slot-bg:hover {
   background: url("../images/hover_inventory_item.png") no-repeat;
   background-size: contain;
-  width: 100px;
+
 }
 .amount {
   position: relative;

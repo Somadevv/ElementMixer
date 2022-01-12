@@ -20,66 +20,92 @@
                 <img src="/static/images/right_mobile_pane.png" id="right-pane" alt="right-pane-sprite" />
             </div>
         </div>
-    </div>
 
-    <div class="game-panel">
         <!-- NAVIGATION BUTTONS -->
         <div class="navigation-container">
-            <button class="navigation-button">Cauldron</button>
-            <button class="navigation-button">Inventory</button>
-            <button class="navigation-button">Shop</button>
+            <button class="navigation-button active"  id="toggleCauldron">Cauldron</button>
+            <button class="navigation-button" id="toggleTiers">Tiers</button>
+            <button class="navigation-button" id="toggleShop">Shop</button>
 
         </div>
-        <!-- <a href="" class="dropdown-item">My Profile</a>
+        <div class="game-panel">
+            <!-- Shop view -->
+            <div class="container disabled" id="shop-container">
+                <div class="shop-container">
+                    <div class="grid2x2">
+                        <div style="background: url('/static/images/inventory_slot.png') no-repeat;">
+                            <div class="shop-slot"></div>
+                        </div>
+                        <div>
+                            <div class="shop-slot"></div>
+                        </div>
+                        <div>
+                            <div class="shop-slot"></div>
+                        </div>
+                        <div>
+                            <div class="shop-slot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container disabled" id="tiers-container">
+                <div class="tiers-container">
+                    tiers..
+                </div>
+            </div>
+
+            <!-- <a href="" class="dropdown-item">My Profile</a>
         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
         <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
         <a href="{% url 'account_login' %}" class="dropdown-item">Login</a> -->
-        <div class="container">
-            <div class="cauldron-container">
-                <div class="grid2x2">
-                    <div>
-                        <div class="cauldron-slot"></div>
+            <div class="container">
+                <div class="cauldron-container" id="cauldron-container">
+                    <div class="grid2x2">
+                        <div>
+                            <div class="cauldron-slot"></div>
+                        </div>
+                        <div>
+                            <div class="cauldron-slot"></div>
+                        </div>
+                        <div>
+                            <div class="cauldron-slot"></div>
+                        </div>
+                        <div>
+                            <div class="cauldron-slot"></div>
+                        </div>
                     </div>
-                    <div>
-                        <div class="cauldron-slot"></div>
-                    </div>
-                    <div>
-                        <div class="cauldron-slot"></div>
-                    </div>
-                    <div>
-                        <div class="cauldron-slot"></div>
-                    </div>
+                    <img src="/static/images/cauldron_button.png" class="cauldron-fee-image" alt="cauldron fee icon"
+                        width="175" height="100" />
                 </div>
-                <img src="/static/images/cauldron_button.png" class="cauldron-fee-image" alt="cauldron fee icon"
-                    width="175" height="100" />
-            </div>
-        </div>
-
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-            <div class="inventoryModalDecoratorContainer">
-                <div class="inventoryModalDeco"></div>
-                <div class="inventoryModalDeco"></div>
-                <div class="inventoryModalDeco"></div>
-                <div class="inventoryModalDeco"></div>
-            </div>
-            <!-- Modal content -->
-            <div class="modal-content">
-                <p style="color: wheat;">INVENTORY</p>
-                <div class="modalInventoryListContainer">
-                    <ul class="inventoryList grid">
-                        <div class="loader"></div>
-                    </ul>
-                </div>
-                <span class="closeButton">&times;</span>
             </div>
 
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <div class="inventoryModalDecoratorContainer">
+                    <div class="inventoryModalDeco"></div>
+                    <div class="inventoryModalDeco"></div>
+                    <div class="inventoryModalDeco"></div>
+                    <div class="inventoryModalDeco"></div>
+                </div>
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <p style="color: wheat;">INVENTORY</p>
+                    <div class="modalInventoryListContainer">
+                        <ul class="inventoryList grid">
+                            <div class="loader"></div>
+                        </ul>
+                    </div>
+                    <span class="clear"></span>
+                    <span class="closeButton"></span>
+                </div>
+
+            </div>
+            <!-- GAME PANEL -->
         </div>
-        <!-- GAME PANEL -->
     </div>
-</div>
 
-<!-- GAME PANEL / [MOBILE]  -->
+    <!-- SHOP  -->
 
 
-{% endblock %}
+
+    {% endblock %}
