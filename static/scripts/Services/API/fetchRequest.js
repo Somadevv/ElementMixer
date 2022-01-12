@@ -30,9 +30,10 @@ export const Request = {
 };
 
 const postSomeData = () => {
+  console.log("working");
   Request.updateDataRequest("update-inventory", {
-    "playerid": 1,
-    "name": "Fire",
+    "playerid": Request.settings.userId,
+    "name": "Slap",
     "amount": 122,
   });
 

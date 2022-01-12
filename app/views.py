@@ -26,9 +26,7 @@ def index(request):
     if request.session.session_key:
         player = Player.objects.get(playerId=request.user)
         inventory = Inventory.objects.filter(playerId=player)
-        print(inventory)
-        
-    
+
         return render(request, 'home/index.html', {"inventory": inventory, "player": player})
     return render(request, 'home/index.html')
 

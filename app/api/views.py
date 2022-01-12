@@ -41,7 +41,8 @@ def get_inventory(request, pk):
 @api_view(['POST'])
 def add_to_inventory(request, pk):
     inventory = Inventory.objects.filter(playerId=pk)
-    serializer = InventorySerializer(instance=inventory, data=request.data, many=True)
+    serializer = InventorySerializer(
+        instance=inventory, data=request.data, many=True)
     if serializer.is_valid():
         serializer.save()
     else:
@@ -52,13 +53,15 @@ def add_to_inventory(request, pk):
 
 @api_view(['POST'])
 def update_inventory(request, pk):
-    task = Inventory.objects.get(id=pk)
-    serializer = InventorySerializer(instance=task, data=request.data)
+    player = Player.objects.get(playerId=request.user)
+    inventory = Inventory.objects.filter(playerId=player)
+    serializer = InventorySerializer(instance=inventory, data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(f'Succsesfully Updated: {request.data}')
+    else:
+        return Response('Data recieved was not serialized, therefore was not valid.')
 
-    return Response(task) 
 
 
 @api_view(['DELETE', 'POST'])
