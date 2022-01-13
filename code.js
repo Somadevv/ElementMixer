@@ -11,14 +11,6 @@ export default function Home() {
   const [loading, setLoading] = React.useState(false);
   const noteTitleRef = React.createRef();
   const noteBodyRef = React.createRef();
-  const styles = (theme) =>
-    createStyles({
-      input: {
-        "&::placeholder": {
-          fontStyle: "italic",
-        },
-      },
-    });
 
   const addNote = (x, y) => {
     let notes = [...note];
