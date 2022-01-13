@@ -39,7 +39,7 @@ export default function Home() {
   }, [note]);
 
   return (
-    <>
+    <Fragment>
       <div className="container">
         <div className="sidebar">
           <div className="notesIntro">
@@ -64,11 +64,7 @@ export default function Home() {
             variant="standard"
           />
           </div>
-          
-
-          <div className="hello">
-
-          </div>
+       
           <LoadingButton
               color="secondary"
               onClick={() => {
@@ -87,6 +83,6 @@ export default function Home() {
             </LoadingButton>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 }
