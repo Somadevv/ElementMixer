@@ -1,0 +1,42 @@
+.elementGrid {
+  position: relative;
+  margin-top: 50px;
+  display: grid;
+  row-gap: 25px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.elementGrid > div {
+  position: relative;
+  background: url("../../images/inventory_slot.png") no-repeat;
+  background-size: contain;
+  height: 100px;
+  width: 95px;
+}
+.elementName {
+  background: url("/static/images/element_name.png") no-repeat;
+  background-size: contain;
+  position: relative;
+  top: -25px;
+  width: 85px;
+  height: 150px;
+  color: white;
+  font-size: 0.75rem;
+  margin-left: 5px;
+  margin-top: 10px;
+}
+
+.elementGrid > div > img {
+    position: absolute;
+    top: 25px;
+    left: -4px;
+    width: 105px;
+    height: auto;
+  
+}
+
+@media only screen and (max-width: 768px) {
+  .elementGrid > div {
+    width: 85px;
+  }
+}

@@ -8,6 +8,8 @@ from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from ..forms import UpdateInventoryForm
+from django.db import transaction
+
 
 from app.api import serializers
 
@@ -18,7 +20,7 @@ INVENTORY API ENDPOINTS
 
 
 @api_view(['GET'])
-def get_elements(request):
+def list_elements(request):
     elements = Elements.objects.all()
     serializer = ElementsSerializer(elements, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
@@ -54,27 +56,42 @@ def add_to_inventory(request, pk):
 @api_view(['POST'])
 def update_inventory(request, pk):
     player = Player.objects.get(playerId=request.user)
-    inventory = Inventory.objects.filter(playerId=player)
+    if player:
+        inventory = Inventory.objects.get(playerId=player, name=request.data["name"])
+        if inventory:
+            i = inventory
+            print('before', i.amount)
+            i.amount+= int(request.data["amount"])
+            print('after', i.amount)
+            
+            
+            i.save()
+            transaction.commit()
+            print("Added", request.data["amount"], 'to', request.user,'s', request.data["name"])
+        else:
+            print("invalid inventory")
+    else:
+        print("nah")
     serializer = InventorySerializer(instance=inventory, data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(f'Succsesfully Updated: {request.data}')
     else:
-        return Response('Data recieved was not serialized, therefore was not valid.')
-
+        return Response(serializer.errors)
 
 
 @api_view(['DELETE', 'POST'])
 def inventory_delete(request, pk):
-	item = Inventory.objects.get(id=pk)
-	item.delete()
+    item = Inventory.objects.get(id=pk)
+    item.delete()
 
-	return Response('Item succsesfully deleted!')
+    return Response('Item succsesfully deleted!')
 
 
 """
 USER API ENDPOINTS
 """
+
 
 @api_view(['GET'])
 def get_user(request, pk):
@@ -86,3 +103,4 @@ def get_user(request, pk):
 
 
 
+    

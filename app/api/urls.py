@@ -4,7 +4,6 @@ from ..views import index
 
 
 urlpatterns = [
-    path('list-all', views.list_all_inventories, name="list-all-inventories"),
     path('get-inventory/<str:pk>/', views.get_inventory, name="inventory-list"),
     path('add-inventory/<str:pk>/',
          views.add_to_inventory, name="add-to-inventory"),
@@ -16,5 +15,5 @@ urlpatterns = [
          name="delete-from-inventory"),
     path('get-user/<str:pk>/', views.get_user,
          name="get-user"),
-    path('get-elements/1', views.get_elements)
+    path('list-elements', views.list_elements)
 ]

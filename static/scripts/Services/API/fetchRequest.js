@@ -7,13 +7,13 @@ export const Request = {
     userId: JSON.parse(document.getElementById("user_id").textContent),
   },
   // GET Method
-  getDataRequest: async (endpoint) => {
+  getPlayer: async (endpoint) => {
     const response = await fetch(`${Request.settings.route}${endpoint}/${Request.settings.userId}`);
     const data = response.json();
     return data;
   },
   // POST Method
-  updateDataRequest: async (endpoint, body) => {
+  updatePlayer: async (endpoint, body) => {
     const response = await fetch(`${Request.settings.route}${endpoint}/${Request.settings.userId}/`, {
       credentials: "include",
       method: "POST",
@@ -27,15 +27,19 @@ export const Request = {
     const content = await response.json();
     return content;
   },
+  getElements: async () => {
+    const response = await fetch("http://127.0.0.1:8000/api/list-elements");
+    const data = response.json()
+    return data;
+  }
 };
 
-const postSomeData = () => {
-  console.log("working");
-  Request.updateDataRequest("update-inventory", {
-    "playerid": Request.settings.userId,
-    "name": "Slap",
-    "amount": 122,
-  });
 
-};
-postSomeData()
+// const postSomeData = () => {
+//   Request.updateDataRequest("update-inventory", {
+//     "playerId": Request.settings.userId,
+//     "name": "Air",
+//     "amount": 50 
+//   });
+// };
+// postSomeData()

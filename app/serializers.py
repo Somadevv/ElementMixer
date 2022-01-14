@@ -19,7 +19,7 @@ class PlayerSerializer(serializers.HyperlinkedModelSerializer):
 class ElementsSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Elements
-        fields = ['elementId', 'name', 'elementTier']
+        fields = ['id','name']
 
 
 class InventorySerializer(serializers.HyperlinkedModelSerializer):

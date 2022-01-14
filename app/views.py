@@ -26,12 +26,8 @@ def index(request):
     if request.session.session_key:
         player = Player.objects.get(playerId=request.user)
         inventory = Inventory.objects.filter(playerId=player)
-
+        
         return render(request, 'home/index.html', {"inventory": inventory, "player": player})
     return render(request, 'home/index.html')
 
-    # data = Inventory.objects.get(pk=current_user.id)
-    # inventory = {x: data.elements.count(x) for x in data.elements}
-    # print(inventory)
-    #  {'user': current_user, "inventory": inventory}
-    # if element id exists already, increment amount++
+

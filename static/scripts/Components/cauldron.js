@@ -10,6 +10,7 @@ const cachedElements = {
 };
 
 cachedElements.cauldronSlot.forEach((item) => {
+
   item.addEventListener("click", async () => {
     const data = await drawInventory();
     cachedElements.modal.style.display = "block";
@@ -49,24 +50,24 @@ cachedElements.modalClearButton.onclick = () => {
 
 const addToCauldron = (target, src) => {
   const img = document.createElement("img");
-  img.src = `/static/images/${src}.png`;
+  img.src = `/static/images/elements/${src}.png`;
   img.classList.add("cauldronTempImg");
   target.appendChild(img);
 };
 
 const drawInventory = async () => {
-  const data = await Request.getDataRequest("get-inventory");
+  const data = await Request.getPlayer("get-inventory");
   let output = ``;
 
   for (let i = 0; i < data.length; i++) {
     output += `
-    <li id="alive" style="z-index: 5;">
-      <div class="cell inventory-slot-bg" style="z-index: 4;">
-        <p>${data[i].name}</p>
+    <div style="z-index: 5; margin-bottom: 25px;">
+    <div class="cell inventory-slot-bg" style="z-index: 4;">
+    <p class="elementName" >${data[i].name}</p>
           <img src="/static/images/elements/${data[i].name}.png" class="invImg" alt="inventory-slot">
-        <p class="amount" style="font-size: .75rem;">${data[i].amount}</p>
+        <p class="amount" style="font-size: .90rem;">${data[i].amount}</p>
       </div>
-    </li>`;
+    </div>`;
   }
   return output;
 };

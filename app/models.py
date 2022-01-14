@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -48,8 +49,6 @@ class Player(models.Model):
 class Elements(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20, unique=True)
-    tier = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(5)])
 
     def __str__(self):
         return str(self.name)

@@ -1,5 +1,22 @@
 @import url("/static//css/base.css");
 
+.reward {
+  position: absolute;
+  /* inset: 30px 0 0 50px; */
+  margin: 30px 55px;
+  background: url("/static/images/cauldron_reward.png") no-repeat;
+  background-size: contain;
+  height: 250px;
+  width: 250px;
+  z-index: 1;
+  content: "";
+}
+.cauldron-fee-image {
+  position: relative;
+  top: -15px;
+  width: 165px;
+  height: auto;
+}
 .grid2x2 {
   position: relative;
   max-width: 375px;
@@ -7,9 +24,11 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: 10px;
-  margin: 0 auto;
+  top: -20px;
   
+  
+  margin: 0 auto;
+  padding-top: 100px;
 }
 .grid2x2 > div {
   margin: 0 auto;
@@ -35,8 +54,8 @@
 
 .cauldron-container {
   position: relative;
-  max-width: 550px;
-  min-height: 475px;
+  max-width: 575px;
+  min-height: auto;
   margin: 0 auto;
   background: url("/static/images/cauldron_backdrop.png") no-repeat;
   background-size: contain;
@@ -46,6 +65,22 @@
   position: relative;
   width: 100%;
   height: 100%;
+}
+@media only screen and (max-width: 375px) {
+  .reward {
+    margin: 15px 57px;
+    width: 200px;
+  }
+  .cauldron-container {
+    max-width: 325px;
+    top: 30px;
+  }
+  .grid2x2 {
+    top: -30px;
+    min-width: 295px;
+    column-gap: 20px;
+    row-gap: 40px;
+  }
 }
 @media only screen and (max-height: 570px) {
   .grid2x2 {
@@ -59,7 +94,6 @@
   }
 }
 @media only screen and (min-height: 700px) {
-
   .grid2x2 > div {
     min-height: 150px;
   }
@@ -70,22 +104,30 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .reward {
+    margin: 20px 95px;
+  }
   .cauldron-container {
-    /* top: 80px; */
+    min-width: 450px;
+    top: 30px;
   }
   .grid2x2 {
-    gap: 70px;
-    /* top: 60px; */
+    gap: 40px;
+    top: 0px;
   }
 
   .grid2x2 > div > div {
     height: 150px;
     width: 150px;
   }
+  .cauldron-fee-image {
+    width: 250px;
+    top: -13px;
+  }
 }
 .inventory-item {
   position: relative;
-  margin-top: 30px;
+  top: 30px;
   background: url("/static/images/inventory_slot.png") no-repeat;
   background-size: contain;
   min-height: 115px;
@@ -93,37 +135,39 @@
   /* max-width: 125px; */
 }
 
-/* .inventory-item:hover {
-  background: url("/static/images/hover_inventory_item.png") no-repeat;
-  background-size: contain;
-} */
-
 .inventory-slot-bg {
   position: relative;
   left: 27.5px;
-  background: url("../images/inventory_slot.png") no-repeat;
+  background: url("../../images/inventory_slot.png") no-repeat;
   background-size: contain;
   width: 110px;
   height: 120px;
 }
 .inventory-slot-bg:hover {
-  background: url("../images/hover_inventory_item.png") no-repeat;
+  background: url("../../images/hover_inventory_item.png") no-repeat;
   background-size: contain;
-
+}
+.inventory-slot-bg:active {
+  background: url("../../images/hover_inventory_item.png") no-repeat;
+  background-size: contain;
+  box-shadow: 0 10px 10px rgba(7, 62, 134, 1);
 }
 .amount {
   position: relative;
-  background: url("../images/element_count.png") no-repeat;
+  background: url("../../images/element_count.png") no-repeat;
   background-size: contain;
-  width: auto;
-  margin: 0 auto;
-  text-align: center;
+  width: 75px;
+  left: 20px;
 }
 
 .invImg {
   position: relative;
-  padding: 1px;
+  padding: 12px;
   width: 100px;
-  top: -30px;
-  height: auto;
+  margin-top: -30px;
+  height: fit-content;
+}
+
+.elementName {
+  text-align: center;
 }
