@@ -1,1 +1,4 @@
-FRONT END JS AGAIN BOY
+
+
+
+Add inventory button focus clicks

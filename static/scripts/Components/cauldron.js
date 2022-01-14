@@ -7,16 +7,17 @@ const cachedElements = {
   cauldronSlot: document.querySelectorAll(".cauldron-slot"),
   inventoryDeco: document.querySelectorAll(".inventoryModalDeco"),
   modalClearButton: document.getElementsByClassName("clear")[0],
+  inventoryListItems: document.querySelectorAll("inventoryListItems"),
+  inventoryImg: document.querySelectorAll(".inventoryImage"),
 };
 
-cachedElements.cauldronSlot.forEach((item) => {
 
+cachedElements.cauldronSlot.forEach((item) => {
   item.addEventListener("click", async () => {
     const data = await drawInventory();
     cachedElements.modal.style.display = "block";
     cachedElements.inventoryList.innerHTML = data;
     const inventoryItem = document.querySelectorAll(".cell");
-
     inventoryItem.forEach((item) => {
       item.addEventListener("click", () => {
         for (let i = 0; i < cachedElements.cauldronSlot.length; i++) {
@@ -61,13 +62,13 @@ const drawInventory = async () => {
 
   for (let i = 0; i < data.length; i++) {
     output += `
-    <div style="z-index: 5; margin-bottom: 25px;">
-    <div class="cell inventory-slot-bg" style="z-index: 4;">
-    <p class="elementName" >${data[i].name}</p>
-          <img src="/static/images/elements/${data[i].name}.png" class="invImg" alt="inventory-slot">
+    <li class="inventoryListItems" tabindex="1">
+    <div class="cell inventory-slot-bg">
+    <p class="invElementName" >${data[i].name}</p>
+          <img src="/static/images/elements/${data[i].name}.png" class="inventoryImage" alt="inventory-slot">
         <p class="amount" style="font-size: .90rem;">${data[i].amount}</p>
       </div>
-    </div>`;
+    </li>`;
   }
   return output;
 };

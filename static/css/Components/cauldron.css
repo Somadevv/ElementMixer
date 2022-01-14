@@ -8,7 +8,9 @@
   background-size: contain;
   height: 250px;
   width: 250px;
+
   z-index: 1;
+  pointer-events: none;
   content: "";
 }
 .cauldron-fee-image {
@@ -25,8 +27,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   top: -20px;
-  
-  
+
   margin: 0 auto;
   padding-top: 100px;
 }
@@ -40,7 +41,7 @@
 .grid2x2 > div > div {
   background: url("/static/images/inventory_slot.png") no-repeat;
   background-size: contain;
-  min-height: 100px;
+  height: auto;
   min-width: 100px;
   display: flex;
   flex-direction: row;
@@ -66,6 +67,71 @@
   width: 100%;
   height: 100%;
 }
+.inventory-item {
+  position: relative;
+  top: 30px;
+  background: url("/static/images/inventory_slot.png") no-repeat;
+  background-size: contain;
+  min-height: 115px;
+  max-width: 115px;
+  /* max-width: 125px; */
+}
+
+.inventory-slot-bg {
+  position: relative;
+  left: 12.5px;
+  background: url("../../images/inventory_slot.png") no-repeat;
+  background-size: contain;
+  width: 110px;
+  margin-bottom: 25px;
+  height: auto;
+  
+}
+
+.inventory-slot-bg:hover {
+  background: url("../../images/hover_inventory_item.png") no-repeat;
+  background-size: contain;
+}
+
+.invElementName {
+  background: url("/static/images/element_name.png") no-repeat;
+  background-size: contain;
+  position: relative;
+  text-align: center;
+  top: -17px;
+  width: 85px;
+  height: 150px;
+  color: white;
+  font-size: 0.85rem;
+  margin: 0 auto;
+  
+}
+
+.inventoryImage {
+  position: absolute;
+  padding: 12px;
+  width: 110px;
+  top: 0;
+  left: 0;
+  height: auto;
+  z-index: 15;
+  
+}
+.amount {
+  position: absolute;
+  /* background: url("../../images/element_count.png") no-repeat;
+  background-size: contain; */
+  width: 75px;
+  left: 17.5px;
+  bottom: 3px;
+  color: white;
+
+  
+}
+
+
+
+
 @media only screen and (max-width: 375px) {
   .reward {
     margin: 15px 57px;
@@ -124,50 +190,4 @@
     width: 250px;
     top: -13px;
   }
-}
-.inventory-item {
-  position: relative;
-  top: 30px;
-  background: url("/static/images/inventory_slot.png") no-repeat;
-  background-size: contain;
-  min-height: 115px;
-  max-width: 115px;
-  /* max-width: 125px; */
-}
-
-.inventory-slot-bg {
-  position: relative;
-  left: 27.5px;
-  background: url("../../images/inventory_slot.png") no-repeat;
-  background-size: contain;
-  width: 110px;
-  height: 120px;
-}
-.inventory-slot-bg:hover {
-  background: url("../../images/hover_inventory_item.png") no-repeat;
-  background-size: contain;
-}
-.inventory-slot-bg:active {
-  background: url("../../images/hover_inventory_item.png") no-repeat;
-  background-size: contain;
-  box-shadow: 0 10px 10px rgba(7, 62, 134, 1);
-}
-.amount {
-  position: relative;
-  background: url("../../images/element_count.png") no-repeat;
-  background-size: contain;
-  width: 75px;
-  left: 20px;
-}
-
-.invImg {
-  position: relative;
-  padding: 12px;
-  width: 100px;
-  margin-top: -30px;
-  height: fit-content;
-}
-
-.elementName {
-  text-align: center;
 }
