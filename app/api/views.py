@@ -1,17 +1,10 @@
-from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import permissions
 from app.models import Elements, Inventory, User, Player
 from .serializers import InventorySerializer, UserSerializer, ElementsSerializer
 from rest_framework.decorators import api_view
-from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render
-from ..forms import UpdateInventoryForm
+
 from django.db import transaction
-
-
-from app.api import serializers
 
 # permission_classes = [permissions.IsAuthenticated]
 """

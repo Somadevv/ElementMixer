@@ -6,11 +6,10 @@ const cachedElements = {
   inventoryList: document.querySelector(".inventoryList"),
   cauldronSlot: document.querySelectorAll(".cauldron-slot"),
   inventoryDeco: document.querySelectorAll(".inventoryModalDeco"),
-  modalClearButton: document.getElementsByClassName("clear")[0],
+  modalClearButton: document.getElementsByClassName("clearButton")[0],
   inventoryListItems: document.querySelectorAll("inventoryListItems"),
   inventoryImg: document.querySelectorAll(".inventoryImage"),
 };
-
 
 cachedElements.cauldronSlot.forEach((item) => {
   item.addEventListener("click", async () => {
@@ -36,9 +35,9 @@ cachedElements.cauldronSlot.forEach((item) => {
 });
 
 // Event listeners
-cachedElements.span.onclick = () => {
-  cachedElements.modal.classList.display = "none";
-};
+cachedElements.span.addEventListener("click", () => {
+  cachedElements.modal.style.display = "none";
+});
 window.onclick = (event) => {
   if (event.target == cachedElements.modal) {
     cachedElements.modal.style.display = "none";

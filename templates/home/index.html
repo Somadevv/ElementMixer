@@ -7,10 +7,6 @@
         <div class="playerinfo">
             <img src="/static/images/useravatar.png" id="useravatar" alt="user avatar" />
             <div id="username" style="color: wheat">{{ player.playerId }}</div>
-            <div class="credits-icon-container">
-                <div class="floated"><img src="/static/images/aether.png" class="credits-icon" alt="credits-icon">
-                    {{ player.credits }}</div>
-            </div>
             <div class="cauldron-icon-container">
                 <div class="floated"><img src="/static/images/cauldron-icon.png" class="cauldron-icon"
                         alt="cauldron-icon">{{ player.AP }}</div>
@@ -32,25 +28,20 @@
             <!-- Cauldron view -->
 
             <div class="cauldron-container" id="cauldron-container">
-                <p class="reward"></p>
                 <div class="grid2x2">
-
-                    <div>
                         <div class="cauldron-slot"></div>
-                    </div>
-                    <div>
                         <div class="cauldron-slot"></div>
-                    </div>
-                    <div>
                         <div class="cauldron-slot"></div>
-                    </div>
-                    <div>
                         <div class="cauldron-slot"></div>
-                    </div>
                 </div>
-                <img src="/static/images/cauldron_button.png" class="cauldron-fee-image" alt="cauldron fee icon" />
+                
+                <p class="reward"></p>
+                <div class="cauldron-middle">
+                    <div class="cauldron-middle-cover" alt="cauldron middle cover" ></
+                </div>
+                
+                <!-- <img src="/static/images/cauldron_button.png" class="cauldron-fee-image" alt="cauldron fee icon" /> -->
             </div>
-
 
             <!-- Shop view -->
             <div class="container disabled" id="shop-container">
@@ -74,8 +65,9 @@
             <!-- Elements view -->
             <div class="container disabled" id="elements-container">
                 <div class="elementGrid" id="elements-list">
-
+                    
                 </div>
+                <div class="loader" style="position: relative; top: 150px;"></div>
             </div>
 
             <!-- <a href="" class="dropdown-item">My Profile</a>
@@ -94,14 +86,14 @@
                 </div>
                 <!-- Modal content -->
                 <div class="modal-content">
-                    <p style="color: wheat;">INVENTORY</p>
                     <div class="modalInventoryListContainer">
+                        <p style="color: wheat; font-size: 1.5rem;">INVENTORY</p>
                         <ul class="inventoryList grid">
                             <div class="loader"></div>
                         </ul>
                     </div>
-                    <span class="clear"></span>
-                    <span class="closeButton"></span>
+                    <span class="clearButton"></span>
+                    <span class="closeButton">Close</span>
                 </div>
 
             </div>

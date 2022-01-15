@@ -17,7 +17,7 @@
   background: url("/static/images/element_name.png") no-repeat;
   background-size: contain;
   position: relative;
-  top: -25px;
+  top: -30px;
   width: 85px;
   height: 150px;
   color: white;
@@ -27,14 +27,17 @@
 }
 
 .elementGrid > div > img {
-    position: absolute;
-    top: 25px;
-    left: -4px;
-    width: 105px;
-    height: auto;
-  
+  position: absolute;
+  top: -5px;
+  left: -4px;
+  width: 105px;
+  height: auto;
 }
+.elementGrid > div > img:hover {
+  background: url("/static/images/hover_inventory_item.png") no-repeat;
+  background-size: contain;
 
+}
 @media only screen and (max-width: 768px) {
   .elementGrid > div {
     width: 85px;

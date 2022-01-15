@@ -28,7 +28,13 @@ export const Request = {
     return content;
   },
   getElements: async () => {
-    const response = await fetch("http://127.0.0.1:8000/api/list-elements");
+    const response = await fetch("https://localhost:8000/api/list-elements", {
+      credentials: "include",
+      method: "GET",
+      headers: {
+        "X-CSRFToken": Request.settings.csrftoken
+      }
+    });
     const data = response.json()
     return data;
   }

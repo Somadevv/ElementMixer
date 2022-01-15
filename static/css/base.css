@@ -74,7 +74,8 @@ table {
 }
 #left-pane, #right-pane {
   position: absolute;
-  width: 40px;
+  top: 7vh;
+  width: 32px;
   height: 94vh;
 }
 #left-pane {

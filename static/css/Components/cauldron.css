@@ -2,16 +2,15 @@
 
 .reward {
   position: absolute;
-  /* inset: 30px 0 0 50px; */
-  margin: 30px 55px;
+  inset: -15px 0 0 47.5px;
   background: url("/static/images/cauldron_reward.png") no-repeat;
   background-size: contain;
-  height: 250px;
-  width: 250px;
-
+  height: auto;
+  width: 225px;
   z-index: 1;
   pointer-events: none;
   content: "";
+  
 }
 .cauldron-fee-image {
   position: relative;
@@ -19,49 +18,66 @@
   width: 165px;
   height: auto;
 }
+.cauldron-container {
+  position: relative;
+  max-width: 88vw;
+  min-height: 375px;
+  margin: 0 auto;
+  background: url("/static/images/cauldron_backdrop.png") no-repeat;
+  background-size: contain;
+  background-position: center center;
+  margin-right: 10px;
+  margin-top: 6vh;
+}
+.cauldron-middle {
+  position: absolute;
+  left: calc(50% - 40px);
+  top: calc(50% - 37px);
+  background: url("/static/images/cauldron_middle.png") no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 80px;
+  height: 80px;
+}
+.cauldron-middle-cover {
+  position: absolute;
+  left: calc(50% - 48px);
+  top: calc(50% - 43px);
+  background: url("/static/images/cauldron_middle_cover.png") no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 95px;
+  height: 86px;
+}
+
 .grid2x2 {
   position: relative;
-  max-width: 375px;
-  min-height: 250px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  top: -20px;
-
+  display: grid;
+  grid-template-columns: 165px 100px;
+  grid-row: auto auto;
+  grid-row-gap: 50px;
+  width: fit-content;
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 14%;
+  
+
 }
 .grid2x2 > div {
-  margin: 0 auto;
-  display: flex;
-  flex-basis: calc(50% - 40px);
-  justify-content: center;
-  flex-direction: row;
-}
-.grid2x2 > div > div {
   background: url("/static/images/inventory_slot.png") no-repeat;
   background-size: contain;
-  height: auto;
-  min-width: 100px;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+  min-width: 110px;
 }
-.grid2x2 > div > div:hover {
+.grid2x2 > div:hover {
   background: url("/static/images/hover_inventory_item.png") no-repeat;
   background-size: contain;
   min-height: 100px;
   min-width: 100px;
 }
 
-.cauldron-container {
-  position: relative;
-  max-width: 575px;
-  min-height: auto;
-  margin: 0 auto;
-  background: url("/static/images/cauldron_backdrop.png") no-repeat;
-  background-size: contain;
-  background-position: center center;
-}
 .cauldronTempImg {
   position: relative;
   width: 100%;
@@ -72,7 +88,7 @@
   top: 30px;
   background: url("/static/images/inventory_slot.png") no-repeat;
   background-size: contain;
-  min-height: 115px;
+  height: 115px;
   max-width: 115px;
   /* max-width: 125px; */
 }
@@ -84,8 +100,8 @@
   background-size: contain;
   width: 110px;
   margin-bottom: 25px;
+  margin-top: 40px;
   height: auto;
-  
 }
 
 .inventory-slot-bg:hover {
@@ -101,10 +117,9 @@
   top: -17px;
   width: 85px;
   height: 150px;
-  color: white;
+  color: wheat;
   font-size: 0.85rem;
   margin: 0 auto;
-  
 }
 
 .inventoryImage {
@@ -115,24 +130,20 @@
   left: 0;
   height: auto;
   z-index: 15;
-  
 }
 .amount {
   position: absolute;
-  /* background: url("../../images/element_count.png") no-repeat;
-  background-size: contain; */
   width: 75px;
   left: 17.5px;
   bottom: 3px;
   color: white;
-
-  
 }
 
-
-
-
-@media only screen and (max-width: 375px) {
+.inventoryListItems {
+  max-width: 115px;
+  height: auto;
+}
+/* @media only screen and (max-width: 375px) {
   .reward {
     margin: 15px 57px;
     width: 200px;
@@ -190,4 +201,4 @@
     width: 250px;
     top: -13px;
   }
-}
+} */
