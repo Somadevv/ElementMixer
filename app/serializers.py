@@ -1,3 +1,4 @@
+from importlib.metadata import requires
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from . import models
@@ -19,7 +20,7 @@ class PlayerSerializer(serializers.HyperlinkedModelSerializer):
 class ElementsSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Elements
-        fields = ['id','name']
+        fields = ['elementId','name']
 
 
 class InventorySerializer(serializers.HyperlinkedModelSerializer):
@@ -27,5 +28,13 @@ class InventorySerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = models.Inventory
-        fields = ['playerId', 'name', 'amount']
-        extra_kwargs = {'player': {'required': False}, 'name': {'required': False}, 'amount': {'required': False}}
+        fields = ['playerId', 'elementId', 'name', 'amount']
+        extra_kwargs = {'playerId': {'required': False}, 'elementId': {'required': True}, 'name': {'required': False}, 'amount': {'required': False}}
+
+
+
+class RecipesSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = models.Recipes
+        fields = ["recipe", "combination", "name", "discovered"]
+

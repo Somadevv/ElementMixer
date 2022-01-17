@@ -1,4 +1,17 @@
+TODO:
+> [x] When user clicks the "Mix" button, send a POST request to backend to check if the values sent match a recipe.
+> [x] Grab the data from the POST request, which sends -> Elements: ['Water', 'Air', 'Tree', 'Air']
+> [] Check these values against our recipes array and check if there is a match or not
+> [] if there is a match, add whatever element matched to their inventory (database)
 
-
-
-Add inventory button focus clicks
+recipes = [
+    {
+        "Lava": ['Fire', 'Fire', 'Fire', 'Fire']
+    }, 
+    {
+        "Plant": ['Mud', 'Mud','Rain', 'Energy']
+    },
+    {
+        "Earthquake": ['Pressure', 'Pressure', 'Earth', 'Lava']
+    }
+]

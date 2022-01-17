@@ -1,4 +1,5 @@
 
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -47,17 +48,32 @@ class Player(models.Model):
         return str(self.playerId)
 
 class Elements(models.Model):
-    id = models.AutoField(primary_key=True)
+    elementId = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20, unique=True)
+
+    def __str__(self):
+        return str(self.elementId)
+
+
+class Inventory(models.Model):
+    playerId = models.ForeignKey(Player, on_delete=models.CASCADE)
+    elementId = models.ForeignKey(Elements, to_field='elementId', on_delete=models.CASCADE)
+    name = models.OneToOneField(Elements, to_field='name', db_column="name", null=False, on_delete=models.CASCADE, related_name='elementName')
+    amount = models.IntegerField()
+
+    def __str__(self):
+        return str(self.playerId)
+
+
+class Recipes(models.Model):
+    recipe = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=12)
+    combination = ArrayField(models.IntegerField())
+    discovered = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.name)
 
 
-class Inventory(models.Model):
-    playerId = models.ForeignKey(Player, on_delete=models.CASCADE)
-    name = models.ForeignKey(Elements, to_field='name', db_column="name", null=False, on_delete=models.CASCADE, related_name='elementName')
-    amount = models.IntegerField()
 
-    def __str__(self):
-        return str(self.playerId)
+

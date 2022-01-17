@@ -13,7 +13,6 @@ urlpatterns = [
 
     path('delete-inventory/<str:pk>/', views.inventory_delete,
          name="delete-from-inventory"),
-    path('get-user/<str:pk>/', views.get_user,
-         name="get-user"),
-    path('list-elements', views.list_elements)
+    path('list-elements', views.list_elements),
+    path('check-elements', views.check_elements),
 ]

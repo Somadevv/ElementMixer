@@ -2,7 +2,7 @@
   const cachedElements = {
     desktopBackground: document.querySelector(".home-container"),
     mobileBackground: document.querySelector(".toggle-mobile"),
-    mobileQuery: window.matchMedia("(max-width: 768px)"),
+    mobileQuery: window.matchMedia("(max-width: 767px)"),
   };
 
   const checkQuery = (query) => {

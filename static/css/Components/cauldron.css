@@ -1,66 +1,72 @@
 @import url("/static//css/base.css");
 
-.reward {
-  position: absolute;
-  inset: -15px 0 0 47.5px;
-  background: url("/static/images/cauldron_reward.png") no-repeat;
-  background-size: contain;
-  height: auto;
-  width: 225px;
-  z-index: 1;
-  pointer-events: none;
-  content: "";
-  
-}
 .cauldron-fee-image {
   position: relative;
-  top: -15px;
-  width: 165px;
-  height: auto;
+  bottom: 27.5px;
+  /* right: 30%; */
+  width: 210px;
+  height: 75px;
+  left: 5px;
 }
 .cauldron-container {
   position: relative;
-  max-width: 88vw;
-  min-height: 375px;
+  max-width: 575px;
+  min-height: 350px;
   margin: 0 auto;
   background: url("/static/images/cauldron_backdrop.png") no-repeat;
   background-size: contain;
   background-position: center center;
-  margin-right: 10px;
-  margin-top: 6vh;
+  margin-right: -10px;
+  
 }
 .cauldron-middle {
   position: absolute;
-  left: calc(50% - 40px);
-  top: calc(50% - 37px);
+  left: calc(50% - 46px);
+  top: calc(50% - 48px);
   background: url("/static/images/cauldron_middle.png") no-repeat;
   background-size: contain;
   background-position: center center;
-  width: 80px;
-  height: 80px;
+  width: 95px;
+  height: 95px;
 }
 .cauldron-middle-cover {
   position: absolute;
   left: calc(50% - 48px);
-  top: calc(50% - 43px);
+  top: calc(50% - 48px);
   background: url("/static/images/cauldron_middle_cover.png") no-repeat;
   background-size: contain;
   background-position: center center;
   width: 95px;
-  height: 86px;
+  height: 95px;
 }
 
+.reward-container {
+  position: relative;
+  width: fit-content;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  margin: 0 auto;
+  right: 5px;
+  bottom: 25px;
+}
+.reward-image {
+  position: relative;
+  margin: 0 auto;
+  width: 225px;
+  height: 70px;
+}
 .grid2x2 {
   position: relative;
   display: grid;
-  grid-template-columns: 165px 100px;
+  grid-template-columns: 170px 100px;
   grid-row: auto auto;
-  grid-row-gap: 50px;
+  grid-row-gap: 35px;
+  grid-column-gap: 15px;
   width: fit-content;
   margin: 0 auto;
-  padding-top: 14%;
-  
-
+  top: -25px;
+  right: 6px;
 }
 .grid2x2 > div {
   background: url("/static/images/inventory_slot.png") no-repeat;
@@ -68,11 +74,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 110px;
-  min-width: 110px;
+  min-height: 115px;
+  min-width: 115px;
 }
 .grid2x2 > div:hover {
-  background: url("/static/images/hover_inventory_item.png") no-repeat;
+  background: url("/static/images/inventory_slot_hover.png") no-repeat;
   background-size: contain;
   min-height: 100px;
   min-width: 100px;
@@ -105,7 +111,7 @@
 }
 
 .inventory-slot-bg:hover {
-  background: url("../../images/hover_inventory_item.png") no-repeat;
+  background: url("../../images/inventory_slot_hover.png") no-repeat;
   background-size: contain;
 }
 
@@ -143,62 +149,66 @@
   max-width: 115px;
   height: auto;
 }
-/* @media only screen and (max-width: 375px) {
-  .reward {
-    margin: 15px 57px;
-    width: 200px;
-  }
-  .cauldron-container {
-    max-width: 325px;
-    top: 30px;
-  }
-  .grid2x2 {
-    top: -30px;
-    min-width: 295px;
-    column-gap: 20px;
-    row-gap: 40px;
-  }
-}
-@media only screen and (max-height: 570px) {
-  .grid2x2 {
-    top: 120px;
-    min-width: 295px;
-    gap: 0px;
-  }
-  .grid2x2 > div > div {
-    min-height: 100px;
-    min-width: 100px;
-  }
-}
-@media only screen and (min-height: 700px) {
-  .grid2x2 > div {
-    min-height: 150px;
-  }
-  .grid2x2 > div > div {
-    min-height: 115px;
-    min-width: 115px;
-  }
-}
-
+/* TABLET+ */
 @media only screen and (min-width: 768px) {
-  .reward {
-    margin: 20px 95px;
-  }
   .cauldron-container {
-    min-width: 450px;
-    top: 30px;
+    max-width: 400px;
+    min-height: 400px;
+    background-size: contain;
+    left: 7.5px;
+    margin: 0 auto;
+    
+  }
+  .reward-container {
+    bottom: 24px;
+  }
+  .reward-image {
+    width: 250px;
+    height: auto;
   }
   .grid2x2 {
-    gap: 40px;
-    top: 0px;
+    grid-template-columns: 175px 100px;
+    grid-row-gap: 70px;
+    width: fit-content;
+    margin: 0 auto;
+    
+    /* right: 20px; */
+    
   }
-
-  .grid2x2 > div > div {
-    height: 150px;
-    width: 150px;
+  .grid2x2 > div {
+    width: 100px;
+    height: 100px;
   }
-  .cauldron-fee-image {
+  
+}
+/* LAPTOP LARGE + */
+@media only screen and (min-width: 1200px) {
+  .cauldron-container {
+    max-width: 600px;
+    min-height: 500px;
+    background-size: contain;
+    left: 7.5px;
+    margin: 0 auto;
+    bottom: 35px;
+  }
+  .reward-container {
+    bottom: 0;
+  }
+  .reward-image {
     width: 250px;
-    top: -13px;
+    height: auto;
   }
-} */
+  .grid2x2 {
+    grid-template-columns: 230px 100px;
+    grid-row-gap: 70px;
+    width: fit-content;
+    margin: 0 auto;
+    right: 20px;
+    top: 0px;
+    
+  }
+  .grid2x2 > div {
+    width: 150px;
+    height: 150px;
+  }
+}

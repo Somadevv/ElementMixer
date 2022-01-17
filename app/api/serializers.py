@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from app.models import Elements, Inventory, User, Player
+from app.models import Elements, Inventory, Recipes, User, Player
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,12 +16,20 @@ class PlayerSerializer(serializers.ModelSerializer):
 class ElementsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Elements
-        fields = ["name"]
+        fields = ["elementId", "name"]
 
 
 class InventorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Inventory
-        fields = ["playerId", "name", "amount"]
+        fields = ["playerId", "elementId", "name", "amount"]
+
+
+class RecipesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Recipes
+        fields = ["recipe", "combination", "name", "discovered"]
+
+
 
 

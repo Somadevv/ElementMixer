@@ -1,9 +1,13 @@
+
+from re import X
+from xml.dom.minidom import TypeInfo
 from rest_framework.response import Response
 from rest_framework import status
-from app.models import Elements, Inventory, User, Player
+from app.models import Elements, Inventory, Recipes, User, Player
 from .serializers import InventorySerializer, UserSerializer, ElementsSerializer
 from rest_framework.decorators import api_view
-
+from django.db.models import F
+import json
 from django.db import transaction
 
 # permission_classes = [permissions.IsAuthenticated]
@@ -47,53 +51,47 @@ def add_to_inventory(request, pk):
 
 
 @api_view(['POST'])
+def check_elements(request):
+    data = json.loads(request.data["combination"])
+    data.sort()
+    query = Recipes.objects.filter(combination=data).values('name')
+    
+    if query:
+        player = Player.objects.get(playerId=request.user)
+        elementInstance = Elements.objects.get(name=query[0]["name"])
+        Inventory.objects.create(playerId=player, name=elementInstance, amount=1)
+        print(f"User found element: ", query[0]["name"])
+        return Response(query[0]["name"], status=status.HTTP_200_OK)
+    else:
+        print("no")
+    return Response("Comination was unsuccessful")
+    
+
+
+@api_view(['POST'])
 def update_inventory(request, pk):
     player = Player.objects.get(playerId=request.user)
     if player:
-        inventory = Inventory.objects.get(playerId=player, name=request.data["name"])
-        if inventory:
-            i = inventory
-            print('before', i.amount)
-            i.amount+= int(request.data["amount"])
-            print('after', i.amount)
-            
-            
-            i.save()
-            transaction.commit()
-            print("Added", request.data["amount"], 'to', request.user,'s', request.data["name"])
+        requestExists = Inventory.objects.filter(
+            playerId=player, name=request.data["name"])
+
+        if requestExists:
+            requestExists.update(amount=F('amount')+request.data["amount"])
+            Inventory.objects.get(playerId=player, name=request.data["name"])
+            print("yes")
         else:
-            print("invalid inventory")
-    else:
-        print("nah")
-    serializer = InventorySerializer(instance=inventory, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
+            elementInstance = Elements.objects.get(name=request.data["name"])
+            Inventory.objects.create(
+                playerId=player, name=elementInstance, amount=request.data["amount"])
+
         return Response(f'Succsesfully Updated: {request.data}')
     else:
-        return Response(serializer.errors)
+        Response(f'Failed to update: {request.data}, is not valid.')
 
 
 @api_view(['DELETE', 'POST'])
 def inventory_delete(request, pk):
     item = Inventory.objects.get(id=pk)
     item.delete()
-
     return Response('Item succsesfully deleted!')
 
-
-"""
-USER API ENDPOINTS
-"""
-
-
-@api_view(['GET'])
-def get_user(request, pk):
-    user = User.objects.filter(userId=pk)
-    serializer = UserSerializer(user, many=True)
-    return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-
-
-
-    

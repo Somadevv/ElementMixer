@@ -7,7 +7,7 @@ export const Request = {
     userId: JSON.parse(document.getElementById("user_id").textContent),
   },
   // GET Method
-  getPlayer: async (endpoint) => {
+  getPlayerInventory: async (endpoint) => {
     const response = await fetch(`${Request.settings.route}${endpoint}/${Request.settings.userId}`);
     const data = response.json();
     return data;
@@ -27,25 +27,34 @@ export const Request = {
     const content = await response.json();
     return content;
   },
-  getElements: async () => {
-    const response = await fetch("https://localhost:8000/api/list-elements", {
+  checkElements: async (endpoint, body) => {
+    const response = await fetch(`${Request.settings.route}${endpoint}`, {
       credentials: "include",
-      method: "GET",
+      method: "POST",
       headers: {
-        "X-CSRFToken": Request.settings.csrftoken
-      }
+        "X-CSRFToken": Request.settings.csrftoken,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
     });
+    const content = await response.json();
+    return content;
+  },
+  getElements: async () => {
+    const response = await fetch("../../../../app/api/list-elements");
     const data = response.json()
     return data;
-  }
+  }, 
+
 };
 
 
 // const postSomeData = () => {
-//   Request.updateDataRequest("update-inventory", {
+//   Request.updatePlayer("update-inventory", {
 //     "playerId": Request.settings.userId,
 //     "name": "Air",
-//     "amount": 50 
+//     "amount": 40,
 //   });
 // };
 // postSomeData()

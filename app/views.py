@@ -1,11 +1,11 @@
 from typing import Counter
 from django.shortcuts import render, redirect
-from app.api.views import get_user
 from .forms import RegisterForm
 from django.contrib.auth import login
 from django.contrib import messages
 from rest_framework.response import Response
-from .models import Inventory, Player, User
+from .models import Elements, Inventory, Player, User
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def register_request(request, backend='django.contrib.auth.backends.ModelBackend'):
@@ -24,10 +24,10 @@ def register_request(request, backend='django.contrib.auth.backends.ModelBackend
 
 def index(request):
     if request.session.session_key:
+        # Get player inventory
         player = Player.objects.get(playerId=request.user)
         inventory = Inventory.objects.filter(playerId=player)
-        
         return render(request, 'home/index.html', {"inventory": inventory, "player": player})
-    return render(request, 'home/index.html')
 
+    return render(request, 'home/index.html')
 

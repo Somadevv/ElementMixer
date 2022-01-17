@@ -5,23 +5,25 @@
   text-align: center;
   height: auto;
   margin: 0 auto;
-  top: 40px;
+  top: 30px;
 }
 
 .navigation-container {
   position: relative;
   width: 100%;
-  margin: 20px auto;
+  margin: 30px auto;
+  
 }
 .navigation-button {
   position: relative;
-  margin: -2.5px;
+  margin: -2.7px;
   border: none;
-  width: 90px;
-  height: 30px;
+  width: 28%;
+  height: 37.5px;
   font-size: 12px;
   background: none;
   color: #30b5ff;
+  
 }
 .navigation-button:hover {
   border: 1px #30b5ff solid;
@@ -29,17 +31,28 @@
 }
 .navigation-button:focus {
   border: 1px #30b5ff solid;
-  box-shadow: 0 4px 15px rgba(7, 62, 134, 0.9);
+  box-shadow: 0 10px 15px rgba(7, 62, 134, 1);
   text-decoration: none;
   outline: none;
 }
 .active {
   border: 1px #30b5ff solid;
-  box-shadow: 0 4px 15px rgba(7, 62, 134, 0.9);
+  box-shadow: 0 10px 15px rgba(7, 62, 134, 1);
   text-decoration: none;
   outline: none;
 }
-
+@media only screen and (min-width: 768px) {
+  .navigation-container {
+    top: -10px;
+    margin-bottom: 60px;
+  }
+  .navigation-button {
+    width: 120px;
+    height: 40px;
+    font-size: 14px;
+  }
+  
+}
 @media only screen and (max-width: 768px) {
   .navigation-button {
     border: 1px #30b5ff solid;

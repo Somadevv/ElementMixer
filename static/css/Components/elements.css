@@ -1,45 +1,76 @@
-.elementGrid {
+.tableList {
   position: relative;
-  margin-top: 50px;
   display: grid;
-  row-gap: 25px;
-  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: fit-content;
+  height: max-content;
+  margin: 0 auto;
 }
-
-.elementGrid > div {
+.elementGridItem {
   position: relative;
   background: url("../../images/inventory_slot.png") no-repeat;
   background-size: contain;
+  width: 100px;
   height: 100px;
-  width: 95px;
+  color: white;
+  /* border: 1px yellow solid; */
+}
+.elementGridImage {
+  position: relative;
+  top: -55px;
+  left: -2px;
+  z-index: 2;
+  width: 100px;
+  height: auto;
+  padding: 5px;
 }
 .elementName {
   background: url("/static/images/element_name.png") no-repeat;
   background-size: contain;
   position: relative;
-  top: -30px;
-  width: 85px;
-  height: 150px;
+  top: -50px;
+  width: 90%;
+  margin: 0 auto;
   color: white;
-  font-size: 0.75rem;
-  margin-left: 5px;
-  margin-top: 10px;
+  font-size: 0.85rem;
+  margin-top: 34px;
+}
+.pagination-block {
+  position: relative;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  height: fit-content;
+  outline: none;
+  user-select: none;
+  padding-top: 20px;
+}
+.pageButton {
+  padding: 5px;
+  color: wheat;
+  z-index: 5;
+}
+.clickPageNumber {
+  color: white;
+
+  padding: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  z-index: 5;
+}
+.pagination-block .pageButton {
+  background-color: #1e73a1;
+  color: white;
+}
+.pageButton:hover {
+  background-color: #30b5ff;
 }
 
-.elementGrid > div > img {
-  position: absolute;
-  top: -5px;
-  left: -4px;
-  width: 105px;
-  height: auto;
+.opacity {
+  opacity: 0.5;
 }
-.elementGrid > div > img:hover {
-  background: url("/static/images/hover_inventory_item.png") no-repeat;
-  background-size: contain;
-
-}
-@media only screen and (max-width: 768px) {
-  .elementGrid > div {
-    width: 85px;
-  }
+.outline-none {
+  outline: none;
+  user-select: none;
 }
