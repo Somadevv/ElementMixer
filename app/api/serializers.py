@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 class PlayerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Player
-        fields = ["playerId", "credits", "AP", "playerTier"]
+        fields = ["playerId", "credits", "recipes"]
 
 
 class ElementsSerializer(serializers.ModelSerializer):
@@ -22,13 +22,13 @@ class ElementsSerializer(serializers.ModelSerializer):
 class InventorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Inventory
-        fields = ["playerId", "elementId", "name", "amount"]
+        fields = ["playerId", "eleId", "name", "amount"]
 
 
 class RecipesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recipes
-        fields = ["recipe", "combination", "name", "discovered"]
+        fields = ["recipe", "combination", "name"]
 
 
 

@@ -16,7 +16,7 @@
     margin: 0 auto;
     max-width: 525px;
     min-height: 90vh;
-    background: url("/static/images/inventory_modal.png") no-repeat;
+    background: url("../../images/inventory_modal.png") no-repeat;
     background-size: 100% 100%;
     -webkit-align-items: center;
     -moz-box-align: center;
@@ -57,48 +57,50 @@
     -webkit-justify-content: space-between;
     -moz-box-pack: justify;
     justify-content: space-between;
+    
   }
   .modalInventoryListContainer {
     position: absolute;
     top: 20px;
     width: 100%;
     height: 100%;
+    left: 20px;
   }
   .selected-deco {
     -webkit-filter: drop-shadow(-1px -1px 4px #30b5ff) drop-shadow(1px 1px 5px #30b5ff) drop-shadow(0 0 5px #30b5ff);
     filter: drop-shadow(-1px -1px 4px #30b5ff) drop-shadow(1px 1px 5px #30b5ff) drop-shadow(0 0 5px #30b5ff);
   }
   
-  .closeButton:hover,
-  .closeButton:focus {
-    background: url("/static/images/cancel_button_hover.png") no-repeat;
-    background-size: contain;
-    text-decoration: none;
-    cursor: default;
-  }
+
   .closeButton {
     position: absolute;
     bottom: 9.2%;
     left: 42.5%;
-    background: url("/static/images/cancel_button.png") no-repeat;
+    background: url("../../images/buttons/cancel_button.png") no-repeat;
     background-size: contain;
     width: 110px;
     height: auto;
-    font-size: 1rem;
+    font-size: 1.25rem;
     color: white;
     z-index: 2;
+  }
+  .closeButton:hover {
+    background: url("../../images/buttons/cancel_button_hover.png") no-repeat;
+    background-size: contain;
+    text-decoration: none;
+    cursor: default;
   }
   .clearButton {
     position: absolute;
     bottom: 8%;
     left: 32.5%;
-    background: url("/static/images/clear_button.png") no-repeat;
+    background: url("../../images/buttons/clear_button.png") no-repeat;
     background-size: contain;
     width: 40px;
     height: 40px;
     z-index: 3;
   }
-  .clear:hover {
-    background: url("/static/images/clear_button_hover.png") no-repeat;
+  .clearButton:hover {
+    background: url("../../images/buttons/clear_button_hover.png") no-repeat;
     background-size: contain;
   }

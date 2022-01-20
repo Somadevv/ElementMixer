@@ -4,7 +4,7 @@
   padding-right: 10px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background: url("/static/images/navbar_background.png") 50% no-repeat;
+  background: url("/static/images/components/navbar/background.png") 50% no-repeat;
   background-size: 100% 100%;
   height: 46px;
   max-width: 100vw;
@@ -19,7 +19,7 @@
   padding-right: 10px;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background: url("/static/images/username_placeholder.png") 50% no-repeat;
+  background: url("/static/images/components/navbar/username_background.png") 50% no-repeat;
   background-size: 100% 100%;
   height: 46px;
   width: 125px;

@@ -27,7 +27,7 @@ export const Request = {
     const content = await response.json();
     return content;
   },
-  checkElements: async (endpoint, body) => {
+  checkCombination: async (endpoint, body) => {
     const response = await fetch(`${Request.settings.route}${endpoint}`, {
       credentials: "include",
       method: "POST",
@@ -46,15 +46,10 @@ export const Request = {
     const data = response.json()
     return data;
   }, 
+  getPlayerInfo: async () => {
+    const response = await fetch(`../../../../app/api/get-credits/${Request.settings.userId}`);
+    const data = response.json()
+    return data;
+  }, 
 
 };
-
-
-// const postSomeData = () => {
-//   Request.updatePlayer("update-inventory", {
-//     "playerId": Request.settings.userId,
-//     "name": "Air",
-//     "amount": 40,
-//   });
-// };
-// postSomeData()

@@ -3,13 +3,46 @@
 
 <!-- MAINBAR -->
 <div class="home-container">
+    <div id="noDiscoveryNotification">
+        error
+    </div>
+    <!-- Discovered new element -->
+    <div id="discoveredNewContainer" class="disabled">
+        <div class="discoveredNew-modal">
+            <p class="discoveredNewName" id="discoveredNewName"></p>
+            <div class="discoveredNew-content">
+
+                <div class="discoveredNewImage" id="discoveredNewImage"></div>
+                <div style=" margin-top: 10px; padding-left: 125px;">
+                    <img src="/static/images/icons/cauldron_icon.png" class="cauldron-icon" alt="reward cauldron image">
+                    <p id="discoveredNewReward" style="color: rgb(230, 178, 9); font-size: 1.25rem; display: inline-block;"></p>
+                </div>
+                <button class="blend-button" id="discoveredNewClaimButton">Claim</button>
+            </div>
+        </div>
+    </div>
+
+<!-- Discovered element -->
+    <div id="discoveredContainer" class="disabled">
+        <div class="discovered-modal">
+            <p class="discoveredName" id="discoveredName"></p>
+            <div class="discovered-content">
+                <div class="discoveredImage" id="discoveredImage"></div>
+                <button class="blend-button" id="discoveredClaimButton" style="margin-top: 10px;">Claim</button>
+            </div>
+        </div>
+    </div>
+
     <div class="mainbar">
         <div class="playerinfo">
-            <img src="/static/images/useravatar.png" id="useravatar" alt="user avatar" />
-            <div id="username" style="color: wheat">{{ player.playerId }}</div>
+            <img src="/static/images/icons/useravatar.png" id="useravatar" alt="user avatar" />
+            <div id="username" style="color: wheat">{{ user.username }}</div>
             <div class="cauldron-icon-container">
-                <div class="floated"><img src="/static/images/cauldron_icon.png" class="cauldron-icon"
-                        alt="cauldron-icon">{{ player.AP }}</div>
+                <div class="floated" style="margin-left: 100px;">
+                    <img src="/static/images/icons/cauldron_icon.png" class="cauldron-icon" alt="cauldron-icon">
+                    <p id="playerCredits" style="color: wheat; display: inline; "></p>
+                    <p id="amountTo" style="position: relative; bottom: 30px; color: green;"></p>
+                </div>
             </div>
             <div class="toggle-mobile">
                 <img src="/static/images/left_mobile_pane.png" id="left-pane" alt="left-pane-sprite" />
@@ -24,18 +57,19 @@
             <button class="navigation-button" id="toggleElements">Elements</button>
         </div>
 
+
         <div class="game-panel">
             <!-- Cauldron view -->
             <div class="cauldron-container" id="cauldron-container">
-                <div class="reward-container"><img class="reward-image" src="/static/images/cauldron_reward.png"
-                        alt="reward image"></div>
+                <div class="reward-container"><img class="reward-image"
+                        src="/static/images/components/cauldron/reward.png" alt="reward image"></div>
                 <div class="grid2x2">
                     <div class="cauldron-slot"></div>
                     <div class="cauldron-slot"></div>
                     <div class="cauldron-slot"></div>
                     <div class="cauldron-slot"></div>
                 </div>
-                <button id="mix">Mix</button>
+                <button class="blend-button button-disabled" id="blend">blend</button>
 
                 <div class="cauldron-middle">
                     <div class="cauldron-middle-cover" alt="cauldron middle cover">
@@ -66,15 +100,11 @@
         </div>
         <!-- Elements view -->
         <div class="container disabled" id="elements-container">
-            
-                <div class="tableList" id="listingTable"></div>
-                <div class="pagination-block">
-                    <span class="pageButton" id="button_prev">Prev</span>
-                    <span id="page_number"></span>
-                    <span class="pageButton" id="button_next">Next</span>
-
-
-                
+            <div class="tableList" id="listingTable"></div>
+            <div class="pagination-block">
+                <span class="pageButton" id="button_prev">Prev</span>
+                <span id="page_number"></span>
+                <span class="pageButton" id="button_next">Next</span>
             </div>
         </div>
 
@@ -96,7 +126,10 @@
             <div class="modal-content">
                 <div class="modalInventoryListContainer">
                     <p style="color: wheat; font-size: 1.5rem;">INVENTORY</p>
+
                     <ul class="inventoryList grid">
+
+
                         <div class="loader"></div>
                     </ul>
                 </div>
@@ -108,6 +141,10 @@
         <!-- GAME PANEL -->
     </div>
 </div>
+<div id="discoveredView">
+
+</div>
+
 
 <!-- SHOP  -->
 

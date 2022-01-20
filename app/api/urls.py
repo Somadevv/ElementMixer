@@ -15,4 +15,5 @@ urlpatterns = [
          name="delete-from-inventory"),
     path('list-elements', views.list_elements),
     path('check-elements', views.check_elements),
+    path('get-credits/<str:pk>/', views.get_credits),
 ]

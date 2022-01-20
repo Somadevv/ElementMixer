@@ -8,13 +8,14 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['userId', 'username', 'email', 'password',
-                  'credits', 'alchemyPoints', 'currentTier']
+                  'credits']
 
 
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = models.Inventory
-        fields = ["playerId", "credits", "AP", "playerTier"]
+        fields = ["playerId", "credits", "recipes"]
+        extra_kwargs = {'recipes': {'required': False}}
 
 
 class ElementsSerializer(serializers.ModelSerializer):
@@ -28,8 +29,8 @@ class InventorySerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = models.Inventory
-        fields = ['playerId', 'elementId', 'name', 'amount']
-        extra_kwargs = {'playerId': {'required': False}, 'elementId': {'required': True}, 'name': {'required': False}, 'amount': {'required': False}}
+        fields = ['playerId', 'eleId', 'name', 'amount']
+        extra_kwargs = {'playerId': {'required': False}, 'eleId': {'required': False}, 'name': {'required': False}, 'amount': {'required': False}}
 
 
 

@@ -13,7 +13,7 @@
     margin: 0 auto;
   }
   .shop2x2 > div {
-    background: url("/static/images/shop_slot.png") no-repeat;
+    background: url("../../images/components/shop/shop_slot_background.png") no-repeat;
     background-size: contain;
     min-height: 200px;
     min-width: 170px;

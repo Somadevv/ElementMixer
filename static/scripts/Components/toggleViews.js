@@ -11,7 +11,12 @@ const cachedEls = {
   toggleElements: document.getElementById("toggleElements"),
   toggleShop: document.getElementById("toggleShop"),
   shopSlots: document.querySelectorAll(".shop-slot"),
+  discoveredView: document.getElementById("discoveredView"),
+  discoveredCloseButton: document.getElementById("discoveredCloseButton"),
+  undiscoveredView: document.getElementById("undiscoveredView"),
+  undiscoveredCloseButton: document.getElementById("discoveredCloseButton"),
 };
+
 
 // Switch case to trigger each event
 const toggleView = (view) => {
@@ -31,10 +36,23 @@ const toggleView = (view) => {
       cachedEls.elementsContainer.classList.add("disabled");
       cachedEls.shopContainer.classList.remove("disabled");
       break;
+    case "discovered":
+      cachedEls.discoveredView.classList.remove("disabled");
+      cachedEls.cauldronContainer.classList.add("disabled");
+      cachedEls.elementsContainer.classList.add("disabled");
+      cachedEls.shopContainer.classList.add("disabled");
+      break;
+    case "undiscovered":
+      break;
   }
 };
 
-// toggleView() usage(s)
+
+// cachedEls.discoveredCloseButton.addEventListener("click", () => {
+//   cachedEls.discoveredView.classList.add("disabled");
+//   cachedEls.cauldronContainer.classList.remove("disabled");
+  
+// });
 cachedEls.toggleShop.addEventListener("click", () => {
   cachedEls.toggleShop.classList.add("active");
   cachedEls.toggleElements.classList.remove("active");

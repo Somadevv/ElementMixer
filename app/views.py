@@ -6,6 +6,7 @@ from django.contrib import messages
 from rest_framework.response import Response
 from .models import Elements, Inventory, Player, User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import json
 
 
 def register_request(request, backend='django.contrib.auth.backends.ModelBackend'):
@@ -23,8 +24,9 @@ def register_request(request, backend='django.contrib.auth.backends.ModelBackend
 
 
 def index(request):
+    player = Player.objects.get(playerId=request.user)    
+    Inventory.objects.filter(playerId=player, amount=0).all().delete()
     if request.session.session_key:
-        # Get player inventory
         player = Player.objects.get(playerId=request.user)
         inventory = Inventory.objects.filter(playerId=player)
         return render(request, 'home/index.html', {"inventory": inventory, "player": player})

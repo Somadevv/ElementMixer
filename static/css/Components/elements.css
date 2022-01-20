@@ -9,7 +9,7 @@
 }
 .elementGridItem {
   position: relative;
-  background: url("../../images/inventory_slot.png") no-repeat;
+  background: url("../../images/buttons/inventory_slot.png") no-repeat;
   background-size: contain;
   width: 100px;
   height: 100px;
@@ -26,7 +26,7 @@
   padding: 5px;
 }
 .elementName {
-  background: url("/static/images/element_name.png") no-repeat;
+  background: url("../../images/components/elements/name.png") no-repeat;
   background-size: contain;
   position: relative;
   top: -50px;

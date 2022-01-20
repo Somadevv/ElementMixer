@@ -1,5 +1,4 @@
 @import url("/static//css/base.css");
-
 .cauldron-fee-image {
   position: relative;
   bottom: 27.5px;
@@ -13,17 +12,16 @@
   max-width: 575px;
   min-height: 350px;
   margin: 0 auto;
-  background: url("/static/images/cauldron_backdrop.png") no-repeat;
+  background: url("../../images/components/cauldron/backdrop.png") no-repeat;
   background-size: contain;
   background-position: center center;
   margin-right: -10px;
-  
 }
 .cauldron-middle {
   position: absolute;
   left: calc(50% - 46px);
   top: calc(50% - 48px);
-  background: url("/static/images/cauldron_middle.png") no-repeat;
+  background: url("../../images/components/cauldron/middle.png") no-repeat;
   background-size: contain;
   background-position: center center;
   width: 95px;
@@ -33,7 +31,7 @@
   position: absolute;
   left: calc(50% - 48px);
   top: calc(50% - 48px);
-  background: url("/static/images/cauldron_middle_cover.png") no-repeat;
+  background: url("../../images/components/cauldron/middle_cover.png") no-repeat;
   background-size: contain;
   background-position: center center;
   width: 95px;
@@ -69,7 +67,7 @@
   right: 6px;
 }
 .grid2x2 > div {
-  background: url("/static/images/inventory_slot.png") no-repeat;
+  background: url("../../images/buttons/inventory_slot.png") no-repeat;
   background-size: contain;
   display: flex;
   align-items: center;
@@ -78,10 +76,9 @@
   min-width: 115px;
 }
 .grid2x2 > div:hover {
-  background: url("/static/images/inventory_slot_hover.png") no-repeat;
+  background: url("../../images/buttons/inventory_slot_hover.png") no-repeat;
   background-size: contain;
-  min-height: 100px;
-  min-width: 100px;
+
 }
 
 .cauldronTempImg {
@@ -92,7 +89,7 @@
 .inventory-item {
   position: relative;
   top: 30px;
-  background: url("/static/images/inventory_slot.png") no-repeat;
+  background: url("../../images/buttons/inventory_slot.png") no-repeat;
   background-size: contain;
   height: 115px;
   max-width: 115px;
@@ -102,7 +99,7 @@
 .inventory-slot-bg {
   position: relative;
   left: 12.5px;
-  background: url("../../images/inventory_slot.png") no-repeat;
+  background: url("../../images/buttons/inventory_slot.png") no-repeat;
   background-size: contain;
   width: 110px;
   margin-bottom: 25px;
@@ -111,12 +108,13 @@
 }
 
 .inventory-slot-bg:hover {
-  background: url("../../images/inventory_slot_hover.png") no-repeat;
+  background: url("../../images/buttons/inventory_slot_hover.png") no-repeat;
   background-size: contain;
+
 }
 
 .invElementName {
-  background: url("/static/images/element_name.png") no-repeat;
+  background: url("../../images/components/elements/name.png") no-repeat;
   background-size: contain;
   position: relative;
   text-align: center;
@@ -130,12 +128,13 @@
 
 .inventoryImage {
   position: absolute;
-  padding: 12px;
+  padding: 5px;
   width: 110px;
   top: 0;
   left: 0;
   height: auto;
   z-index: 15;
+  margin-bottom: 0;
 }
 .amount {
   position: absolute;
@@ -144,9 +143,85 @@
   bottom: 3px;
   color: white;
 }
+.inventoryList {
+  overflow:hidden;
+  overflow-y:scroll;
+  height: fit-content;
+  
+}
 
 .inventoryListItems {
-  max-width: 115px;
+  position: relative;
+  display: grid;
+  gap: 0px;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 140px;
+  height: 165px;
+
+}
+.blend-button:active {
+  outline: none;
+  border: none;
+}
+.blend-button {
+  background: url("../../images/buttons/confirm_button.png") no-repeat;
+  background-size: 100% 100%;
+  width: 150px;
+  height: 50px;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  outline: none;
+  border: none;
+  color: white;
+}
+
+.blend-button:hover {
+  background: url("../../images/buttons/confirm_button_hover.png") no-repeat;
+  background-size: 100% 100%;
+}
+#discoveredNewContainer, #discoveredContainer {
+  position: fixed;
+  top: 0%;
+  z-index: 2;
+  padding-top: 40px;
+  width: 100vw;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.discoveredNew-modal, #discovered-modal {
+  position: relative;
+  top: 100px;
+  width: 100vw;
+  height: 400px;
+  margin: 0 auto;
+  text-align: center;
+  
+}
+.discoveredNew-content, .discovered-content {
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  background: url("../../images/buttons/discovered_element_background.png") no-repeat;
+  background-size: contain;
+  width: 200px;
+  height: 200px;
+}
+.discoveredNewName, .discoveredName {
+  position: relative;
+  width: max-content;
+  height: auto;
+  margin: 0 auto;
+  color: wheat;
+  font-size: 1.5rem;
+}
+.discoveredNewImage, .discoveredImage {
+  position: relative;
+  margin-top: 10px;
+  width: 100%;
   height: auto;
 }
 /* TABLET+ */
@@ -157,7 +232,6 @@
     background-size: contain;
     left: 7.5px;
     margin: 0 auto;
-    
   }
   .reward-container {
     bottom: 24px;
@@ -171,15 +245,13 @@
     grid-row-gap: 70px;
     width: fit-content;
     margin: 0 auto;
-    
+
     /* right: 20px; */
-    
   }
   .grid2x2 > div {
     width: 100px;
     height: 100px;
   }
-  
 }
 /* LAPTOP LARGE + */
 @media only screen and (min-width: 1200px) {
@@ -205,7 +277,6 @@
     margin: 0 auto;
     right: 20px;
     top: 0px;
-    
   }
   .grid2x2 > div {
     width: 150px;

@@ -1,47 +1,8 @@
 import { Request } from "../Services/API/fetchRequest.js";
-(function () {
-  "use strict";
 
-  function Pagination() {
-    const objJson = [
-      { name: "Rain" },
-      { name: "Sea" },
-      { name: "Mud" },
-      { name: "Dust" },
-      { name: "Pressure" },
-      { name: "Lava" },
-      { name: "Energy" },
-      { name: "Steam" },
-      { name: "Wind" },
-      { name: "Flood" },
-      { name: "Plant" },
-      { name: "Ocean" },
-      { name: "Brick" },
-      { name: "Gunpowder" },
-      { name: "Atmosphere" },
-      { name: "Obsidian" },
-      { name: "Stone" },
-      { name: "Earthquake" },
-      { name: "Cloud" },
-      { name: "Geyser" },
-      { name: "Wave" },
-      { name: "Hurricane" },
-      { name: "Tobacco" },
-      { name: "Swamp" },
-      { name: "Moss" },
-      { name: "Grass" },
-      { name: "Coal" },
-      { name: "Wall" },
-      { name: "Explosion" },
-      { name: "Volcano" },
-      { name: "Ash" },
-      { name: "Metal" },
-      { name: "Sand" },
-      { name: "Mountain" },
-      { name: "Storm" },
-      { name: "Fog" },
-    
-    ];
+  export const paginator = async () => {
+    let elements = await Request.getElements();
+    // console.log(elements)
 
     const prevButton = document.getElementById("button_prev");
     const nextButton = document.getElementById("button_next");
@@ -50,7 +11,7 @@ import { Request } from "../Services/API/fetchRequest.js";
     let current_page = 1;
     let records_per_page = 12;
 
-    this.init = function () {
+    const init = () => {
       changePage(1);
       pageNumbers();
       selectedPage();
@@ -91,13 +52,13 @@ import { Request } from "../Services/API/fetchRequest.js";
 
       listingTable.innerHTML = "";
 
-      //   for(var i = (page -1) * records_per_page; i < (page * records_per_page) && i < objJson.length; i++) {
-      //       listingTable.innerHTML += "<div class='elementGridItem objectBlock'>" + objJson[i].name + "</div>";
+      //   for(var i = (page -1) * records_per_page; i < (page * records_per_page) && i < elements.length; i++) {
+      //       listingTable.innerHTML += "<div class='elementGridItem objectBlock'>" + elements[i].name + "</div>";
       //   }
-      for (var i = (page - 1) * records_per_page; i < page * records_per_page && i < objJson.length; i++) {
+      for (var i = (page - 1) * records_per_page; i < page * records_per_page && i < elements.length; i++) {
         listingTable.innerHTML += `<div class="elementGridItem">
-            <p class="elementName" >${objJson[i].name}</p>
-            <img class="elementGridImage" src="/static/images/elements/${objJson[i].name}.png" alt="inventory-slot">
+            <p class="elementName" >${elements[i].name}</p>
+            <img class="elementGridImage" src="/static/images/elements/${elements[i].name}.png" alt="inventory-slot">
             </div>`;
       }
       checkButtonOpacity();
@@ -137,9 +98,13 @@ import { Request } from "../Services/API/fetchRequest.js";
     };
 
     let numPages = function () {
-      return Math.ceil(objJson.length / records_per_page);
+      return Math.ceil(elements.length / records_per_page);
     };
+    init()
   }
-  let pagination = new Pagination();
-  pagination.init();
-})();
+
+  paginator()
+  
+  
+
+
