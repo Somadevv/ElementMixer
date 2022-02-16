@@ -43,13 +43,27 @@ export const Request = {
   },
   getElements: async () => {
     const response = await fetch("../../../../app/api/list-elements");
-    const data = response.json()
+    const data = response.json();
     return data;
-  }, 
+  },
   getPlayerInfo: async () => {
     const response = await fetch(`../../../../app/api/get-credits/${Request.settings.userId}`);
-    const data = response.json()
+    const data = response.json();
     return data;
-  }, 
-
+  },
+  purchaseElements: async (body) => {
+    const response = await fetch(`../../../../app/api/add-purchased-element/${Request.settings.userId}/`, {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "X-CSRFToken": Request.settings.csrftoken,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    const data = response.json();
+    console.log("You have successfully purchased", body.amount, body.name);
+    return data;
+  },
 };

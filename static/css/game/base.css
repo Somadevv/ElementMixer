@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
+* {
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  
+}
+
+html,
+body {
+  font-family: "Righteous", "Roboto";
+  margin: 0px;
+  padding: 0px;
+  width: 100vw;
+  height: fit-content;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.disabled {
+  display: none;
+  background: none;
+}
+.button-disabled {
+  filter: grayscale(100%);
+  color: rgb(201, 201, 201);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.home-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: gray;
+  background: url("/static/images/game/background-min.webp") no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* Flex box properties */
+.grid {
+  display: flex;
+  width: 88%; /* establish flex container */
+  flex-wrap: wrap; /* enable flex items to wrap */
+  justify-content: space-around;
+  height: 500px;
+}
+
+#left-pane,
+#right-pane {
+  position: absolute;
+  top: 7vh;
+  width: 32px;
+  height: 94vh;
+}
+#left-pane {
+  left: 0;
+}
+#right-pane {
+  right: 0;
+}
+
+/* .pagination {
+  max-width: 400px;
+  min-width: 300px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px;
+} */
+/* .pagination .tableList {
+    min-height: 250px;
+    text-indent: 20px;
+} */
+/* .tableList .objectBlock {
+    position: relative;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+} */
+
+/* .pagination-block span {
+  display: inline-block;
+} */
+
+@media only screen and (max-width: 767px) {
+  .home-container {
+    background: linear-gradient(84deg, rgb(1, 2, 22) 51%, rgb(1, 7, 26) 100%);
+  }
+}
+@media only screen and (min-width: 767px) {
+  .mainbar {
+    width: 75vw;
+  }
+}

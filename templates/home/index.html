@@ -1,153 +1,116 @@
-{% extends "base.html" %} {% load static %} {% block content %}
-{{ request.user.id|json_script:"user_id" }}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- MAINBAR -->
-<div class="home-container">
-    <div id="noDiscoveryNotification">
-        error
-    </div>
-    <!-- Discovered new element -->
-    <div id="discoveredNewContainer" class="disabled">
-        <div class="discoveredNew-modal">
-            <p class="discoveredNewName" id="discoveredNewName"></p>
-            <div class="discoveredNew-content">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/home/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home/index.css' %}">
+    <title>Home</title>
+</head>
 
-                <div class="discoveredNewImage" id="discoveredNewImage"></div>
-                <div style=" margin-top: 10px; padding-left: 125px;">
-                    <img src="/static/images/icons/cauldron_icon.png" class="cauldron-icon" alt="reward cauldron image">
-                    <p id="discoveredNewReward" style="color: rgb(230, 178, 9); font-size: 1.25rem; display: inline-block;"></p>
-                </div>
-                <button class="blend-button" id="discoveredNewClaimButton">Claim</button>
-            </div>
-        </div>
-    </div>
-
-<!-- Discovered element -->
-    <div id="discoveredContainer" class="disabled">
-        <div class="discovered-modal">
-            <p class="discoveredName" id="discoveredName"></p>
-            <div class="discovered-content">
-                <div class="discoveredImage" id="discoveredImage"></div>
-                <button class="blend-button" id="discoveredClaimButton" style="margin-top: 10px;">Claim</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="mainbar">
-        <div class="playerinfo">
-            <img src="/static/images/icons/useravatar.png" id="useravatar" alt="user avatar" />
-            <div id="username" style="color: wheat">{{ user.username }}</div>
-            <div class="cauldron-icon-container">
-                <div class="floated" style="margin-left: 100px;">
-                    <img src="/static/images/icons/cauldron_icon.png" class="cauldron-icon" alt="cauldron-icon">
-                    <p id="playerCredits" style="color: wheat; display: inline; "></p>
-                    <p id="amountTo" style="position: relative; bottom: 30px; color: green;"></p>
-                </div>
-            </div>
-            <div class="toggle-mobile">
-                <img src="/static/images/left_mobile_pane.png" id="left-pane" alt="left-pane-sprite" />
-                <img src="/static/images/right_mobile_pane.png" id="right-pane" alt="right-pane-sprite" />
-            </div>
-        </div>
-
-        <!-- NAVIGATION BUTTONS -->
-        <div class="navigation-container">
-            <button class="navigation-button active" id="toggleCauldron">Cauldron</button>
-            <button class="navigation-button" id="toggleShop">Shop</button>
-            <button class="navigation-button" id="toggleElements">Elements</button>
-        </div>
-
-
-        <div class="game-panel">
-            <!-- Cauldron view -->
-            <div class="cauldron-container" id="cauldron-container">
-                <div class="reward-container"><img class="reward-image"
-                        src="/static/images/components/cauldron/reward.png" alt="reward image"></div>
-                <div class="grid2x2">
-                    <div class="cauldron-slot"></div>
-                    <div class="cauldron-slot"></div>
-                    <div class="cauldron-slot"></div>
-                    <div class="cauldron-slot"></div>
-                </div>
-                <button class="blend-button button-disabled" id="blend">blend</button>
-
-                <div class="cauldron-middle">
-                    <div class="cauldron-middle-cover" alt="cauldron middle cover">
-                    </div>
-                </div>
-                <!-- <img src="/static/images/cauldron_button.png" class="cauldron-fee-image" alt="cauldron fee icon" /> -->
-            </div>
-        </div>
-
-        <!-- Shop view -->
-        <div class="container disabled" id="shop-container">
-            <div class="shop-container">
-                <div class="shop2x2">
-                    <div>
-                        <div class="shop-slot"></div>
-                    </div>
-                    <div>
-                        <div class="shop-slot"></div>
-                    </div>
-                    <div>
-                        <div class="shop-slot"></div>
-                    </div>
-                    <div>
-                        <div class="shop-slot"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Elements view -->
-        <div class="container disabled" id="elements-container">
-            <div class="tableList" id="listingTable"></div>
-            <div class="pagination-block">
-                <span class="pageButton" id="button_prev">Prev</span>
-                <span id="page_number"></span>
-                <span class="pageButton" id="button_next">Next</span>
-            </div>
-        </div>
-
-        <!-- <a href="" class="dropdown-item">My Profile</a>
-        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a> -->
-
-
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-            <div class="inventoryModalDecoratorContainer">
-                <div class="inventoryModalDeco"></div>
-                <div class="inventoryModalDeco"></div>
-                <div class="inventoryModalDeco"></div>
-                <div class="inventoryModalDeco"></div>
-            </div>
-            <!-- Modal content -->
-            <div class="modal-content">
-                <div class="modalInventoryListContainer">
-                    <p style="color: wheat; font-size: 1.5rem;">INVENTORY</p>
-
-                    <ul class="inventoryList grid">
-
-
-                        <div class="loader"></div>
+<body>
+    {% block content %}
+    <main class="home-page-container">
+        <section class="hero-container">
+            <!-- <nav class="home-navbar" id="desktop-navbar">
+                <ul class="nav-list">
+                    <li class="nav-list-item">Login</li>
+                    <li class="nav-list-item">Game</li>
+                    <li class="nav-list-item">Info</li>
+                    <li class="nav-list-item">Logo</li>
+                </ul>
+            </nav> -->
+            <nav class="navbar" id="mobile-navbar">
+                    <a href="#" class="nav-logo">Logo</a>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Contact</a>
+                        </li>
                     </ul>
+                    <div class="hamburger">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+            </nav>
+            
+            <div class="hero-content-container">
+                <div class="intro-container">
+                    <p>Mix, Find, Discover - Discover a world of Elements waiting to be found</p>
                 </div>
-                <span class="clearButton"></span>
-                <span class="closeButton">Close</span>
             </div>
+            <section class="right-pane-container">
+                <div class="right-pane-deco"></div>
+                <seciton class="right-pane"></seciton>
+                </div>
+                <img src="/static/images/home/rocket-min.webp" alt="home rocket image" class="right-pane-rocket-image">
+                <div class="right-pane-planets-container">
 
-        </div>
-        <!-- GAME PANEL -->
-    </div>
-</div>
-<div id="discoveredView">
+                    <img src="/static/images/home/planets-min.webp" alt="home planets image" class="right-pane-planets-image">
+                </div>
+                <section class="right-pane-content">
+                    <p class="right-pane-title">Your mission</p>
+                    <p class="right-pane-text">After a successful evacuation from Earth, our heroes aboard spacecraft
+                        "MARS
+                        SHIP" head to the red planet. To prepare the planet for colonization, they created a generator
+                        of
+                        elements. Now they must create as many items as possible. Explore, mix, invent! Every attempt
+                        brings
+                        us closer to salvation!</p>
+                    </section>
+                    <div class="right-pane-deco-flipped"></div>
+            </section>
 
-</div>
+            <section class="cauldron-example-container">
+                <div class="cauldron-example-image"></div>
+                <div class="cauldron-example-text">
+                    <p>The four basic elements underlie everything: wind, earth, fire and water. By combining them in the Cauldron you create something new.<br><br>
+                    When a player discovers a new element, they will unlock that element along with a reward, the reward will contain the elemnent they found and a certain amount of credits based on the element they found.<br><br>
+                
+                </div>
+            </section>
+            <div class="right-pane-deco-cauldron"></div>
+            <section class="cauldron-information-container">
+                <div class="cauldron-information-image"></div>
+                <div class="cauldron-information-text">
+                    Each time the player uses the Cauldron it will cost a fee of 15 Credits. These credits can be used to purchase any of the four basic elements in the shop.</p>
+                </div>
+                <div class="right-pane-deco-flipped"></div>
+            </section>
 
 
-<!-- SHOP  -->
+            <section class="shop-information-container">
+                <ul>
+                    <li><img src="../../static/images/game/components/shop/shop_slot_background-min.webp" class="shop-information-image" ></li>
+                    <li><img src="../../static/images/game/components/shop/shop_slot_background-min.webp" class="shop-information-image" ></li>
+                    <li><img src="../../static/images/game/components/shop/shop_slot_background-min.webp" class="shop-information-image" ></li>
+                    <li><img src="../../static/images/game/components/shop/shop_slot_background-min.webp" class="shop-information-image" ></li>
+                </ul>
+            </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script type="module" src="{% static 'scripts/home/main.js' %}"></script>
+    {% endblock %}
 
+</body>
 
-
-{% endblock %}
+</html>

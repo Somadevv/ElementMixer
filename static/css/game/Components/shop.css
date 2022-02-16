@@ -1,0 +1,73 @@
+.shopContainer {
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 90px;
+  margin-left: 9vw;
+}
+.shop2x2 {
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px 100px;
+  gap: 15px;
+  width: 75vw;
+  justify-content: center;
+  
+}
+
+.shop2x2 > div {
+  position: relative;
+  background: url("../../../images/game/components/shop/shop_slot_background-min.webp") no-repeat;
+  background-size: contain;
+  margin: 0 auto;
+  height: 300px;
+  width: 225px;
+}
+/* .shop2x2 > div:hover {
+  background: url("../../../images/game/components/shop/shop_slot_background-min.webp") no-repeat;
+  background-size: contain;
+  opacity: 0;
+} */
+
+.shopBuyButton {
+  background: url("../../../images/game/buttons/confirm_button-min.webp") no-repeat;
+  background-size: contain;
+  width: 150px;
+  height: 50px;
+  outline: none;
+  border: none;
+  
+}
+.shopBuyButton:hover {
+  background: url("../../../images/game/buttons/confirm_button_hover-min.webp") no-repeat;
+  background-size: contain;
+  width: 150px;
+  height: 50px;
+}
+
+.shopBuyButtonText {
+  color: white;
+}
+.shopElementImage {
+  width: 200px;
+  height: 150px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .shopContainer {
+
+    margin-left: 4%;
+    
+  }
+  .shop2x2 > div {
+    position: relative;
+    background: url("../../../images/game/components/shop/shop_slot_background-min.webp") no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+    height: 200px;
+    width: 150px;
+  }
+
+}

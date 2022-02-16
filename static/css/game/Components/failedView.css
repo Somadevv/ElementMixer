@@ -1,0 +1,44 @@
+#noDiscoveryNotification {
+  margin: auto;
+  position: absolute;
+  top: 95%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: fit-content;
+  height: fit-content;
+  z-index: 2;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Righteous", "Roboto";
+  color: red;
+  /* background-color: rgba(211, 92, 12, 0.8); */
+  animation: noDiscoveryNotification 6s;
+  -webkit-animation: noDiscoveryNotification 6s;
+  animation-fill-mode: forwards;
+  /* animation-delay: 1s;
+  -webkit-animation-delay: 1s;  */
+  -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes noDiscoveryNotification {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@-webkit-keyframes noDiscoveryNotification {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}

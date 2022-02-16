@@ -6,7 +6,7 @@ from django.contrib import messages
 from rest_framework.response import Response
 from .models import Elements, Inventory, Player, User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-import json
+from django.contrib.auth.decorators import login_required
 
 
 def register_request(request, backend='django.contrib.auth.backends.ModelBackend'):
@@ -22,14 +22,17 @@ def register_request(request, backend='django.contrib.auth.backends.ModelBackend
     form = RegisterForm()
     return render(request=request, template_name="home/register.html", context={"register_form": form})
 
-
-def index(request):
+@login_required
+def game_view(request):
     player = Player.objects.get(playerId=request.user)    
     Inventory.objects.filter(playerId=player, amount=0).all().delete()
     if request.session.session_key:
         player = Player.objects.get(playerId=request.user)
         inventory = Inventory.objects.filter(playerId=player)
-        return render(request, 'home/index.html', {"inventory": inventory, "player": player})
+        return render(request, 'game/index.html', {"inventory": inventory, "player": player})
 
+    return render(request, 'game/index.html')
+
+
+def index(request):
     return render(request, 'home/index.html')
-

@@ -1,0 +1,130 @@
+/* MAINBAR */
+.mainbar {
+  position: relative;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url("/static/images/game/components/navbar/background-min.webp") 50% no-repeat;
+  background-size: 100% 100%;
+  height: 46px;
+  max-width: 100vw;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* PLAYER INFO */
+
+.playerinfo {
+  display: flex;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url("/static/images/game/components/navbar/username_background-min.webp") 50% no-repeat;
+  background-size: 100% 100%;
+  height: 46px;
+  width: 125px;
+}
+#useravatar {
+  border-radius: 228px;
+  height: 30px;
+  margin: 6px 12px 0;
+}
+#username {
+  font-size: 12px;
+  margin: 12px 0 0 0;
+}
+
+.credits-icon, .cauldron-icon {
+  width: 35px;
+  height: 35px
+}
+.cauldron-icon{
+margin-left: -150px;
+}
+.floated{
+  float: right;
+  margin-top: 5px;
+  width: 175px;
+  color: wheat;
+  
+}
+#minusCauldronFee {
+  /* margin-left: 80px; */
+  width: fit-content;
+  height: fit-content;
+  z-index: 4;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Righteous", "Roboto";
+  color: red;
+  animation: minusCauldronFee 1s;
+  -webkit-animation: minusCauldronFee 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s; 
+  -webkit-animation-delay: 1s;  
+  -webkit-animation-fill-mode: forwards;
+}
+#incrementAmountValue {
+  margin-left: 80px;
+  width: fit-content;
+  height: fit-content;
+  z-index: 2;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Righteous", "Roboto";
+  color: wheat;
+  
+  animation: incrementAmountValue 1s;
+  -webkit-animation: incrementAmountValue 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s; 
+  -webkit-animation-delay: 1s;  
+  -webkit-animation-fill-mode: forwards;
+}
+@keyframes minusCauldronFee {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    
+  }
+}
+
+@-webkit-keyframes minusCauldronFee {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    
+  }
+}
+
+@keyframes incrementAmountValue {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@-webkit-keyframes incrementAmountValue {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+
+
+

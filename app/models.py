@@ -33,6 +33,7 @@ class Player(models.Model):
     playerId = models.OneToOneField(User, on_delete=models.CASCADE)
     credits = models.IntegerField(default=500)
     recipes = ArrayField(models.CharField(max_length=50, blank=True, null=True), blank=True, null=True, default=list)
+    
 
     def __str__(self):
         return str(self.playerId)
@@ -66,3 +67,4 @@ class Recipes(models.Model):
 
     def __str__(self):
         return str(self.name)
+

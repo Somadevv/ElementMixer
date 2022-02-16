@@ -16,4 +16,6 @@ urlpatterns = [
     path('list-elements', views.list_elements),
     path('check-elements', views.check_elements),
     path('get-credits/<str:pk>/', views.get_credits),
+    path('add-reward/<str:pk>/', views.add_reward),
+    path('add-purchased-element/<str:pk>/', views.purchase_element),
 ]

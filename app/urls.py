@@ -15,5 +15,5 @@ urlpatterns = [
     path("register/", register_request, name="register"),
     path('accounts/', include('allauth.urls')),
     path('change-password/', auth_views.PasswordChangeView.as_view()),
-    
+    path('game/', game_view, name='game'),
 ]

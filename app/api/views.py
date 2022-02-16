@@ -61,50 +61,13 @@ def get_credits(request, pk):
     serializer = PlayerSerializer(player, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
-# Add recipe reward to player AP
 
-# if player discovers new recipe, get the recipe id, and append to player's recipe history
+@api_view(['GET'])
+def add_reward(request, pk):
+    user = User.objects.get(username=request.user)
+    Player.objects.filter(playerId=user).update(credits=F('credits') + 100)
+    return Response(f"Added 100 credits to player", status=status.HTTP_200_OK)
 
-# players recipe history will look like -> [1, 2, 3, 4, 5]
-
-
-"""
-[CLIENT]
-> when blend is clicked <
-send combination to server -> server checks combination
-
-if response === new recipe:
-
-if (response.includes(newElement)) {
-    return the normal discovery screen
-} else {
-    return new discovery screen
-}
-
-['Lava', 'Wheat]
-
-
-
-
-[SERVER]
-remove combination from inventory
-check request combination to see if it matches a recipe
-
-if it does match a recipe:
-    check if player has recipe discovered 
-    if they do:
-
-        update element + 1
-        return Response("[Element] added to inventory")
-    else:
-        add to player discovered history
-        give player the new element
-        return Response("Player found [Element]!")
-
-check if player has element discovered in inventory
-if they do:
-    
-"""
 
 def delete_records_with_amount_zero(player):
     return Inventory.objects.filter(playerId=player, amount=0).all().delete()
@@ -122,7 +85,6 @@ def check_elements(request):
     player = Player.objects.get(playerId=request.user)
     # check for any Inventory recors with a field amount of 0 & delete.
     delete_records_with_amount_zero(player)
-    
 
     for i in data:
         # Deletes combination query from player invnentory
@@ -146,10 +108,10 @@ def check_elements(request):
             if inventory:
                 # if the element found is already inside the users inventory ->
                 Inventory.objects.filter(playerId=player, eleId=elementInstance,
-                                     name=elementInstance).update(amount=F('amount') + 1)
+                                         name=elementInstance).update(amount=F('amount') + 1)
             else:
                 Inventory.objects.create(
-                playerId=player, eleId=elementInstance, name=elementInstance, amount=1)
+                    playerId=player, eleId=elementInstance, name=elementInstance, amount=1)
             return JsonResponse({'Found': query[0]["name"]})
 
         else:
@@ -164,6 +126,7 @@ def check_elements(request):
         return Response("No recipe found.")
 
         # If user has the element in the request data combination result
+
 
 
 @api_view(['POST'])
@@ -182,7 +145,7 @@ def update_inventory(request, pk):
             Inventory.objects.create(
                 playerId=player, name=elementInstance, amount=request.data["amount"])
 
-        return Response(f'Succsesfully Updated: {request.data}')
+        return Response(f'successfully Updated: {request.data}')
     else:
         Response(f'Failed to update: {request.data}, is not valid.')
 
@@ -191,4 +154,47 @@ def update_inventory(request, pk):
 def inventory_delete(request, pk):
     item = Inventory.objects.get(id=pk)
     item.delete()
-    return Response('Item succsesfully deleted!')
+    return Response('Item successfully deleted!')
+
+
+# @api_view(['POST'])
+# def purchase_element(request, pk):
+#     player = Player.objects.get(playerId=request.user)
+#     inventory = Inventory.objects.filter(playerId=player, name=request.data["name"])
+#     if inventory:
+#         Inventory.objects.filter(playerId=player, name=request.data["name"]).update(amount=F('amount')+request.data["amount"])
+#         print('successfully updated element for user')
+#         return Response('')
+#     else:
+#         elementInstance = Elements.objects.get(name=request.data["name"])
+#         Inventory.objects.create(playerId=player, name=elementInstance, amount=request.data["amount"])
+#         print(f'successfully created new element for user')
+#         return Response('')
+
+
+@api_view(['POST'])
+def purchase_element(request, pk):
+    player = Player.objects.get(playerId=request.user)
+    if player:
+        requestExists = Inventory.objects.filter(
+            playerId=player, name=request.data["name"])
+
+        if requestExists:
+            requestExists.update(amount=F('amount')+request.data["amount"])
+            print('successfully updated element')
+            return Response(f'successfully updated element')
+        else:
+            elementInstance = Elements.objects.get(name=request.data["name"])
+            Inventory.objects.create(
+                    playerId=player, eleId=elementInstance, name=elementInstance, amount=request.data["amount"])
+            print('successfully created new element')
+        return Response(f'successfully created new element')
+    else:
+        Response(f'Failed to update: {request.data}, is not valid.')
+
+
+
+
+
+
+      

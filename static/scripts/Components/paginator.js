@@ -58,7 +58,7 @@ import { Request } from "../Services/API/fetchRequest.js";
       for (var i = (page - 1) * records_per_page; i < page * records_per_page && i < elements.length; i++) {
         listingTable.innerHTML += `<div class="elementGridItem">
             <p class="elementName" >${elements[i].name}</p>
-            <img class="elementGridImage" src="/static/images/elements/${elements[i].name}.png" alt="inventory-slot">
+            <img class="elementGridImage" src="/static/images/game/elements/${elements[i].name}-min.webp" alt="inventory-slot">
             </div>`;
       }
       checkButtonOpacity();

@@ -1,0 +1,293 @@
+/* @import url("/static/css/game/base.css"); */
+.cauldron-fee-image {
+  position: relative;
+  bottom: 27.5px;
+  /* right: 30%; */
+  width: 210px;
+  height: 75px;
+  left: 5px;
+}
+.cauldron-container {
+  position: relative;
+  max-width: 575px;
+  min-height: 350px;
+  margin: 0 auto;
+  background: url("../../../images/game/components/cauldron/backdrop-min.webp") no-repeat;
+  background-size: contain;
+  background-position: center center;
+  margin-right: -10px;
+}
+.cauldron-middle {
+  position: absolute;
+  left: calc(50% - 46px);
+  top: calc(50% - 48px);
+  background: url("../../../images/game/components/cauldron/middle-min.webp") no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 95px;
+  height: 95px;
+}
+.cauldron-middle-cover {
+  position: absolute;
+  left: calc(50% - 48px);
+  top: calc(50% - 48px);
+  background: url("../../../images/game/components/cauldron/middle_cover-min.webp") no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 95px;
+  height: 95px;
+}
+
+.reward-container {
+  position: relative;
+  width: fit-content;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  margin: 0 auto;
+  right: 5px;
+  bottom: 25px;
+}
+.reward-image {
+  position: relative;
+  margin: 0 auto;
+  width: 225px;
+  height: 70px;
+}
+.grid2x2 {
+  position: relative;
+  display: grid;
+  grid-template-columns: 170px 100px;
+  grid-row: auto auto;
+  grid-row-gap: 35px;
+  grid-column-gap: 15px;
+  width: fit-content;
+  margin: 0 auto;
+  top: -25px;
+  right: 6px;
+}
+.grid2x2 > div {
+  background: url("../../../images/game/buttons/inventory_slot-min.webp") no-repeat;
+  background-size: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 115px;
+  min-width: 115px;
+}
+.grid2x2 > div:hover {
+  background: url("../../../images/game/buttons/inventory_slot_hover-min.webp") no-repeat;
+  background-size: contain;
+
+}
+
+.cauldronTempImg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.inventory-item {
+  position: relative;
+  top: 30px;
+  background: url("../../../images/game/buttons/inventory_slot-min.webp") no-repeat;
+  background-size: contain;
+  height: 115px;
+  max-width: 115px;
+  /* max-width: 125px; */
+}
+
+.inventory-slot-bg {
+  position: relative;
+  left: 12.5px;
+  background: url("../../../images/game/buttons/inventory_slot-min.webp") no-repeat;
+  background-size: contain;
+  width: 110px;
+  margin-bottom: 25px;
+  margin-top: 40px;
+  height: auto;
+}
+
+.inventory-slot-bg:hover {
+  background: url("../../../images/game/buttons/inventory_slot_hover-min.webp") no-repeat;
+  background-size: contain;
+
+}
+
+.invElementName {
+  background: url("../../../images/game/components/elements/name-min.webp") no-repeat;
+  background-size: contain;
+  position: relative;
+  text-align: center;
+  top: -17px;
+  width: 85px;
+  height: 150px;
+  color: wheat;
+  font-size: 0.85rem;
+  margin: 0 auto;
+}
+
+.inventoryImage {
+  position: absolute;
+  padding: 5px;
+  width: 110px;
+  top: 0;
+  left: 0;
+  height: auto;
+  z-index: 15;
+  margin-bottom: 0;
+}
+.amount {
+  position: absolute;
+  width: 75px;
+  left: 17.5px;
+  bottom: 3px;
+  color: white;
+}
+.inventoryList {
+  overflow:hidden;
+  overflow-y:scroll;
+  height: fit-content;
+  
+}
+
+.inventoryListItems {
+  position: relative;
+  display: grid;
+  gap: 0px;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 140px;
+  height: 165px;
+
+}
+.blend-button:active, .blend-button:focus {
+  outline: none;
+  border: none;
+}
+.blend-button {
+  background: url("../../../images/game/buttons/confirm_button-min.webp") no-repeat;
+  background-size: 100% 100%;
+  width: 150px;
+  height: 50px;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  outline: none;
+  border: none;
+  color: white;
+  outline: none;
+  border: none;
+}
+
+.blend-button:hover {
+  background: url("../../../images/game/buttons/confirm_button_hover-min.webp") no-repeat;
+  background-size: 100% 100%;
+}
+#discoveredNewContainer, #discoveredContainer {
+  position: fixed;
+  top: 0%;
+  z-index: 2;
+  padding-top: 40px;
+  width: 100vw;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.discoveredNew-modal, #discovered-modal {
+  position: relative;
+  top: 100px;
+  width: 100vw;
+  height: 400px;
+  margin: 0 auto;
+  text-align: center;
+  
+}
+.discoveredNew-content, .discovered-content {
+  position: relative;
+  top: 20vh;
+  margin: 0 auto;
+  text-align: center;
+  background: url("../../../images/game/buttons/discovered_element_background-min.webp") no-repeat;
+  background-size: contain;
+  width: 200px;
+  height: 200px;
+}
+.discoveredNew-content {
+  top: 5vh;
+}
+.discoveredNewName, .discoveredName {
+  position: relative;
+  top: 10vh;
+  width: max-content;
+  height: auto;
+  margin: 0 auto;
+  color: wheat;
+  font-size: 1.5rem;
+}
+.discoveredNewImage, .discoveredImage {
+  position: relative;
+  margin-top: 10px;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+}
+/* TABLET+ */
+@media only screen and (min-width: 768px) {
+  .cauldron-container {
+    max-width: 400px;
+    min-height: 400px;
+    background-size: contain;
+    left: 7.5px;
+    margin: 0 auto;
+  }
+  .reward-container {
+    bottom: 24px;
+  }
+  .reward-image {
+    width: 250px;
+    height: auto;
+  }
+  .grid2x2 {
+    grid-template-columns: 175px 100px;
+    grid-row-gap: 70px;
+    width: fit-content;
+    margin: 0 auto;
+
+    /* right: 20px; */
+  }
+  .grid2x2 > div {
+    width: 100px;
+    height: 100px;
+  }
+}
+/* LAPTOP LARGE + */
+@media only screen and (min-width: 1200px) {
+  .cauldron-container {
+    max-width: 600px;
+    min-height: 500px;
+    background-size: contain;
+    left: 7.5px;
+    margin: 0 auto;
+    bottom: 35px;
+  }
+  .reward-container {
+    bottom: 0;
+  }
+  .reward-image {
+    width: 250px;
+    height: auto;
+  }
+  .grid2x2 {
+    grid-template-columns: 230px 100px;
+    grid-row-gap: 70px;
+    width: fit-content;
+    margin: 0 auto;
+    right: 20px;
+    top: 0px;
+  }
+  .grid2x2 > div {
+    width: 150px;
+    height: 150px;
+  }
+}

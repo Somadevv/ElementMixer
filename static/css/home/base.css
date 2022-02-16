@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
+* {
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  
+}
+
+html,
+body {
+  font-family: "Righteous", "Roboto";
+  margin: 0px;
+  padding: 0px;
+  width: 100vw;
+  height: fit-content;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.disabled {
+  display: none;
+  background: none;
+}

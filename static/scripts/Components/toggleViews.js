@@ -17,7 +17,6 @@ const cachedEls = {
   undiscoveredCloseButton: document.getElementById("discoveredCloseButton"),
 };
 
-
 // Switch case to trigger each event
 const toggleView = (view) => {
   switch (view) {
@@ -47,11 +46,10 @@ const toggleView = (view) => {
   }
 };
 
-
 // cachedEls.discoveredCloseButton.addEventListener("click", () => {
 //   cachedEls.discoveredView.classList.add("disabled");
 //   cachedEls.cauldronContainer.classList.remove("disabled");
-  
+
 // });
 cachedEls.toggleShop.addEventListener("click", () => {
   cachedEls.toggleShop.classList.add("active");
