@@ -3,6 +3,7 @@ from email import utils
 from itertools import combinations
 from re import X
 from xml.dom.minidom import TypeInfo
+from django.shortcuts import redirect
 from rest_framework.response import Response
 from rest_framework import status
 from app.models import Elements, Inventory, Recipes, User, Player
@@ -13,6 +14,9 @@ import json
 from django.db import transaction
 from django.http import JsonResponse
 from django_postgres_extensions.models.functions import ArrayAppend
+
+import os
+import stripe
 
 
 # permission_classes = [permissions.IsAuthenticated]
@@ -128,7 +132,6 @@ def check_elements(request):
         # If user has the element in the request data combination result
 
 
-
 @api_view(['POST'])
 def update_inventory(request, pk):
     player = Player.objects.get(playerId=request.user)
@@ -139,7 +142,7 @@ def update_inventory(request, pk):
         if requestExists:
             requestExists.update(amount=F('amount')+request.data["amount"])
             Inventory.objects.get(playerId=player, name=request.data["name"])
-            print("yes")
+
         else:
             elementInstance = Elements.objects.get(name=request.data["name"])
             Inventory.objects.create(
@@ -157,44 +160,30 @@ def inventory_delete(request, pk):
     return Response('Item successfully deleted!')
 
 
-# @api_view(['POST'])
-# def purchase_element(request, pk):
-#     player = Player.objects.get(playerId=request.user)
-#     inventory = Inventory.objects.filter(playerId=player, name=request.data["name"])
-#     if inventory:
-#         Inventory.objects.filter(playerId=player, name=request.data["name"]).update(amount=F('amount')+request.data["amount"])
-#         print('successfully updated element for user')
-#         return Response('')
-#     else:
-#         elementInstance = Elements.objects.get(name=request.data["name"])
-#         Inventory.objects.create(playerId=player, name=elementInstance, amount=request.data["amount"])
-#         print(f'successfully created new element for user')
-#         return Response('')
-
-
 @api_view(['POST'])
 def purchase_element(request, pk):
     player = Player.objects.get(playerId=request.user)
+    user = User.objects.get(username=request.user)
     if player:
         requestExists = Inventory.objects.filter(
             playerId=player, name=request.data["name"])
 
         if requestExists:
             requestExists.update(amount=F('amount')+request.data["amount"])
+            Player.objects.filter(playerId=user).update(
+                credits=F('credits')-50 * int(request.data["amount"]))
             print('successfully updated element')
             return Response(f'successfully updated element')
         else:
             elementInstance = Elements.objects.get(name=request.data["name"])
             Inventory.objects.create(
-                    playerId=player, eleId=elementInstance, name=elementInstance, amount=request.data["amount"])
+                playerId=player, eleId=elementInstance, name=elementInstance, amount=request.data["amount"])
+            Player.objects.filter(playerId=user).update(
+                credits=F('credits')-50 * int(request.data["amount"]))
             print('successfully created new element')
         return Response(f'successfully created new element')
     else:
         Response(f'Failed to update: {request.data}, is not valid.')
 
 
-
-
-
-
-      
+stripe.api_key = 'sk_test_51KgrgyDEiacTItdnN7S5Pu4cDo01TaGWF7wnw1NY04Z9D7yyD71rowCDDji36p6Y4V60xvuDgaAwYlb7PpFBOTh000F8lnyEh7'

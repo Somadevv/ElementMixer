@@ -6,6 +6,7 @@
   max-width: fit-content;
   height: max-content;
   margin: 0 auto;
+  margin-top: 125px;
 }
 .elementGridItem {
   position: relative;
@@ -53,7 +54,6 @@
 }
 .clickPageNumber {
   color: white;
-
   padding: 5px;
   margin-left: 2px;
   margin-right: 2px;

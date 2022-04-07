@@ -64,7 +64,7 @@ cachedEls.toggleCauldron.addEventListener("click", () => {
   toggleView("cauldron");
 });
 cachedEls.toggleElements.addEventListener("click", () => {
-  // drawElements();
+  drawElements();
   cachedEls.toggleCauldron.classList.remove("active");
   cachedEls.toggleShop.classList.remove("active");
   cachedEls.toggleElements.classList.add("active");
