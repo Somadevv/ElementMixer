@@ -17,37 +17,36 @@
     {% block content %}
     <main class="home-page-container">
         <section class="hero-container">
-            <!-- <nav class="home-navbar" id="desktop-navbar">
-                <ul class="nav-list">
-                    <li class="nav-list-item">Login</li>
-                    <li class="nav-list-item">Game</li>
-                    <li class="nav-list-item">Info</li>
-                    <li class="nav-list-item">Logo</li>
-                </ul>
-            </nav> -->
             <nav class="navbar" id="mobile-navbar">
-                    <a href="#" class="nav-logo">Logo</a>
-                    <ul class="nav-menu">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Services</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Contact</a>
-                        </li>
-                    </ul>
-                    <div class="hamburger">
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                        <span class="bar"></span>
-                    </div>
+                <a href="#" class="nav-logo">Logo</a>
+                <ul class="nav-menu">
+                    {% if request.user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <a href="/game" class="nav-link">Play</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/accounts/logout" class="nav-link">Sign out</a>
+                    </li>
+                    {% else %}
+
+
+                    <li class="nav-item">
+                        <a href="/accounts/login" class="nav-link">Sign in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/register" class="nav-link">Register</a>
+                    </li>
+                    {% endif %}
+
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </nav>
-            
+
             <div class="hero-content-container">
                 <div class="intro-container">
                     <p>Mix, Find, Discover - Discover a world of Elements waiting to be found</p>
@@ -60,7 +59,8 @@
                 <img src="/static/images/home/rocket-min.webp" alt="home rocket image" class="right-pane-rocket-image">
                 <div class="right-pane-planets-container">
 
-                    <img src="/static/images/home/planets-min.webp" alt="home planets image" class="right-pane-planets-image">
+                    <img src="/static/images/home/planets-min.webp" alt="home planets image"
+                        class="right-pane-planets-image">
                 </div>
                 <section class="right-pane-content">
                     <p class="right-pane-title">Your mission</p>
@@ -71,36 +71,31 @@
                         elements. Now they must create as many items as possible. Explore, mix, invent! Every attempt
                         brings
                         us closer to salvation!</p>
-                    </section>
-                    <div class="right-pane-deco-flipped"></div>
+                </section>
+                <div class="right-pane-deco-flipped"></div>
             </section>
 
             <section class="cauldron-example-container">
                 <div class="cauldron-example-image"></div>
                 <div class="cauldron-example-text">
-                    <p>The four basic elements underlie everything: wind, earth, fire and water. By combining them in the Cauldron you create something new.<br><br>
-                    When a player discovers a new element, they will unlock that element along with a reward, the reward will contain the elemnent they found and a certain amount of credits based on the element they found.<br><br>
-                
+                    <p>The four basic elements underlie everything: wind, earth, fire and water. By combining them in
+                        the Cauldron you create something new.<br><br>
+                        When a player discovers a new element, they will unlock that element along with a reward, the
+                        reward will contain the elemnent they found and a certain amount of credits based on the element
+                        they found.<br><br>
+
                 </div>
             </section>
             <div class="right-pane-deco-cauldron"></div>
             <section class="cauldron-information-container">
                 <div class="cauldron-information-image"></div>
                 <div class="cauldron-information-text">
-                    Each time the player uses the Cauldron it will cost a fee of 15 Credits. These credits can be used to purchase any of the four basic elements in the shop.</p>
+                    Each time the player uses the Cauldron it will cost a fee of 15 Credits. These credits can be used
+                    to purchase any of the four basic elements in the shop.</p>
                 </div>
                 <div class="right-pane-deco-flipped"></div>
             </section>
 
-
-            <section class="shop-information-container">
-                <ul>
-                    <li><img src="../../static/images/game/components/shop/shop_slot_background-min.webp" class="shop-information-image" ></li>
-                    <li><img src="../../static/images/game/components/shop/shop_slot_background-min.webp" class="shop-information-image" ></li>
-                    <li><img src="../../static/images/game/components/shop/shop_slot_background-min.webp" class="shop-information-image" ></li>
-                    <li><img src="../../static/images/game/components/shop/shop_slot_background-min.webp" class="shop-information-image" ></li>
-                </ul>
-            </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

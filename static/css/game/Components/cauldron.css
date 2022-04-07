@@ -83,28 +83,24 @@
 
 .cauldronTempImg {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 115px;
+  height: 115px;
+  margin-right: 10px;
 }
 .inventory-item {
   position: relative;
-  top: 30px;
   background: url("../../../images/game/buttons/inventory_slot-min.webp") no-repeat;
   background-size: contain;
-  height: 115px;
-  max-width: 115px;
-  /* max-width: 125px; */
+
 }
 
 .inventory-slot-bg {
   position: relative;
-  left: 12.5px;
   background: url("../../../images/game/buttons/inventory_slot-min.webp") no-repeat;
   background-size: contain;
   width: 110px;
-  margin-bottom: 25px;
-  margin-top: 40px;
-  height: auto;
+  margin-top: 20px;
+  
 }
 
 .inventory-slot-bg:hover {
@@ -144,21 +140,15 @@
   color: white;
 }
 .inventoryList {
-  overflow:hidden;
-  overflow-y:scroll;
-  height: fit-content;
-  
-}
-
-.inventoryListItems {
-  position: relative;
   display: grid;
-  gap: 0px;
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 140px;
-  height: 165px;
-
+  grid-template-columns: repeat(2, 1fr);
+  overflow-y:scroll;
+  scroll-behavior: smooth;
+  padding-top: 50px;
+  height: 450px;
 }
+
+
 .blend-button:active, .blend-button:focus {
   outline: none;
   border: none;
@@ -169,7 +159,8 @@
   width: 150px;
   height: 50px;
   font-size: 18px;
-  line-height: 30px;
+  line-height: 40px;
+  margin-top: 10px;
   text-align: center;
   text-transform: uppercase;
   position: relative;
@@ -231,6 +222,11 @@
   width: 100%;
   height: auto;
   padding: 20px;
+}
+
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 /* TABLET+ */
 @media only screen and (min-width: 768px) {

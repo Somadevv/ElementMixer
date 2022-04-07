@@ -21,19 +21,12 @@ body {
   width: 100%;
   height: 100%;
   display: block;
-  background: rgba(111, 111, 111, 0.1) url("../../images/home/cta_bg-min.webp") no-repeat;
+  /* background: rgba(111, 111, 111, 0.1) url("../../images/home/cta_bg-min.webp") no-repeat; */
+  background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, 0)), url("../../images/home/cta_bg-min.webp");
   background-size: cover;
   background-position: 50%;
   box-shadow: 0 4px 74px 0 #000;
   margin: 0 auto;
-}
-.navbar-collapse {
-  position: absolute;
-  width: 50vw;
-  right: 0;
-  float: right;
-  top: 0;
-  height: 500px !important;
 }
 
 .hero-content-container {
@@ -54,6 +47,17 @@ body {
   height: calc(100% - 18%);
   width: 100vw;
 }
+
+.navbar-collapse {
+  position: absolute;
+  width: 50vw;
+  right: 0;
+  float: right;
+  top: 0;
+  height: 500px !important;
+}
+
+
 .intro-container {
   position: relative;
   text-align: center;
@@ -164,12 +168,12 @@ body {
 }
 
 .nav-item {
-  margin-left: 1.25rem;
+  margin-left: 1.5rem;
 }
 
 .nav-link {
   padding-top: 30px;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 400;
   color: #fcfcfc;
 }
@@ -182,6 +186,7 @@ body {
   font-size: 2.1rem;
   font-weight: 500;
   color: #ffffff;
+  padding: 10px 0 0 25px;
 }
 
 .cauldron-example-container {

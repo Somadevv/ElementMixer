@@ -1,15 +1,9 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 {{ request.user.id|json_script:"user_id" }}
 
+
 <!-- MAINBAR -->
 <main class="home-container">
-    <!-- ATTMEPTS WIDGET -->
-    <!-- <section class="attempsWidget-container">
-        <p class="attempsWidget-title">Attempts</p>
-        <ul class="attempsWidget-content" id="attempsWidgetContent">
-
-        </ul>
-    </section> -->
     <!-- Discovered new element -->
     <div id="discoveredNewContainer" class="disabled">
         <div class="discoveredNew-modal">
@@ -46,10 +40,20 @@
                 <div class="floated" style="margin-left: 100px;">
                     <img src="/static/images/game/icons/cauldron_icon-min.webp" class="cauldron-icon"
                         alt="cauldron-icon">
-                    <p id="playerCredits" style="color: wheat; display: inline; "></p>
-                    <p id="amountTo" style="position: relative; bottom: 30px; color: green;"></p>
+                    <p id="playerCredits" style=" font-size: 20px; color: wheat; display: inline; ">
+                    </p>
+                    <p id="amountTo" style="font-size: 20px; position: relative; bottom: 30px; color: green; margin: 0">
+                    </p>
+                    <p id="amountToNegative"
+                        style="font-size: 20px; position: absolute; top: 45px; left: 210px; color: red; margin: 0">
+                    </p>
                     <p id="minusCauldronFee"></p>
                 </div>
+                <p style="display: flex; flex-direction: row; position: absolute; right: 20px; top: 10px;"><i
+                        class="fa-solid fa-house"></i></p>
+                <a href="/accounts/logout"
+                    style="display: flex; flex-direction: row; position: absolute; right: 60px; top: 10px;">Sign
+                    out</a>
             </div>
             <div class="toggle-mobile">
                 <img src="/static/images/game/left_mobile_pane-min.webp" id="left-pane" alt="left-pane-sprite" />
@@ -57,11 +61,17 @@
             </div>
         </div>
 
+
         <!-- NAVIGATION BUTTONS -->
         <div class="navigation-container">
             <button class="navigation-button active" id="toggleCauldron">Cauldron</button>
             <button class="navigation-button" id="toggleShop">Shop</button>
             <button class="navigation-button" id="toggleElements">Elements</button>
+
+            <form action="/checkout/" method="POST">
+                {% csrf_token %}
+                <button class="navigation-button" type="submit">Checkout</button>
+            </form>
         </div>
 
 
@@ -89,113 +99,124 @@
         </div>
     </div>
 
-</div>
+    </div>
 
     <!-- Shop view -->
     <div class="shopContainer disabled" id="shop-container">
         <div class="shop2x2">
             <div>
-                <p style="margin-right: 22px;">Air</p>
-                <div>
+                <div class="filledShopWidth">
+                    <p style="margin-right: 22px;">Air</p>
                     <img src="../../static/images/game/elements/Air-min.webp" class="shopElementImage">
-                    <img src="../../static/images/game/icons/minus.webp" width="25px" height="25px"
-                        class="quantityDecrement">
-                    <p style="display: inline-block" class="quantityValue">1</p>
-                    <img src="../../static/images/game/icons/plus.webp" width="25px" height="25px"
-                        class="quantityIncrement">
+                    <div>
+                        <img src="../../static/images/game/icons/minus.webp" width="25px" height="25px"
+                            class="quantityDecrement">
+                        <p style="display: inline-block" class="quantityValue">1</p>
+                        <img src="../../static/images/game/icons/plus.webp" width="25px" height="25px"
+                            class="quantityIncrement">
+                    </div>
+
                 </div>
                 <button class="shopBuyButton">
                     <p class="shopBuyButtonText">Buy</p>
                 </button>
             </div>
             <div>
-                <p style="margin-right: 22px;">Earth</p>
-                <div>
+                <div class="filledShopWidth">
+                    <p style="margin-right: 22px;">Earth</p>
                     <img src="../../static/images/game/elements/Earth-min.webp" class="shopElementImage">
-                    <img src="../../static/images/game/icons/minus.webp" width="25px" height="25px"
-                        class="quantityDecrement">
-                    <p style="display: inline-block" class="quantityValue">1</p>
-                    <img src="../../static/images/game/icons/plus.webp" width="25px" height="25px"
-                        class="quantityIncrement">
+                    <div>
+                        <img src="../../static/images/game/icons/minus.webp" width="25px" height="25px"
+                            class="quantityDecrement">
+                        <p style="display: inline-block" class="quantityValue">1</p>
+                        <img src="../../static/images/game/icons/plus.webp" width="25px" height="25px"
+                            class="quantityIncrement">
+                    </div>
+
                 </div>
-                <button class="shopBuyButton" >
+                <button class="shopBuyButton">
                     <p class="shopBuyButtonText">Buy</p>
                 </button>
             </div>
             <div>
-                <p style="margin-right: 22px;">Fire</p>
-                <div>
+                <div class="filledShopWidth">
+                    <p style="margin-right: 22px;">Fire</p>
                     <img src="../../static/images/game/elements/Fire-min.webp" class="shopElementImage">
-                    <img src="../../static/images/game/icons/minus.webp" width="25px" height="25px"
-                        class="quantityDecrement">
-                    <p style="display: inline-block" class="quantityValue">1</p>
-                    <img src="../../static/images/game/icons/plus.webp" width="25px" height="25px"
-                        class="quantityIncrement">
+                    <div>
+                        <img src="../../static/images/game/icons/minus.webp" width="25px" height="25px"
+                            class="quantityDecrement">
+                        <p style="display: inline-block" class="quantityValue">1</p>
+                        <img src="../../static/images/game/icons/plus.webp" width="25px" height="25px"
+                            class="quantityIncrement">
+                    </div>
+
                 </div>
                 <button class="shopBuyButton">
                     <p class="shopBuyButtonText">Buy</p>
                 </button>
             </div>
             <div>
-                <p style="margin-right: 22px;">Wind</p>
-                <div>
+                <div class="filledShopWidth">
+                    <p style="margin-right: 22px;">Wind</p>
                     <img src="../../static/images/game/elements/Wind-min.webp" class="shopElementImage">
-                    <img src="../../static/images/game/icons/minus.webp" width="25px" height="25px"
-                        class="quantityDecrement">
-                    <p style="display: inline-block" class="quantityValue">1</p>
-                    <img src="../../static/images/game/icons/plus.webp" width="25px" height="25px"
-                        class="quantityIncrement">
+                    <div>
+                        <img src="../../static/images/game/icons/minus.webp" width="25px" height="25px"
+                            class="quantityDecrement">
+                        <p style="display: inline-block" class="quantityValue">1</p>
+                        <img src="../../static/images/game/icons/plus.webp" width="25px" height="25px"
+                            class="quantityIncrement">
+                    </div>
+
                 </div>
                 <button class="shopBuyButton">
                     <p class="shopBuyButtonText">Buy</p>
                 </button>
             </div>
         </div>
-        <!-- Elements view -->
-        <div class="container disabled" id="elements-container">
-            <div class="tableList" id="listingTable"></div>
-            <div class="pagination-block">
-                <span class="pageButton" id="button_prev">Prev</span>
-                <span id="page_number"></span>
-                <span class="pageButton" id="button_next">Next</span>
-            </div>
+
+    </div>
+    <!-- Elements view -->
+    <div class="container disabled" id="elements-container">
+        <div class="tableList" id="listingTable"></div>
+        <div class="pagination-block">
+            <span class="pageButton" id="button_prev">Prev</span>
+            <span id="page_number"></span>
+            <span class="pageButton" id="button_next">Next</span>
         </div>
     </div>
+    </div>
 
-        <!-- <a href="" class="dropdown-item">My Profile</a>
-        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a> -->
-
-
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-            <div class="inventoryModalDecoratorContainer">
-                <div class="inventoryModalDeco"></div>
-                <div class="inventoryModalDeco"></div>
-                <div class="inventoryModalDeco"></div>
-                <div class="inventoryModalDeco"></div>
-            </div>
-            <!-- Modal content -->
-            <div class="modal-content">
-                <div class="modalInventoryListContainer">
-                    <p style="color: wheat; font-size: 1.5rem;">INVENTORY</p>
-
-                    <ul class="inventoryList grid">
-
-
-                        <div class="loader"></div>
-                    </ul>
-                </div>
-                <span class="clearButton"></span>
-                <span class="closeButton">Close</span>
-            </div>
-
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="inventoryModalDecoratorContainer">
+            <div class="inventoryModalDeco"></div>
+            <div class="inventoryModalDeco"></div>
+            <div class="inventoryModalDeco"></div>
+            <div class="inventoryModalDeco"></div>
         </div>
-        <!-- GAME PANEL -->
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modalInventoryListContainer">
+                <p style="color: wheat; font-size: 1.5rem; position: absolute; left: 112px;">INVENTORY</p>
+
+                <ul class="inventoryList">
+                    <div class="loader"></div>
+                </ul>
+
+            </div>
+            <span class="clearButton"></span>
+            <span class="closeButton">
+                <p>Close</p>
+            </span>
+        </div>
+
     </div>
+
+    <!-- GAME PANEL -->
     </div>
-    <div id="discoveredView">
+
+    </div>
+    <p id="poi" class="disabled" style="position: absolute; top: 10px; left: 46vw;">Open inventory</p>
 
 </main>
 

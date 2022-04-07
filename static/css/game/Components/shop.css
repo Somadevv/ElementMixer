@@ -13,7 +13,6 @@
   gap: 15px;
   width: 75vw;
   justify-content: center;
-  
 }
 
 .shop2x2 > div {
@@ -37,7 +36,6 @@
   height: 50px;
   outline: none;
   border: none;
-  
 }
 .shopBuyButton:hover {
   background: url("../../../images/game/buttons/confirm_button_hover-min.webp") no-repeat;
@@ -50,24 +48,23 @@
   color: white;
 }
 .shopElementImage {
-  width: 200px;
-  height: 150px;
+  width: 150px;
+  height: auto;
 }
-
+.filledShopWidth {
+  width: 100%;
+}
 
 @media only screen and (max-width: 768px) {
   .shopContainer {
-
     margin-left: 4%;
-    
   }
   .shop2x2 > div {
     position: relative;
     background: url("../../../images/game/components/shop/shop_slot_background-min.webp") no-repeat;
     background-size: contain;
     margin: 0 auto;
-    height: 200px;
-    width: 150px;
+    height: 300px;
+    width: 225px;
   }
-
 }

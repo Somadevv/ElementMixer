@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{% static 'css/game/Components/attempsWidget.css' %}">
     <link rel="stylesheet" href="{% static 'css/home/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/home/index.css' %}">
-    {% endblock %}  
+    {% endblock %}
 
 
     {% block corejs %}
@@ -52,17 +52,20 @@
 
 
 
-{% block postloadjs %}
-<script type="module" src="{% static 'scripts/main.js' %}"></script>
-<script type="module" src="{% static 'scripts/Services/API/Inventory.js' %}"></script>
-<script type="module" src="{% static 'scripts/Components/shop.js' %}"></script>
-<script type="module" src="{% static 'scripts/Components/cauldron.js' %}"></script>
-<script type="module" src="{% static 'scripts/Components/elements.js' %}"></script>
-<script type="module" src="{% static 'scripts/Components/toggleViews.js' %}"></script>
-<script type="module" src="{% static 'scripts/Components/paginator.js' %}"></script>
-<script type="module" src="{% static 'scripts/Components/attempsWidget.js' %}"></script>
+    {% block postloadjs %}
+    <script type="module" src="{% static 'scripts/main.js' %}"></script>
+    <script type="module" src="{% static 'scripts/Services/API/Inventory.js' %}"></script>
+    <script type="module" src="{% static 'scripts/Components/shop.js' %}"></script>
+    <script type="module" src="{% static 'scripts/Components/cauldron.js' %}"></script>
+    <script type="module" src="{% static 'scripts/Components/elements.js' %}"></script>
+    <script type="module" src="{% static 'scripts/Components/toggleViews.js' %}"></script>
+    <script type="module" src="{% static 'scripts/Components/paginator.js' %}"></script>
+    <script type="module" src="{% static 'scripts/Components/attempsWidget.js' %}"></script>
+    <script src="https://kit.fontawesome.com/230733400f.js" crossorigin="anonymous"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 </body>
 
 
 {% endblock %}
+
 </html>

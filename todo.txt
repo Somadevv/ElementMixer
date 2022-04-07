@@ -8,13 +8,19 @@
 [x] - Add game timer loop to reward players
 [] - create widget to display attempt history
 
+implement reward for discoveries
+
 [[ LOOK AT EARLY DEPLOYMENT - THERE WILL BE PROBLEMS!! ]]
 
 
- // CAULDRON FEE
-  // const minusCauldronFee = document.createElement("p")
-  // minusCauldronFee.id = 'minusCauldronFee'
-  // const target = document.getElementById('minusCauldronFee');
-  // minusCauldronFee.innerHTML = "- 15"
-  // target.appendChild(minusCauldronFee)
+
+
+    FIX ELEMENTS MODAL
+
+
+
+
+
+
+
 
