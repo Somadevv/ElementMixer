@@ -47,7 +47,7 @@ def checkout(request):
                 'product_data': {
                     'name': 'Credits',
                 },
-                'unit_amount': 1000,
+                'unit_amount': 500,
             },
             'quantity': 1,
         }],

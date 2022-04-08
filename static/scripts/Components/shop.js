@@ -36,8 +36,8 @@ selectors.shopButton.forEach((item) => {
       amount: parseInt(item.previousElementSibling.childNodes[5].childNodes[3].innerHTML),
     })
 
-    const result = 50 * parseInt(item.previousElementSibling.childNodes[5].childNodes[3].innerHTML)
-    animateValues.negativeValues(document.getElementById('amountToNegative'), 0, result, 1500)
+    const result = 10 * parseInt(item.previousElementSibling.childNodes[5].childNodes[3].innerHTML)
+    animateValues.negativeValues(document.getElementById('amountToNegative'), 0, result, 500)
     item.previousElementSibling.childNodes[5].childNodes[3].innerHTML = 1
     item.previousElementSibling.childNodes[5].childNodes[1].style.opacity = 0.2
 

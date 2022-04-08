@@ -209,7 +209,7 @@
 }
 .discoveredNewName, .discoveredName {
   position: relative;
-  top: 10vh;
+  margin-top: 150px;
   width: max-content;
   height: auto;
   margin: 0 auto;
@@ -222,9 +222,11 @@
   width: 100%;
   height: auto;
   padding: 20px;
+  
 }
-
-
+#discoveredNewReward {
+  margin-top: 60px;
+}
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }

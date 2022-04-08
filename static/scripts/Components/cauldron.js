@@ -1,5 +1,6 @@
 import { Request } from '../Services/API/fetchRequest.js'
 import { animateValues } from './animateValues.js'
+import { drawPlayerCredits } from '../main.js'
 
 // Document object model selectors
 const selectors = {
@@ -80,10 +81,11 @@ const handleBlendClick = async () => {
   }
   // handler to support modal view for when user discovers new element
   selectors.discoveredNewClaimButton.addEventListener('click', () => {
+    console.log('yeah baby')
     const incrementAmountValue = document.createElement('p')
     document.getElementById('amountTo').innerHTML = ''
     selectors.discoveredNewContainer.classList.add('disabled')
-    animateValues(
+    animateValues.positiveValues(
       selectors.playerCredits,
       playerInfo[0].credits - responseValues.Reward,
       playerInfo[0].credits,
@@ -105,20 +107,37 @@ const handleBlendClick = async () => {
     selectors.discoveredImage.innerHTML = ''
     selectors.discoveredName.innerHTML = ''
   })
+  drawPlayerCredits(selectors.playerCredits)
 }
 
-// Handler for cauldron blend button
+// Handle cauldron blend button
 selectors.blendButton.addEventListener('click', async () => handleBlendClick())
+
+// Handle inventory tool tip
 let poi = document.getElementById('poi')
 selectors.cauldronSlot.forEach((item) => {
-  item.addEventListener('mouseenter', async () => {
+  item.addEventListener('mouseenter', () => {
     poi.style.display = 'block'
   })
-  item.addEventListener('mouseleave', async () => {
+  item.addEventListener('mouseleave', () => {
     poi.style.display = 'none'
   })
 })
+let menuIcons = document.querySelectorAll('.game-menu-icons')
+let homeIcon = document.getElementById('home-icon')
+let logoutIcon = document.getElementById('logout-icon')
+let creditsIcon = document.getElementById('credits-icon')
+// for(let i = 0; i < menuIcons.length; i ++) {
 
+// }
+menuIcons[0].addEventListener('mouseenter', () => (homeIcon.style.display = 'block'))
+menuIcons[0].addEventListener('mouseleave', () => (homeIcon.style.display = 'none'))
+
+menuIcons[1].addEventListener('mouseenter', () => (logoutIcon.style.display = 'block'))
+menuIcons[1].addEventListener('mouseleave', () => (logoutIcon.style.display = 'none'))
+
+menuIcons[2].addEventListener('mouseenter', () => (creditsIcon.style.display = 'block'))
+menuIcons[2].addEventListener('mouseleave', () => (creditsIcon.style.display = 'none'))
 // Toggle cauldron construct button
 const toggleButtonState = () =>
   selectors.cauldronSlot[3].childNodes[0]
