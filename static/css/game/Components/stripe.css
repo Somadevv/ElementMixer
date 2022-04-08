@@ -1,0 +1,21 @@
+.stripe-container {
+    position: absolute;
+    right: 0;
+    top: 250px;
+    width: 200px;
+    height: 300px;
+    background: linear-gradient(333deg,rgba(37,19,48, .9) -50%,rgba(16,21,46,.9) 50%,rgba(16,21,46,.9) 0,rgba(16,21,46,.9) 0,rgba(24,58,58,.9) 170%);
+    border-radius: 16px;
+}
+#stripe-mobile {
+    position: absolute;
+    bottom: 50px;
+    left: 37vw;
+}
+
+@media only screen and (max-width: 768px) {
+    .stripe-container {
+        display: none;
+    }
+
+}

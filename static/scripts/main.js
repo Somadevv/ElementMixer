@@ -5,6 +5,7 @@ const cachedElements = {
   mobileBackground: document.querySelector('.toggle-mobile'),
   mobileQuery: window.matchMedia('(max-width: 767px)'),
   playerCredits: document.getElementById('playerCredits'),
+  stripeMobile: document.getElementById('stripe-mobile'),
 }
 
 export const drawPlayerCredits = async (target) => {
@@ -14,8 +15,10 @@ export const drawPlayerCredits = async (target) => {
 ;(() => {
   const checkQuery = (query) => {
     query.matches
-      ? cachedElements.mobileBackground.classList.remove('disabled')
-      : cachedElements.mobileBackground.classList.add('disabled')
+      ? (cachedElements.mobileBackground.classList.remove('disabled'),
+        cachedElements.stripeMobile.classList.remove('disabled'))
+      : (cachedElements.mobileBackground.classList.add('disabled'),
+        cachedElements.stripeMobile.classList.add('disabled'))
   }
 
   const givePlayerReward = async () => {

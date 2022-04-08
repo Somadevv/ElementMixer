@@ -1,5 +1,12 @@
 /* @import url("../base.css"); */
 /* GAME PANEL */
+.game-menu-icon {
+  text-decoration: none;
+}
+.game-menu-icon:hover {
+  opacity: .7;
+  text-decoration: none;
+}
 .game-panel {
   position: relative;
   text-align: center;
