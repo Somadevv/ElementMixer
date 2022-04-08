@@ -26,23 +26,22 @@ export const drawPlayerCredits = async (target) => {
   }
 
   const rewardGameLoop = () => {
-    let timeleft = 60
+    let timeleft = 180
+    let html = `<img src="../../static/images/game/icons/cauldron_icon-min.webp" width="25px" height="25px">x150 | <i class="fa-regular fa-clock"></i> `
     let timer = setInterval(function () {
       if (timeleft <= 0) {
         clearInterval(timer)
         rewardGameLoop()
         givePlayerReward()
         setTimeout(() => {
-          animateValues.positiveValues(document.getElementById('amountTo'), 0, 100, 2000)
+          animateValues.positiveValues(document.getElementById('amountTo'), 0, 75, 2000)
           drawPlayerCredits(cachedElements.playerCredits)
         }, 100)
         setTimeout(() => {
           document.getElementById('amountTo').innerHTML = ''
         }, 1000)
       } else {
-        // animateValues(document.getElementById('countdown'), 0, 100, 2000)
-
-        document.getElementById('countdown').innerHTML = timeleft
+        document.getElementById('countdown').innerHTML = html + timeleft
       }
       timeleft -= 1
     }, 1000)

@@ -69,8 +69,8 @@ def get_credits(request, pk):
 @api_view(['GET'])
 def add_reward(request, pk):
     user = User.objects.get(username=request.user)
-    Player.objects.filter(playerId=user).update(credits=F('credits') + 100)
-    return Response(f"Added 100 credits to player", status=status.HTTP_200_OK)
+    Player.objects.filter(playerId=user).update(credits=F('credits') + 150)
+    return Response(f"Added 150 credits to player", status=status.HTTP_200_OK)
 
 
 def delete_records_with_amount_zero(player):
@@ -89,6 +89,8 @@ def check_elements(request):
     player = Player.objects.get(playerId=request.user)
     # check for any Inventory recors with a field amount of 0 & delete.
     delete_records_with_amount_zero(player)
+    Player.objects.filter(playerId=user).update(
+        credits=F('credits')-15)
 
     for i in data:
         # Deletes combination query from player invnentory
@@ -179,7 +181,7 @@ def purchase_element(request, pk):
             Inventory.objects.create(
                 playerId=player, eleId=elementInstance, name=elementInstance, amount=request.data["amount"])
             Player.objects.filter(playerId=user).update(
-                credits=F('credits')-50 * int(request.data["amount"]))
+                credits=F('credits')-10 * int(request.data["amount"]))
             print('successfully created new element')
         return Response(f'successfully created new element')
     else:

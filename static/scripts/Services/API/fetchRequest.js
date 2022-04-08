@@ -83,7 +83,6 @@ export const Request = {
       body: JSON.stringify(body),
     })
     const data = response.json()
-    console.log('done..')
     return data
   },
 }

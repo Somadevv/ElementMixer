@@ -12,6 +12,16 @@
   text-align: center;
 }
 
+/* TUTORIAL */
+.tutorial-container {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 475px;
+  height: 800px;
+  background: linear-gradient(333deg,rgba(19, 22, 48, 0.9) -50%,rgba(16,21,46,.9) 50%,rgba(16,21,46,.9) 0,rgba(16,21,46,.9) 0,rgba(24,58,58,.9) 170%);
+  border-radius: 16px;
+}
 /* PLAYER INFO */
 
 .playerinfo {
@@ -27,11 +37,11 @@
 #useravatar {
   border-radius: 228px;
   height: 30px;
-  margin: 6px 12px 0;
+  margin: 3px 7.5px 0;
 }
 #username {
   font-size: 12px;
-  margin: 12px 0 0 0;
+  margin: 11px 0 0 3px;
 }
 
 .credits-icon, .cauldron-icon {

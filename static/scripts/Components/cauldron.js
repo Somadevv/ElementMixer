@@ -1,5 +1,6 @@
 import { Request } from '../Services/API/fetchRequest.js'
 import { animateValues } from './animateValues.js'
+import { drawPlayerCredits } from '../main.js'
 
 // Document object model selectors
 const selectors = {
@@ -80,10 +81,11 @@ const handleBlendClick = async () => {
   }
   // handler to support modal view for when user discovers new element
   selectors.discoveredNewClaimButton.addEventListener('click', () => {
+    console.log('yeah baby')
     const incrementAmountValue = document.createElement('p')
     document.getElementById('amountTo').innerHTML = ''
     selectors.discoveredNewContainer.classList.add('disabled')
-    animateValues(
+    animateValues.positiveValues(
       selectors.playerCredits,
       playerInfo[0].credits - responseValues.Reward,
       playerInfo[0].credits,
@@ -105,6 +107,7 @@ const handleBlendClick = async () => {
     selectors.discoveredImage.innerHTML = ''
     selectors.discoveredName.innerHTML = ''
   })
+  drawPlayerCredits(selectors.playerCredits)
 }
 
 // Handle cauldron blend button

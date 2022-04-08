@@ -50,7 +50,9 @@
 }
 #countdown {
   position: absolute;
-  top: 0;
+  top: 27.5px;
+  left: 72.5px;
+  font-size: 1rem;
 }
 @media only screen and (min-width: 768px) {
   .navigation-container {
@@ -67,6 +69,12 @@
 @media only screen and (max-width: 768px) {
   .navigation-button {
     border: 1px #30b5ff solid;
+  }
+  #countdown {
+    position: absolute;
+    top: 25px;
+    left: 60px;
+    font-size: 1rem;
   }
 
 }
